@@ -1,10 +1,15 @@
 package model.doctor;
 
+import model.patient.Patient;
+
 import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public abstract class Doctor implements Serializable {
     private String name="";
     private Experience experience=new Experience();
+    private Queue<Patient>patientQueue=new LinkedList<>();
 
     public Doctor() {}
 
@@ -12,6 +17,19 @@ public abstract class Doctor implements Serializable {
         this.name = name;
         this.experience = new Experience(experienceIndex);
     }
+
+    public void setExperience(Experience experience) {
+        this.experience = experience;
+    }
+
+    public Queue<Patient> getPatientQueue() {
+        return patientQueue;
+    }
+
+    public void setPatientQueue(Queue<Patient> patientQueue) {
+        this.patientQueue = patientQueue;
+    }
+    abstract public void takePatient(Patient patient,Disease disease);
 
     public String getName() {
         return name;
@@ -34,9 +52,7 @@ public abstract class Doctor implements Serializable {
 
     @Override
     public String toString() {
-        return "Doctor{" +
-                "name='" + name + '\''
-                + experience +
-                '}';
+        return  "name='" + name + '\''
+                + experience +"\n";
     }
 }

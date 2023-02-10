@@ -35,13 +35,13 @@ public class Experience {
     public String toString() {
         switch (experience){
             case 1:
-                return "Experience: Fresher";
+                return " Experience: Fresher";
             case 2:
-                return "Experience: Junior";
+                return " Experience: Junior";
             case 3:
-                return "Experience: Senior";
+                return " Experience: Senior";
             case 4:
-                return "Experience: Leader";
+                return " Experience: Leader";
         }
         throw new RuntimeException("Invalid experienceIndex");
     }
