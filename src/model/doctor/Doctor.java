@@ -3,23 +3,31 @@ package model.doctor;
 import model.patient.Patient;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public abstract class Doctor implements Serializable {
     private String name="";
     private Experience experience=new Experience();
     private Queue<Patient>patientQueue=new LinkedList<>();
-
+    private List<Disease> curableDisease;
     public Doctor() {}
 
-    public Doctor(String name, int experienceIndex) {
+    public Doctor(String name, int experience,List<Disease> curableDisease) {
         this.name = name;
-        this.experience = new Experience(experienceIndex);
+        this.experience.setExperience(experience);
+        this.curableDisease=curableDisease;
     }
 
-    public void setExperience(Experience experience) {
-        this.experience = experience;
+    public List<Disease> getCurableDisease() {
+        return curableDisease;
+    }
+
+    public void setCurableDisease(List<Disease> curableDisease) {
+        this.curableDisease = curableDisease;
     }
 
     public Queue<Patient> getPatientQueue() {
@@ -29,8 +37,13 @@ public abstract class Doctor implements Serializable {
     public void setPatientQueue(Queue<Patient> patientQueue) {
         this.patientQueue = patientQueue;
     }
-    abstract public void takePatient(Patient patient,Disease disease);
-
+    public void takePatient(Patient patient, int index) {
+        getPatientQueue().add(patient);
+        Disease disease=getCurableDisease().get(index);
+        double trueCureTime = disease.getCureTime()/getTimeMultiplier();
+        LocalDateTime newSessionTime = patient.getSessionTime().plusSeconds((long) trueCureTime);
+        patient.setSessionTime(newSessionTime);
+    }
     public String getName() {
         return name;
     }

@@ -1,6 +1,8 @@
 package model.doctor;
 
-public class Disease {
+import java.io.Serializable;
+
+public class Disease implements Serializable {
     private String name;
     private int cureTime;
 
@@ -26,5 +28,13 @@ public class Disease {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Disease{" +
+                "name='" + name + '\'' +
+                ", cureTime=" + cureTime +
+                '}';
     }
 }

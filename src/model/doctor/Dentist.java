@@ -1,22 +1,16 @@
 package model.doctor;
 
-import model.patient.Patient;
-
-import java.time.LocalDateTime;
+import inputOutPut.Serializer;
 
 public class Dentist extends Doctor{
-    public Dentist() {}
+    public final static Serializer<Disease> DISEASE_SERIALIZER =new Serializer<>("src/data/dentistDisease.dat");
 
-    public Dentist(String name, int experienceIndex) {
-        super(name, experienceIndex);
+    public Dentist() {
+        setCurableDisease(DISEASE_SERIALIZER.readObjects());
     }
 
-    @Override
-    public void takePatient(Patient patient, Disease disease) {
-        getPatientQueue().add(patient);
-        double trueCureTime = disease.getCureTime()/getTimeMultiplier();
-        LocalDateTime newSessionTime = patient.getSessionTime().plusSeconds((long) trueCureTime);
-        patient.setSessionTime(newSessionTime);
+    public Dentist(String name, int experienceIndex) {
+        super(name, experienceIndex, DISEASE_SERIALIZER.readObjects());
     }
 
     @Override

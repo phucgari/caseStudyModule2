@@ -12,9 +12,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class DentistTest {
     Dentist demo1=new Dentist();
     Dentist demo2=new Dentist("test2",2);
-    Patient test1=new Patient();
-    Patient test2=new Patient();
-    Disease disease=new Disease("???",10);
     @BeforeEach
     void init(){
         demo1.setExperience(3);
@@ -32,6 +29,9 @@ class DentistTest {
 
         assertEquals(3,demo1.getExperience());
         assertEquals("test1",demo1.getName());
+
+        assertEquals("[Disease{name='Nhổ răng', cureTime=10}, Disease{name='Làm răng giả', cureTime=20}]",demo1.getCurableDisease().toString());
+        assertEquals("[Disease{name='Nhổ răng', cureTime=10}, Disease{name='Làm răng giả', cureTime=20}]",demo2.getCurableDisease().toString());
     }
     @Test
     void testToString(){
@@ -42,12 +42,15 @@ class DentistTest {
     }
     @Test
     void testPatient(){
-        demo1.takePatient(test1,disease);
-        Queue<Patient> queue=demo1.getPatientQueue();
-        assertEquals(queue.remove().getSessionTime().getSecond(), LocalDateTime.now().plusSeconds((long) (10/1.5)).getSecond());
+        Patient test1=new Patient();
+        Patient test2=new Patient();
 
-        demo2.takePatient(test2,disease);
+        demo1.takePatient(test1,1);
+        Queue<Patient> queue=demo1.getPatientQueue();
+        assertEquals(queue.peek().getSessionTime().getSecond(), LocalDateTime.now().plusSeconds((long) (20/1.5)).getSecond());
+
+        demo2.takePatient(test2,0);
         queue= demo2.getPatientQueue();
-        assertEquals(queue.remove().getSessionTime().getSecond(), LocalDateTime.now().plusSeconds((long) (10/1.25)).getSecond());
+        assertEquals(queue.peek().getSessionTime().getSecond(), LocalDateTime.now().plusSeconds((long) (10/1.25)).getSecond());
     }
 }

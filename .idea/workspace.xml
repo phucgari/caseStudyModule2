@@ -5,14 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cc8552d-92e4-447c-82ab-091ae1ec28b2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/model/doctor/Dentist.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/doctor/Disease.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/patient/Patient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/model/doctor/DentistTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/model/doctor/DiseaseTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/dentistDisease.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/gyencologistDisease.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/doctor/Gynecologist.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/model/doctor/GynecologistTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/model/patient/PatientTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inputOutPut/Serializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inputOutPut/Serializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/doctor/Dentist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/doctor/Dentist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/doctor/Disease.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/doctor/Disease.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/doctor/Doctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/doctor/Doctor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/doctor/Experience.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/doctor/Experience.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/patient/Patient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/patient/Patient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/model/doctor/DentistTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/doctor/DentistTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,13 +39,16 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2LXUYaKP50EMXG5nxtzHfYUNneM" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "Downloaded.Files.Path.Enabled": "false",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
@@ -68,6 +76,7 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="model.patient" />
       <recent name="model.doctor" />
       <recent name="inputOutPut" />
     </key>
@@ -81,11 +90,16 @@
       <option name="presentableId" value="Default" />
       <updated>1676016970508</updated>
       <workItem from="1676016971731" duration="1769000" />
-      <workItem from="1676036865927" duration="4436000" />
+      <workItem from="1676036865927" duration="4783000" />
+      <workItem from="1676086519132" duration="3860000" />
+      <workItem from="1676116775865" duration="7268000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

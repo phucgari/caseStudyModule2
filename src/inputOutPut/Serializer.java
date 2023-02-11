@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Serializer<E> {
     private String link;
-    Serializer(String link){
+    public Serializer(String link){
         this.link=link;
     }
     public List<E> readObjects() {
