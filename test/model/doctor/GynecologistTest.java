@@ -35,9 +35,9 @@ class GynecologistTest {
     }
     @Test
     void testToString(){
-        String expected="Gynecologist{} name='test1' Experience: Leader\n";
+        String expected="Gynecologist name='test1' Experience: Leader\n";
         assertEquals(expected,demo1.toString());
-        expected="Gynecologist{} name='test2' Experience: Senior\n";
+        expected="Gynecologist name='test2' Experience: Senior\n";
         assertEquals(expected,demo2.toString());
     }
     @Test

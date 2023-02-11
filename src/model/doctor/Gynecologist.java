@@ -15,6 +15,6 @@ public class Gynecologist extends Doctor{
 
     @Override
     public String toString() {
-        return "Gynecologist{} " + super.toString();
+        return "Gynecologist " + super.toString();
     }
 }

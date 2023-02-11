@@ -5,19 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cc8552d-92e4-447c-82ab-091ae1ec28b2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/data/dentistDisease.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/gyencologistDisease.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/doctor/Gynecologist.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/model/doctor/GynecologistTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/model/patient/PatientTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/doctor/MaleDoctor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/model/MaleDoctorTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inputOutPut/Serializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inputOutPut/Serializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/doctor/Dentist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/doctor/Dentist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/doctor/Disease.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/doctor/Disease.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/doctor/Doctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/doctor/Doctor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/patient/Patient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/patient/Patient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/model/doctor/DentistTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/doctor/DentistTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +66,13 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="model" />
+      <recent name="inputOutPut" />
+      <recent name="model.doctor" />
+    </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="data" />
       <recent name="model.patient" />
       <recent name="model.doctor" />
       <recent name="inputOutPut" />
@@ -92,7 +89,7 @@
       <workItem from="1676016971731" duration="1769000" />
       <workItem from="1676036865927" duration="4783000" />
       <workItem from="1676086519132" duration="3860000" />
-      <workItem from="1676116775865" duration="7268000" />
+      <workItem from="1676116775865" duration="9173000" />
     </task>
     <servers />
   </component>
