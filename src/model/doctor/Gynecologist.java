@@ -3,7 +3,7 @@ package model.doctor;
 import inputOutPut.Serializer;
 
 public class Gynecologist extends Doctor{
-    public static final Serializer<Disease> DISEASE_SERIALIZER =new Serializer<>("src/data/gyencologistDisease.dat");
+    public static final Serializer<Disease> DISEASE_SERIALIZER =new Serializer<>("src/data/gynecologistDisease.dat");
 
     public Gynecologist() {
         setCurableDisease(DISEASE_SERIALIZER.readObjects());

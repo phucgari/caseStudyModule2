@@ -4,7 +4,6 @@ import model.patient.Patient;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -34,9 +33,6 @@ public abstract class Doctor implements Serializable {
         return patientQueue;
     }
 
-    public void setPatientQueue(Queue<Patient> patientQueue) {
-        this.patientQueue = patientQueue;
-    }
     public void takePatient(Patient patient, int index) {
         getPatientQueue().add(patient);
         Disease disease=getCurableDisease().get(index);
