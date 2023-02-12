@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cc8552d-92e4-447c-82ab-091ae1ec28b2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/model/doctor/MaleDoctor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/model/MaleDoctorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/urologistsDisease.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/doctor/Otolaryngologist.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/doctor/Surgeon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/model/doctor/OtolaryngologistTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/model/doctor/SurgeonTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/maleDoctorDisease.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/otolaryngologistDisease.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/doctor/MaleDoctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/doctor/Urologists.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/model/MaleDoctorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/doctor/UrologistsTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,28 +43,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "D:/1.knowledge/code/caseStudyModule2",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/1.knowledge/code/caseStudyModule2&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="model.doctor" />
@@ -67,14 +73,14 @@
       <recent name="" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="model.doctor" />
       <recent name="model" />
       <recent name="inputOutPut" />
-      <recent name="model.doctor" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="model.doctor" />
       <recent name="data" />
       <recent name="model.patient" />
-      <recent name="model.doctor" />
       <recent name="inputOutPut" />
     </key>
   </component>
@@ -89,7 +95,9 @@
       <workItem from="1676016971731" duration="1769000" />
       <workItem from="1676036865927" duration="4783000" />
       <workItem from="1676086519132" duration="3860000" />
-      <workItem from="1676116775865" duration="9173000" />
+      <workItem from="1676116775865" duration="9527000" />
+      <workItem from="1676211980899" duration="1557000" />
+      <workItem from="1676213547988" duration="1721000" />
     </task>
     <servers />
   </component>

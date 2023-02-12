@@ -1,7 +1,5 @@
-package model;
+package model.doctor;
 
-import model.doctor.Dentist;
-import model.doctor.MaleDoctor;
 import model.patient.Patient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,25 +9,25 @@ import java.util.Queue;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MaleDoctorTest {
-    MaleDoctor demo1=new MaleDoctor();
-    MaleDoctor demo2=new MaleDoctor("test2",2);
+class UrologistsTest {
+    Urologists demo1=new Urologists();
+    Urologists demo2=new Urologists("test2",4);
     @BeforeEach
     void init(){
-        demo1.setExperience(3);
+        demo1.setExperience(1);
         demo1.setName("test1");
     }
     @Test
     void testSetGet(){
         assertEquals("test2",demo2.getName());
-        assertEquals(2,demo2.getExperience());
+        assertEquals(4,demo2.getExperience());
 
         demo2.setExperience(4);
         demo2.setName("test3");
         assertEquals(4,demo2.getExperience());
         assertEquals("test3",demo2.getName());
 
-        assertEquals(3,demo1.getExperience());
+        assertEquals(1,demo1.getExperience());
         assertEquals("test1",demo1.getName());
 
         assertEquals("[Disease{name='Rối loạn cương dương', cureTime=9}, Disease{name='Vô sinh', cureTime=19}]",demo1.getCurableDisease().toString());
@@ -37,9 +35,9 @@ class MaleDoctorTest {
     }
     @Test
     void testToString(){
-        String result="MaleDoctor name='test1' Experience: Senior\n";
+        String result="Urologists name='test1' Experience: Fresher\n";
         assertEquals(demo1.toString(),result);
-        result="MaleDoctor name='test2' Experience: Junior\n";
+        result="Urologists name='test2' Experience: Leader\n";
         assertEquals(demo2.toString(),result);
     }
     @Test
@@ -49,11 +47,11 @@ class MaleDoctorTest {
 
         demo1.takePatient(test1,1);
         Queue<Patient> queue=demo1.getPatientQueue();
-        assertEquals(queue.peek().getSessionTime().getSecond(), LocalDateTime.now().plusSeconds((long) (19/1.5)).getSecond());
+        assertEquals(queue.peek().getSessionTime().getSecond(), LocalDateTime.now().plusSeconds((long) (19)).getSecond());
 
         demo2.takePatient(test2,0);
         queue= demo2.getPatientQueue();
-        assertEquals(queue.peek().getSessionTime().getSecond(), LocalDateTime.now().plusSeconds((long) (9/1.25)).getSecond());
+        assertEquals(queue.peek().getSessionTime().getSecond(), LocalDateTime.now().plusSeconds((long) (9/2)).getSecond());
     }
 
 }
