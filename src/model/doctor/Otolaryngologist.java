@@ -2,7 +2,7 @@ package model.doctor;
 
 import inputOutPut.Serializer;
 
-public class Otolaryngologist extends Doctor {
+public class Otolaryngologist extends HealingDoctor {
     public final static Serializer<Disease> DISEASE_SERIALIZER =new Serializer<>("src/data/otolaryngologistDisease.dat");
 
     public Otolaryngologist() {
