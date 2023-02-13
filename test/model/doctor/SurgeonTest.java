@@ -49,7 +49,13 @@ class SurgeonTest {
         Queue<Patient> queue=demo1.getPatientQueue();
         assertEquals(queue.peek().getSessionTime().getSecond(), LocalDateTime.now().plusSeconds((long) (30/1.5)).getSecond());
 
-        demo2.takePatient(test2,0);
+        demo1.takePatient(test2,0);
+        LocalDateTime expected=queue.remove().getSessionTime().plusSeconds((long) (23/1.5));
+        LocalDateTime result=queue.peek().getSessionTime();
+        assertEquals(result.getSecond(), expected.getSecond());
+
+        Patient test3=new Patient();
+        demo2.takePatient(test3,0);
         queue= demo2.getPatientQueue();
         assertEquals(queue.peek().getSessionTime().getSecond(), LocalDateTime.now().plusSeconds((long) (23/1.25)).getSecond());
     }
