@@ -2,7 +2,7 @@ package model.doctor;
 
 import java.io.Serializable;
 
-public class Doctor implements Serializable {
+public abstract class Doctor implements Serializable {
     private String name="";
     private Experience experience=new Experience();
 

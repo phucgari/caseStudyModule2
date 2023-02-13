@@ -1,13 +1,11 @@
 package model.doctor;
 
-public class Experience {
+import java.io.Serializable;
+
+public class Experience implements Serializable {
     private int experience=-1;
 
     public Experience() {}
-
-    Experience(int experiencePoint){
-        experience=experiencePoint;
-    }
 
     public int getExperience() {
         return experience;

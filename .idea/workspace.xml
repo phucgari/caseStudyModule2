@@ -5,17 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cc8552d-92e4-447c-82ab-091ae1ec28b2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/controler/HospitalManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/doctor/DiagnoseDoctor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/doctor/HealingDoctor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/model/doctor/DiagnoseDoctorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/doctor/Dentist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/doctor/Dentist.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/creation/HealingDoctorCreated.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/healingDoctorList.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creation/DiseaseCreated.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controler/HealingDoctorManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controler/HealingDoctorManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/doctor/Doctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/doctor/Doctor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/doctor/Gynecologist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/doctor/Gynecologist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/doctor/Otolaryngologist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/doctor/Otolaryngologist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/doctor/Surgeon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/doctor/Surgeon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/doctor/Urologists.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/doctor/Urologists.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +19,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -98,7 +92,7 @@
       <module name="caseStudy" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.doctor.*" />
+          <option name="PATTERN" value="controler.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>

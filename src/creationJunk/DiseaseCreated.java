@@ -1,12 +1,12 @@
+package creationJunk;
+
 import model.doctor.Disease;
-import model.doctor.Otolaryngologist;
 import model.doctor.Surgeon;
-import model.doctor.Urologists;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class DiseaseCreated {
 //    public static void main(String[] args) {
 //        List<Disease> arrayList=new ArrayList<>();
 //        arrayList.add(new Disease("Nhổ răng",10));
