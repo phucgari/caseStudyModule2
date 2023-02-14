@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 public class Patient {
     private String name="";
+    // gender: true for male, false for female
     private Boolean gender=false;
     private LocalDateTime sessionTime =LocalDateTime.now();
     public Patient() {}
@@ -36,4 +37,11 @@ public class Patient {
         this.sessionTime = sessionTime;
     }
 
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "name='" + name + '\'' +
+                ", gender=" + (gender?"male":"female") +
+                '}';
+    }
 }

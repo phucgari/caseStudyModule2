@@ -1,5 +1,6 @@
 package model.doctor;
 
+import model.patient.Patient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -25,6 +26,13 @@ class DiagnoseDoctorTest {
 
         assertEquals("test1",demo1.getName());
         assertEquals(4,demo1.getExperience());
+
+        Patient p1=new Patient("Adam",true);
+        Patient p2=new Patient("Eva",false);
+        demo1.setCurrent(p1);
+        assertEquals("Patient{name='Adam', gender=male}",p1.toString());
+        demo2.setCurrent(p2);
+        assertEquals("Patient{name='Eva', gender=female}",p2.toString());
     }
     @Test
     void testToString(){

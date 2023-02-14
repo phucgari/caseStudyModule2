@@ -33,4 +33,9 @@ class PatientTest {
         assertTrue(test2.getGender());
         assertEquals(LocalDateTime.now().plusSeconds(100).getSecond(),test2.getSessionTime().getSecond());
     }
+    @Test
+    void testToString(){
+        assertEquals("Patient{name='demo1', gender=male}",test1.toString());
+        assertEquals("Patient{name='demo2', gender=female}",test2.toString());
+    }
 }

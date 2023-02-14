@@ -8,9 +8,9 @@ import java.util.List;
 // design Pattern singleton
 public class HealingDoctorManager {
     private static HealingDoctorManager instance;
-    private List<HealingDoctor> healingDoctorList;
+    private final List<HealingDoctor> healingDoctorList;
+    public static Serializer<HealingDoctor> serializer=new Serializer<>("src/data/healingDoctorList.dat");
     private HealingDoctorManager(){
-        Serializer<HealingDoctor> serializer=new Serializer<>("src/data/healingDoctorList.dat");
         healingDoctorList=serializer.readObjects();
     }
 

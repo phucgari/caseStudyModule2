@@ -4,8 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="67ab4042-271d-41b9-b8d4-97c60a26ac72" name="Changes" comment="">
+    <list default="true" id="e8ae30f5-31ee-4e2c-8d3d-8d06c0fe5094" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/creationJunk/DiagnoseDoctorCreated.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/diagnoseDoctorList.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/controler/DiagnoseDoctorPoolTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controler/DiagnoseDoctorPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controler/DiagnoseDoctorPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controler/HealingDoctorManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controler/HealingDoctorManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/doctor/DiagnoseDoctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/doctor/DiagnoseDoctor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/patient/Patient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/patient/Patient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/model/doctor/DiagnoseDoctorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/doctor/DiagnoseDoctorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/model/patient/PatientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/patient/PatientTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +85,7 @@
       <recent name="inputOutPut" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in caseStudy">
+  <component name="RunManager">
     <configuration name="All in caseStudy" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="caseStudy" />
       <option name="PACKAGE_NAME" value="" />
