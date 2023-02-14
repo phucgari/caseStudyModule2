@@ -5,34 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8ae30f5-31ee-4e2c-8d3d-8d06c0fe5094" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/patientQueue.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controler/PatientManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/creationJunk/PatientQueueCreated.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/diagnoseDoctorLists/diagnoseDoctorAvailable.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/patient/patientQueue.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/inputOutPut/QueueSerializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/inputOutPut/QueueSerializerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/inputOutPut/testInteger.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/inputOutPut/testQueueInteger.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/inputOutPut/testQueueString.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/controler/PatientManagerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/patientQueue.dat" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controler/DiagnoseDoctorPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controler/DiagnoseDoctorPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creationJunk/DiagnoseDoctorCreated.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creationJunk/DiagnoseDoctorCreated.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/dentistDisease.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/disease/dentistDisease.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/diagnoseDoctorList.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/gynecologistDisease.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/disease/gynecologistDisease.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/otolaryngologistDisease.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/disease/otolaryngologistDisease.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/surgeonDisease.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/disease/surgeonDisease.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/urologistsDisease.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/disease/urologistsDisease.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inputOutPut/Serializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inputOutPut/Serializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/doctor/Dentist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/doctor/Dentist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/doctor/Gynecologist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/doctor/Gynecologist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/doctor/Otolaryngologist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/doctor/Otolaryngologist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/doctor/Surgeon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/doctor/Surgeon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/doctor/Urologists.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/doctor/Urologists.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/patient/Patient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/patient/Patient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controler/PatientManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controler/PatientManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/patient/patientQueue.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/patient/patientQueue.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/controler/DiagnoseDoctorPoolTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controler/DiagnoseDoctorPoolTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/inputOutPut/SerializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/inputOutPut/SerializerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +70,7 @@
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\codegym\course2\caseStudy\src\data\patient" />
       <recent name="D:\codegym\course2\caseStudy\src\data\Disease" />
       <recent name="D:\codegym\course2\caseStudy\src\data\diagnoseDoctorLists" />
     </key>
@@ -100,8 +80,8 @@
       <recent name="inputOutPut" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="inputOutPut" />
       <recent name="controler" />
+      <recent name="inputOutPut" />
       <recent name="model.doctor" />
       <recent name="data" />
       <recent name="model.patient" />
@@ -112,6 +92,22 @@
       <module name="caseStudy" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DiagnoseDoctorPoolTest.testGet2Patient" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="caseStudy" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controler.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controler" />
+      <option name="MAIN_CLASS_NAME" value="controler.DiagnoseDoctorPoolTest" />
+      <option name="METHOD_NAME" value="testGet2Patient" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -132,6 +128,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DiagnoseDoctorPoolTest.testGet2Patient" />
         <item itemvalue="JUnit.All in caseStudy" />
         <item itemvalue="JUnit.model.doctor in caseStudy" />
       </list>
