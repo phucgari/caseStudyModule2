@@ -3,7 +3,7 @@ package model.doctor;
 import inputOutPut.Serializer;
 
 public class Dentist extends HealingDoctor {
-    public final static Serializer<Disease> DISEASE_SERIALIZER =new Serializer<>("src/data/dentistDisease.dat");
+    public final static Serializer<Disease> DISEASE_SERIALIZER =new Serializer<>("src/data/disease/dentistDisease.dat");
 
     public Dentist() {
         setCurableDisease(DISEASE_SERIALIZER.readObjects());

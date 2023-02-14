@@ -4,7 +4,7 @@ import inputOutPut.Serializer;
 
 public class Surgeon extends HealingDoctor {
 
-    public final static Serializer<Disease> DISEASE_SERIALIZER =new Serializer<>("src/data/surgeonDisease.dat");
+    public final static Serializer<Disease> DISEASE_SERIALIZER =new Serializer<>("src/data/disease/surgeonDisease.dat");
 
     public Surgeon() {
         setCurableDisease(DISEASE_SERIALIZER.readObjects());

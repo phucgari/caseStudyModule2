@@ -1,8 +1,9 @@
 package model.patient;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Patient {
+public class Patient implements Serializable {
     private String name="";
     // gender: true for male, false for female
     private Boolean gender=false;

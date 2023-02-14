@@ -14,40 +14,31 @@ class DiagnoseDoctorPoolTest {
     @Test
     void testGet1Patient(){
         Patient p1=new Patient();
-        tester.getPatientQueue().add(p1);
-        assertEquals(1,tester.getPatientQueue());
+        PatientManager.getInstance().addPatientQueue(p1);
         DiagnoseDoctor doctor= tester.getAvailable().peek();
-
-        tester.getPatient();
-
-        assertEquals(3,tester.getAvailable().size());
-        assertEquals(1,tester.getInuse().size());
-        assertEquals(0,tester.getPatientQueue().size());
-
-        assertEquals(p1,doctor.getCurrent());
-
-        LocalDateTime newSessionTime=p1.getSessionTime();
-        LocalDateTime expectedSessionTime=LocalDateTime.now().plusSeconds((long) (15/doctor.getTimeMultiplier()));
-        assertEquals(expectedSessionTime.getSecond(),newSessionTime.getSecond());
+        testGetPatient(p1, doctor,PatientManager.getInstance().getPatientQueue().size(),tester.getAvailable().size(),tester.getInuse().size());
     }
     @Test
     void testGet2Patient(){
         Patient p1=new Patient("adam",true);
         Patient p2=new Patient("eva",false);
-        tester.getPatientQueue().add(p1);
-        assertEquals(1,tester.getPatientQueue());
+        PatientManager.getInstance().addPatientQueue(p1);
         DiagnoseDoctor doctor= tester.getAvailable().peek();
 
+        testGetPatient(p1, doctor, PatientManager.getInstance().getPatientQueue().size(),tester.getAvailable().size(),tester.getInuse().size());
+    }
+    private void testGetPatient(Patient patient, DiagnoseDoctor doctor,int patientQueueSize,int availSize,int inuseSize) {
+        assertEquals(patientQueueSize,PatientManager.getInstance().getPatientQueue().size());
         tester.getPatient();
 
-        assertEquals(3,tester.getAvailable().size());
-        assertEquals(1,tester.getInuse().size());
-        assertEquals(0,tester.getPatientQueue().size());
+        assertEquals(availSize-1,tester.getAvailable().size());
+        assertEquals(inuseSize+1,tester.getInuse().size());
+        assertEquals(patientQueueSize-1,PatientManager.getInstance().getPatientQueue().size());
 
-        assertEquals(p1,doctor.getCurrent());
+        assertEquals(patient, doctor.getCurrent());
 
-        LocalDateTime newSessionTime=p1.getSessionTime();
-        LocalDateTime expectedSessionTime=LocalDateTime.now().plusSeconds((long) (15/doctor.getTimeMultiplier()));
+        LocalDateTime newSessionTime= patient.getSessionTime();
+        LocalDateTime expectedSessionTime=LocalDateTime.now().plusSeconds((long) (15/ doctor.getTimeMultiplier()));
         assertEquals(expectedSessionTime.getSecond(),newSessionTime.getSecond());
     }
 }

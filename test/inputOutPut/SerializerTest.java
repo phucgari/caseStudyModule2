@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SerializerTest {
     Serializer<String> test=new Serializer<>("test/inputOutPut/testString.dat");
-    Serializer<Integer> test2=new Serializer<>("test/inputOutPut/testString.dat");
+    Serializer<Integer> test2=new Serializer<>("test/inputOutPut/testInteger.dat");
     @Test
     void testWriteReadObjects() {
         List<String> expected=new ArrayList<>();

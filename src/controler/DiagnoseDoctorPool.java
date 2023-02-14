@@ -1,5 +1,6 @@
 package controler;
 
+import inputOutPut.QueueSerializer;
 import inputOutPut.Serializer;
 import model.doctor.DiagnoseDoctor;
 import model.patient.Patient;
@@ -9,14 +10,12 @@ import java.util.Queue;
 
 // design pattern Object pool
 public class DiagnoseDoctorPool {
-    public static final Serializer<DiagnoseDoctor> serializer=new Serializer<>("src/data/diagnoseDoctorList.dat");
-    private final Queue<DiagnoseDoctor> available= (Queue<DiagnoseDoctor>) serializer.readObjects();
-    private final Queue<DiagnoseDoctor> inuse= new LinkedList<>();
-    private final Queue<Patient>patientQueue=new LinkedList<>();
+    private static String linkToDiagnoseDoctorListAndQueue="src/data/diagnoseDoctorLists";
+    public static final QueueSerializer<DiagnoseDoctor> diagnoseDoctorAvailable=new QueueSerializer<>(linkToDiagnoseDoctorListAndQueue+"/diagnoseDoctorAvailable.dat");
+    public static final QueueSerializer<DiagnoseDoctor> diagnoseDoctorInuse=new QueueSerializer<>(linkToDiagnoseDoctorListAndQueue+"/diagnoseDoctorInuse.dat");
+    private final Queue<DiagnoseDoctor> available= diagnoseDoctorAvailable.readObjects();
+    private final Queue<DiagnoseDoctor> inuse= diagnoseDoctorInuse.readObjects();
 
-    public Queue<Patient> getPatientQueue() {
-        return patientQueue;
-    }
 
     public Queue<DiagnoseDoctor> getAvailable() {
         return available;
@@ -24,5 +23,9 @@ public class DiagnoseDoctorPool {
 
     public Queue<DiagnoseDoctor> getInuse() {
         return inuse;
+    }
+
+    public void getPatient() {
+
     }
 }
