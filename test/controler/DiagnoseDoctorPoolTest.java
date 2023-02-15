@@ -55,12 +55,23 @@ class DiagnoseDoctorPoolTest {
     void testReleasePatient(){
         RuntimeException noInuseDoctor=assertThrows(RuntimeException.class,()->{tester.releasePatient();});
         assertEquals("No Inuse Doctor",noInuseDoctor.getMessage());
+//        transferDocFromInUseToAvailable
+//        change Patient Disease
+//        change Patient sessionTime
+//        change diagnoseDoc current to null
+//        chose HealingDoc to push
+//        then push Patient to HealingDocQueue
+//        Serialize
         int patientQueueSize= PatientManager.getInstance().getPatientQueue().size();
         int availSize=tester.getAvailable().size();
         int inuseSize=tester.getInuse().size();
 
         DiagnoseDoctor doctor= tester.getInuse().peek();
-        Patient patient=PatientManager.getInstance().getPatientQueue().peek();
+        Patient patient=doctor.getCurrent();
+        LocalDateTime time=patient.getSessionTime();
+        tester.releasePatient();
+
+
     }
     private static void addPatients(int numberOfPatient) {
         Patient[] patients=new Patient[7];

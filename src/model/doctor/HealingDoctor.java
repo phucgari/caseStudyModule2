@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.PriorityQueue;
 
-public abstract class HealingDoctor extends Doctor {
+public abstract class HealingDoctor extends Doctor implements Comparable<HealingDoctor>{
     private PriorityQueue<Patient>patientQueue=new PriorityQueue<>();
     private List<Disease> curableDisease;
     public HealingDoctor() {}
@@ -40,5 +40,11 @@ public abstract class HealingDoctor extends Doctor {
         }
         patient.setSessionTime(newSessionTime);
         getPatientQueue().add(patient);
+    }
+
+    @Override
+    public int compareTo(HealingDoctor o) {
+
+        return patientQueue.peek().compareTo(o.patientQueue.peek());
     }
 }

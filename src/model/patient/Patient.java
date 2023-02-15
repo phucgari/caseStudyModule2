@@ -1,5 +1,7 @@
 package model.patient;
 
+import model.doctor.Disease;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -8,6 +10,7 @@ public class Patient implements Serializable, Comparable<Patient>{
     // gender: true for male, false for female
     private Boolean gender=false;
     private LocalDateTime sessionTime =LocalDateTime.now();
+    private Disease disease=null;
     public Patient() {}
 
     public Patient(String name, Boolean gender) {
@@ -32,6 +35,14 @@ public class Patient implements Serializable, Comparable<Patient>{
 
     public LocalDateTime getSessionTime() {
         return sessionTime;
+    }
+
+    public Disease getDisease() {
+        return disease;
+    }
+
+    public void setDisease(Disease disease) {
+        this.disease = disease;
     }
 
     public void setSessionTime(LocalDateTime sessionTime) {

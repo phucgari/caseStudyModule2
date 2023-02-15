@@ -2,10 +2,13 @@ package controler;
 
 import inputOutPut.QueueSerializer;
 import model.doctor.DiagnoseDoctor;
+import model.doctor.Disease;
 import model.patient.Patient;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.PriorityQueue;
+import java.util.Random;
 
 // design pattern Object pool
 public class DiagnoseDoctorPool {
@@ -41,14 +44,37 @@ public class DiagnoseDoctorPool {
         DIAGNOSE_DOCTOR_INUSE.writeObjects(inuse);
     }
     public void releasePatient(){
-        boolean boo=inuse.isEmpty();
-        if(boo)throw new RuntimeException("No Inuse Doctor");
 //        throw exception if no inuse Doctor
+        if(!inuse.isEmpty())throw new RuntimeException("No Inuse Doctor");
+        DiagnoseDoctor doctor=inuse.remove();
+        Patient patient=doctor.getCurrent();
+        patient.setDisease(randomDisease());
 //        transferDocFromInUseToAvailable
+//        change Patient Disease
 //        change Patient sessionTime
 //        change diagnoseDoc current to null
-//
+
+
+
+//        chose HealingDoc to push
+//        then push Patient to HealingDocQueue
+//        Serialize
     }
+
+    private Disease randomDisease() {
+        List<Disease>diseaseList=DiseaseManager.getInstance().getList();
+        Disease result;
+        Random random = new Random();
+        int rand = 0;
+        rand = random.nextInt(diseaseList.size()+3);
+        try {
+            result = diseaseList.get(rand);
+        }catch (IndexOutOfBoundsException e){
+            return null;
+        }
+        return result;
+    }
+
     public void flushAvailableInuse(){
         DIAGNOSE_DOCTOR_AVAILABLE.writeObjects(DIAGNOSE_DOCTOR_LIST.readObjects());
         DIAGNOSE_DOCTOR_INUSE.writeObjects(new PriorityQueue<>());
