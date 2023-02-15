@@ -2,14 +2,12 @@ package model.doctor;
 
 import model.patient.Patient;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
+import java.util.PriorityQueue;
 
 public abstract class HealingDoctor extends Doctor {
-    private Queue<Patient>patientQueue=new LinkedList<>();
+    private PriorityQueue<Patient>patientQueue=new PriorityQueue<>();
     private List<Disease> curableDisease;
     public HealingDoctor() {}
 
@@ -26,7 +24,7 @@ public abstract class HealingDoctor extends Doctor {
         this.curableDisease = curableDisease;
     }
 
-    public Queue<Patient> getPatientQueue() {
+    public PriorityQueue<Patient> getPatientQueue() {
         return patientQueue;
     }
 

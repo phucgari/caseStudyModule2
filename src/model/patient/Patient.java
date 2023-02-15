@@ -3,7 +3,7 @@ package model.patient;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Patient implements Serializable {
+public class Patient implements Serializable, Comparable<Patient>{
     private String name="";
     // gender: true for male, false for female
     private Boolean gender=false;
@@ -44,5 +44,10 @@ public class Patient implements Serializable {
                 "name='" + name + '\'' +
                 ", gender=" + (gender?"male":"female") +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Patient o) {
+        return getSessionTime().compareTo(o.getSessionTime());
     }
 }

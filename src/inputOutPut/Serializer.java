@@ -2,7 +2,6 @@ package inputOutPut;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class Serializer<E> {
@@ -16,7 +15,7 @@ public class Serializer<E> {
         try {
             ObjectInputStream objectInputStream=new ObjectInputStream(new FileInputStream(link));
         } catch (IOException e) {
-            return result=new LinkedList<>();
+            return result=new ArrayList<>();
         }
         try(ObjectInputStream objectInputStream=new ObjectInputStream(new FileInputStream(link))) {
             result= (List<E>) objectInputStream.readObject();

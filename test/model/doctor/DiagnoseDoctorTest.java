@@ -41,4 +41,17 @@ class DiagnoseDoctorTest {
         expected="DiagnoseDoctor name='test2' Experience: Senior\n";
         assertEquals(expected,demo2.toString());
     }
+    @Test
+    void testComparable(){
+        Patient p1=new Patient();
+        Patient p2=new Patient();
+        p1.setSessionTime(p1.getSessionTime().plusSeconds(1));
+        demo1.setCurrent(p1);
+        demo2.setCurrent(p2);
+        assertTrue(demo1.compareTo(demo2)>0);
+        p1.setSessionTime(p1.getSessionTime().minusSeconds(2));
+        assertTrue(demo1.compareTo(demo2)<0);
+        p2.setSessionTime(p2.getSessionTime().minusSeconds(2));
+        assertTrue(demo1.compareTo(demo2)>0);
+    }
 }

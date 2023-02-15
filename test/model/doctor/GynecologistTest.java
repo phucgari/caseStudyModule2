@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
-import java.util.Queue;
+import java.util.PriorityQueue;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -46,7 +46,7 @@ class GynecologistTest {
         Patient test2=new Patient();
 
         demo1.takePatient(test1,1);
-        Queue<Patient> queue=demo1.getPatientQueue();
+        PriorityQueue<Patient> queue=demo1.getPatientQueue();
         assertEquals(queue.peek().getSessionTime().getSecond(), LocalDateTime.now().plusSeconds(21/2).getSecond());
 
 

@@ -5,13 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8ae30f5-31ee-4e2c-8d3d-8d06c0fe5094" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/test/controler/PatientManagerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patientQueue.dat" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controler/DiagnoseDoctorPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controler/DiagnoseDoctorPool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controler/PatientManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controler/PatientManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creationJunk/DiagnoseDoctorCreated.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creationJunk/DiagnoseDoctorCreated.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creationJunk/PatientQueueCreated.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creationJunk/PatientQueueCreated.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/diagnoseDoctorLists/diagnoseDoctorAvailable.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/healingDoctorList.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/healingDoctorList.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data/patient/patientQueue.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/patient/patientQueue.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inputOutPut/QueueSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inputOutPut/QueueSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inputOutPut/Serializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inputOutPut/Serializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/doctor/DiagnoseDoctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/doctor/DiagnoseDoctor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/doctor/HealingDoctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/doctor/HealingDoctor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/patient/Patient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/patient/Patient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/controler/DiagnoseDoctorPoolTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controler/DiagnoseDoctorPoolTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/inputOutPut/QueueSerializerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/inputOutPut/QueueSerializerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/inputOutPut/testQueueInteger.dat" beforeDir="false" afterPath="$PROJECT_DIR$/test/inputOutPut/testQueueInteger.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/inputOutPut/testQueueString.dat" beforeDir="false" afterPath="$PROJECT_DIR$/test/inputOutPut/testQueueString.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/model/doctor/DentistTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/doctor/DentistTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/model/doctor/DiagnoseDoctorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/doctor/DiagnoseDoctorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/model/doctor/GynecologistTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/doctor/GynecologistTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/model/doctor/OtolaryngologistTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/doctor/OtolaryngologistTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/model/doctor/SurgeonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/doctor/SurgeonTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/model/doctor/UrologistsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/doctor/UrologistsTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,28 +56,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/1.knowledge/code/caseStudyModule2&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "last_opened_file_path": "D:/1.knowledge/code/caseStudyModule2",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="model.doctor" />
@@ -87,7 +104,33 @@
       <recent name="model.patient" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.All in caseStudy">
+    <configuration name="DiagnoseDoctorCreated" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="creationJunk.DiagnoseDoctorCreated" />
+      <module name="caseStudy" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="creationJunk.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HealingDoctorCreated" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="creationJunk.HealingDoctorCreated" />
+      <module name="caseStudy" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="creationJunk.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="All in caseStudy" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="caseStudy" />
       <option name="PACKAGE_NAME" value="" />
@@ -96,7 +139,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DiagnoseDoctorPoolTest.testGet2Patient" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DiagnoseDoctorPoolTest.testGet5Patient" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="caseStudy" />
       <extension name="coverage">
         <pattern>
@@ -106,13 +149,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="controler" />
       <option name="MAIN_CLASS_NAME" value="controler.DiagnoseDoctorPoolTest" />
-      <option name="METHOD_NAME" value="testGet2Patient" />
+      <option name="METHOD_NAME" value="testGet5Patient" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="model.doctor in caseStudy" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DiagnoseDoctorPoolTest.testPriorityInUse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="caseStudy" />
       <extension name="coverage">
         <pattern>
@@ -120,24 +163,28 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="model.doctor" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="PACKAGE_NAME" value="controler" />
+      <option name="MAIN_CLASS_NAME" value="controler.DiagnoseDoctorPoolTest" />
+      <option name="METHOD_NAME" value="testPriorityInUse" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DiagnoseDoctorPoolTest.testGet2Patient" />
         <item itemvalue="JUnit.All in caseStudy" />
-        <item itemvalue="JUnit.model.doctor in caseStudy" />
+        <item itemvalue="Application.HealingDoctorCreated" />
+        <item itemvalue="JUnit.DiagnoseDoctorPoolTest.testPriorityInUse" />
+        <item itemvalue="Application.DiagnoseDoctorCreated" />
+        <item itemvalue="JUnit.DiagnoseDoctorPoolTest.testGet5Patient" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1cc8552d-92e4-447c-82ab-091ae1ec28b2" name="Changes" comment="" />
+      <changelist id="e8ae30f5-31ee-4e2c-8d3d-8d06c0fe5094" name="Changes" comment="" />
       <created>1676016970508</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -148,6 +195,8 @@
       <workItem from="1676116775865" duration="9527000" />
       <workItem from="1676211980899" duration="1557000" />
       <workItem from="1676213547988" duration="1721000" />
+      <workItem from="1676423677565" duration="4679000" />
+      <workItem from="1676431074328" duration="12065000" />
     </task>
     <servers />
   </component>
@@ -167,5 +216,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="model.doctor.DiagnoseDoctor" memberName="current" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

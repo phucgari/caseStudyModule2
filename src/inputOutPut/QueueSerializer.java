@@ -1,25 +1,24 @@
 package inputOutPut;
 
 import java.io.*;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.PriorityQueue;
+
 
 public class QueueSerializer<E> {
     private String link;
     public QueueSerializer(String link){
         this.link=link;
     }
-    public Queue<E> readObjects() {
-        Queue<E> result;
+    public PriorityQueue<E> readObjects() {
+        PriorityQueue<E> result;
         //Catch emptyErr
         try {
             ObjectInputStream objectInputStream=new ObjectInputStream(new FileInputStream(link));
         } catch (IOException e) {
-            return (Queue<E>) (result=new LinkedList<>());
+            return result=new PriorityQueue<>();
         }
         try(ObjectInputStream objectInputStream=new ObjectInputStream(new FileInputStream(link))) {
-            result= (Queue<E>) objectInputStream.readObject();
+            result= (PriorityQueue<E>) objectInputStream.readObject();
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
@@ -29,7 +28,7 @@ public class QueueSerializer<E> {
         return result;
     }
 
-    public void writeObjects(Queue<E> list) {
+    public void writeObjects(PriorityQueue<E> list) {
         try(ObjectOutputStream objectOutputStream=new ObjectOutputStream(new FileOutputStream(link))){
             objectOutputStream.writeObject(list);
         } catch (FileNotFoundException e) {

@@ -3,9 +3,11 @@ package controler;
 import model.doctor.DiagnoseDoctor;
 import model.patient.Patient;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
+import java.util.PriorityQueue;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,10 +17,11 @@ class DiagnoseDoctorPoolTest {
     void init(){
         PatientManager.getInstance().emptyPatientQueue();
         assertEquals(0,PatientManager.getInstance().getPatientQueue().size());
+        tester.flushAvailableInuse();
     }
 
     @Test
-    void testGet1Patient(){
+    void testGetFewPatient(){
         RuntimeException runtimeException=assertThrows(RuntimeException.class,()->{tester.getPatient();});
         assertEquals("No Patient in Queue",runtimeException.getMessage());
         addPatients(1);
@@ -28,22 +31,57 @@ class DiagnoseDoctorPoolTest {
         testGetPatient();
     }
     @Test
-    void testGet5Patient(){
-        addPatients(5);
-        for (int i = 0; i < 4; i++) {
+    void testGet7Patient(){
+        addPatients(6);
+        for (int i = 0; i < 5; i++) {
             testGetPatient();
-        }
-        RuntimeException runtimeException=assertThrows(RuntimeException.class,()->{tester.getPatient();});
+        }RuntimeException runtimeException=assertThrows(RuntimeException.class,()->{tester.getPatient();});
         assertEquals("No available DiagnoseDoctor",runtimeException.getMessage());
     }
+    @Test
+    void testPriorityInUse(){
+        addPatients(6);
+        for (int i = 0; i < 5; i++) {
+            tester.getPatient();
+        }
+        PriorityQueue<DiagnoseDoctor> queue = tester.getInuse();
+        DiagnoseDoctor test1=queue.remove();
+        DiagnoseDoctor test2=queue.remove();
+        DiagnoseDoctor test3=queue.remove();
+        DiagnoseDoctor test4=queue.remove();
+        DiagnoseDoctor test5=queue.remove();
+        queue.add(test1);
+        queue.add(test2);
+        queue.add(test3);
+        queue.add(test4);
+        queue.add(test5);
+        assertEquals("DiagnoseDoctor name='Diag4' Experience: Leader\n", queue.remove().toString());
+        assertEquals("DiagnoseDoctor name='Diag3' Experience: Senior\n", queue.remove().toString());
+        assertEquals("DiagnoseDoctor name='Diag5' Experience: Junior\n", queue.remove().toString());
+        assertEquals("DiagnoseDoctor name='Diag2' Experience: Junior\n", queue.remove().toString());
+        assertEquals("DiagnoseDoctor name='Diag1' Experience: Fresher\n", queue.remove().toString());
+    }
+    @Test
+    @Disabled
+    void testReleasePatient(){
+        RuntimeException noInuseDoctor=assertThrows(RuntimeException.class,()->{tester.releasePatient();});
+        assertEquals("No Inuse Doctor",noInuseDoctor.getMessage());
+        int patientQueueSize= PatientManager.getInstance().getPatientQueue().size();
+        int availSize=tester.getAvailable().size();
+        int inuseSize=tester.getInuse().size();
+
+        DiagnoseDoctor doctor= tester.getInuse().peek();
+        Patient patient=PatientManager.getInstance().getPatientQueue().peek();
+    }
     private static void addPatients(int numberOfPatient) {
-        Patient[] patients=new Patient[6];
+        Patient[] patients=new Patient[7];
         patients[0]=new Patient("demo",false);
         patients[1]=new Patient("adam",true);
         patients[2]=new Patient("eva",false);
         patients[3]=new Patient("adam1",true);
         patients[4]=new Patient("eva1",false);
-
+        patients[5]=new Patient();
+        patients[6]=new Patient();
         for (int i = 0; i < numberOfPatient; i++) {
             PatientManager.getInstance().addPatientQueue(patients[i]);
         }

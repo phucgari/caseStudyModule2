@@ -3,13 +3,14 @@ package controler;
 import inputOutPut.QueueSerializer;
 import model.patient.Patient;
 
-import java.util.Queue;
+import java.util.PriorityQueue;
+
 
 public class PatientManager {
     private static PatientManager instance;
     public static QueueSerializer<Patient> patientQueueSerializer=new QueueSerializer<>("src/data/patient/patientQueue.dat");
-    private final Queue<Patient> patientQueue= PatientManager.patientQueueSerializer.readObjects();
-    public Queue<Patient> getPatientQueue() {
+    private final PriorityQueue<Patient> patientQueue= PatientManager.patientQueueSerializer.readObjects();
+    public PriorityQueue<Patient> getPatientQueue() {
         return patientQueue;
     }
     private PatientManager(){}
