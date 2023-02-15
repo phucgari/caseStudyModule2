@@ -24,5 +24,6 @@ public class DiagnoseDoctorCreated {
 //            System.out.println(doctors.remove().getCurrent().getSessionTime());
 //        }
         DiagnoseDoctorPool.DIAGNOSE_DOCTOR_LIST.writeObjects(doctors);
+
     }
 }

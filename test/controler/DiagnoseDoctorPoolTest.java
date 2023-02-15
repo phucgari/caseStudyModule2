@@ -45,20 +45,10 @@ class DiagnoseDoctorPoolTest {
             tester.getPatient();
         }
         PriorityQueue<DiagnoseDoctor> queue = tester.getInuse();
-        DiagnoseDoctor test1=queue.remove();
-        DiagnoseDoctor test2=queue.remove();
-        DiagnoseDoctor test3=queue.remove();
-        DiagnoseDoctor test4=queue.remove();
-        DiagnoseDoctor test5=queue.remove();
-        queue.add(test1);
-        queue.add(test2);
-        queue.add(test3);
-        queue.add(test4);
-        queue.add(test5);
         assertEquals("DiagnoseDoctor name='Diag4' Experience: Leader\n", queue.remove().toString());
         assertEquals("DiagnoseDoctor name='Diag3' Experience: Senior\n", queue.remove().toString());
-        assertEquals("DiagnoseDoctor name='Diag5' Experience: Junior\n", queue.remove().toString());
         assertEquals("DiagnoseDoctor name='Diag2' Experience: Junior\n", queue.remove().toString());
+        assertEquals("DiagnoseDoctor name='Diag5' Experience: Junior\n", queue.remove().toString());
         assertEquals("DiagnoseDoctor name='Diag1' Experience: Fresher\n", queue.remove().toString());
     }
     @Test
@@ -101,10 +91,17 @@ class DiagnoseDoctorPoolTest {
         assertEquals(inuseSize+1,tester.getInuse().size());
         assertEquals(patientQueueSize-1,PatientManager.getInstance().getPatientQueue().size());
 
-        assertEquals(patient, doctor.getCurrent());
-
         LocalDateTime newSessionTime= patient.getSessionTime();
         LocalDateTime expectedSessionTime=LocalDateTime.now().plusSeconds((long) (15/ doctor.getTimeMultiplier()));
         assertEquals(expectedSessionTime.getSecond(),newSessionTime.getSecond());
+        PriorityQueue<DiagnoseDoctor> queue=tester.getInuse();
+        for (DiagnoseDoctor doctor1:queue) {
+            boolean boo=doctor.getName().equals(doctor1.getName());
+            if(boo){
+                doctor=doctor1;
+                break;
+            }
+        }
+        assertEquals(patient.toString(), doctor.getCurrent().toString());
     }
 }

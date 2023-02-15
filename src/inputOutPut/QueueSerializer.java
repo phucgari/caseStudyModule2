@@ -10,7 +10,8 @@ public class QueueSerializer<E> {
         this.link=link;
     }
     public PriorityQueue<E> readObjects() {
-        PriorityQueue<E> result;
+        PriorityQueue<E> result=new PriorityQueue<>();
+        PriorityQueue<E> temp;
         //Catch emptyErr
         try {
             ObjectInputStream objectInputStream=new ObjectInputStream(new FileInputStream(link));
@@ -18,13 +19,15 @@ public class QueueSerializer<E> {
             return result=new PriorityQueue<>();
         }
         try(ObjectInputStream objectInputStream=new ObjectInputStream(new FileInputStream(link))) {
-            result= (PriorityQueue<E>) objectInputStream.readObject();
+            temp= (PriorityQueue<E>) objectInputStream.readObject();
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        ;
+        while (!temp.isEmpty()){
+            result.add(temp.poll());
+        }
         return result;
     }
 
