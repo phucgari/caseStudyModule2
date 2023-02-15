@@ -52,7 +52,6 @@ class DiagnoseDoctorPoolTest {
         assertEquals("DiagnoseDoctor name='Diag1' Experience: Fresher\n", queue.remove().toString());
     }
     @Test
-    @Disabled
     void testReleasePatient(){
         RuntimeException noInuseDoctor=assertThrows(RuntimeException.class,()->{tester.releasePatient();});
         assertEquals("No Inuse Doctor",noInuseDoctor.getMessage());

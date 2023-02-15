@@ -41,12 +41,13 @@ public class DiagnoseDoctorPool {
         DIAGNOSE_DOCTOR_INUSE.writeObjects(inuse);
     }
     public void releasePatient(){
-//        throw exception
+        boolean boo=inuse.isEmpty();
+        if(boo)throw new RuntimeException("No Inuse Doctor");
+//        throw exception if no inuse Doctor
 //        transferDocFromInUseToAvailable
 //        change Patient sessionTime
 //        change diagnoseDoc current to null
 //
-
     }
     public void flushAvailableInuse(){
         DIAGNOSE_DOCTOR_AVAILABLE.writeObjects(DIAGNOSE_DOCTOR_LIST.readObjects());

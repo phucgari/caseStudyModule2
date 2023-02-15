@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8ae30f5-31ee-4e2c-8d3d-8d06c0fe5094" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/data/diagnoseDoctorLists/diagnoseDoctorList.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/diagnoseDoctorLists/diagnoseDoctorInuse.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controler/DiagnoseDoctorPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controler/DiagnoseDoctorPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creationJunk/DiagnoseDoctorCreated.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creationJunk/DiagnoseDoctorCreated.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/diagnoseDoctorLists/diagnoseDoctorAvailable.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/diagnoseDoctorLists/diagnoseDoctorAvailable.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/diagnoseDoctorLists/diagnoseDoctorAvailable.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data/patient/patientQueue.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/patient/patientQueue.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inputOutPut/QueueSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inputOutPut/QueueSerializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/controler/DiagnoseDoctorPoolTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controler/DiagnoseDoctorPoolTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -89,7 +87,7 @@
       <recent name="model.patient" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.DiagnoseDoctorPoolTest.testReleasePatient">
     <configuration name="DiagnoseDoctorCreated" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="creationJunk.DiagnoseDoctorCreated" />
       <module name="caseStudy" />
@@ -124,22 +122,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DiagnoseDoctorPoolTest.testGet5Patient" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="caseStudy" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="controler.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="controler" />
-      <option name="MAIN_CLASS_NAME" value="controler.DiagnoseDoctorPoolTest" />
-      <option name="METHOD_NAME" value="testGet5Patient" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="DiagnoseDoctorPoolTest.testPriorityInUse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="caseStudy" />
       <extension name="coverage">
@@ -156,13 +138,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DiagnoseDoctorPoolTest.testReleasePatient" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="caseStudy" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controler.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controler" />
+      <option name="MAIN_CLASS_NAME" value="controler.DiagnoseDoctorPoolTest" />
+      <option name="METHOD_NAME" value="testReleasePatient" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DiagnoseDoctorPoolTest.testPriorityInUse" />
+        <item itemvalue="JUnit.DiagnoseDoctorPoolTest.testReleasePatient" />
         <item itemvalue="JUnit.All in caseStudy" />
+        <item itemvalue="JUnit.DiagnoseDoctorPoolTest.testPriorityInUse" />
         <item itemvalue="Application.HealingDoctorCreated" />
         <item itemvalue="Application.DiagnoseDoctorCreated" />
-        <item itemvalue="JUnit.DiagnoseDoctorPoolTest.testGet5Patient" />
       </list>
     </recent_temporary>
   </component>
@@ -181,7 +179,7 @@
       <workItem from="1676211980899" duration="1557000" />
       <workItem from="1676213547988" duration="1721000" />
       <workItem from="1676423677565" duration="4679000" />
-      <workItem from="1676431074328" duration="20255000" />
+      <workItem from="1676431074328" duration="21320000" />
     </task>
     <servers />
   </component>
