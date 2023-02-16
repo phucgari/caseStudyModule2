@@ -1,23 +1,25 @@
 package controler;
 
 import model.doctor.DiagnoseDoctor;
+import model.doctor.Disease;
 import model.patient.Patient;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.PriorityQueue;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class DiagnoseDoctorPoolTest {
-    DiagnoseDoctorPool tester=new DiagnoseDoctorPool();
+    DiagnoseDoctorPool tester=new DiagnoseDoctorPool();;
     @BeforeEach
     void init(){
+        tester.flushAvailableInuse();
         PatientManager.getInstance().emptyPatientQueue();
         assertEquals(0,PatientManager.getInstance().getPatientQueue().size());
-        tester.flushAvailableInuse();
+
     }
 
     @Test
@@ -47,32 +49,55 @@ class DiagnoseDoctorPoolTest {
         PriorityQueue<DiagnoseDoctor> queue = tester.getInuse();
         assertEquals("DiagnoseDoctor name='Diag4' Experience: Leader\n", queue.remove().toString());
         assertEquals("DiagnoseDoctor name='Diag3' Experience: Senior\n", queue.remove().toString());
-        assertEquals("DiagnoseDoctor name='Diag2' Experience: Junior\n", queue.remove().toString());
         assertEquals("DiagnoseDoctor name='Diag5' Experience: Junior\n", queue.remove().toString());
+        assertEquals("DiagnoseDoctor name='Diag2' Experience: Junior\n", queue.remove().toString());
         assertEquals("DiagnoseDoctor name='Diag1' Experience: Fresher\n", queue.remove().toString());
     }
     @Test
-    void testReleasePatient(){
+    void testRelease1Patient(){
         RuntimeException noInuseDoctor=assertThrows(RuntimeException.class,()->{tester.releasePatient();});
         assertEquals("No Inuse Doctor",noInuseDoctor.getMessage());
-//        transferDocFromInUseToAvailable
-//        change Patient Disease
-//        change Patient sessionTime
-//        change diagnoseDoc current to null
-//        chose HealingDoc to push
-//        then push Patient to HealingDocQueue
-//        Serialize
-        int patientQueueSize= PatientManager.getInstance().getPatientQueue().size();
+        addPatients(1);
+        tester.getPatient();
+        testReleasePatient();
+    }
+
+    private void testReleasePatient() {
         int availSize=tester.getAvailable().size();
         int inuseSize=tester.getInuse().size();
 
         DiagnoseDoctor doctor= tester.getInuse().peek();
         Patient patient=doctor.getCurrent();
         LocalDateTime time=patient.getSessionTime();
+
         tester.releasePatient();
 
-
+        assertEquals(availSize+1,tester.getAvailable().size());
+        assertEquals(inuseSize-1,tester.getInuse().size());
+        assertEquals("prevent null",doctor.getCurrent().getName());
+        Disease disease= checkDiseaseInListThenReturnDisease(patient);
+//        chose HealingDoc to push
+//        then push Patient to HealingDocQueue
+//        change Patient sessionTime
+//        Serialize
     }
+
+    private static Disease checkDiseaseInListThenReturnDisease(Patient patient) {
+        List<Disease>diseaseList=DiseaseManager.getInstance().getList();
+        diseaseList.add(new Disease("No Disease",0));
+        Disease resultDisease= patient.getDisease();
+        Disease expectedDisease = null;
+        for (Disease disease:
+             diseaseList) {
+            if (disease.getName().equals(resultDisease.getName())){
+                expectedDisease=disease;
+                break;
+            }
+        }
+        assertNotNull(expectedDisease);
+        return resultDisease;
+    }
+
     private static void addPatients(int numberOfPatient) {
         Patient[] patients=new Patient[7];
         patients[0]=new Patient("demo",false);

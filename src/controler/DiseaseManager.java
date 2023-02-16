@@ -11,18 +11,23 @@ public class DiseaseManager {
     private static DiseaseManager instance;
     private List<Disease> list=new ArrayList<>();
     private DiseaseManager(){
+        List<Disease>[] lists=DiseaseListArray();
+        for (List<Disease>smallist:lists){
+            list.addAll(smallist);
+        }
+        serializer.writeObjects(list);
+    }
+
+    public List<Disease>[] DiseaseListArray() {
         List<Disease> dentistDisease = Dentist.DISEASE_SERIALIZER.readObjects();
         List<Disease> gynecologistDisease= Gynecologist.DISEASE_SERIALIZER.readObjects();
         List<Disease> otolaryngologistDisease= Otolaryngologist.DISEASE_SERIALIZER.readObjects();
         List<Disease> urologistDisease= Urologists.DISEASE_SERIALIZER.readObjects();
         List<Disease> surgeonDisease=Surgeon.DISEASE_SERIALIZER.readObjects();
-        list.addAll(dentistDisease);
-        list.addAll(gynecologistDisease);
-        list.addAll(otolaryngologistDisease);
-        list.addAll(urologistDisease);
-        list.addAll(surgeonDisease);
-        serializer.writeObjects(list);
+        List<Disease>[] lists= new List[]{dentistDisease, gynecologistDisease, otolaryngologistDisease, urologistDisease, surgeonDisease};
+        return lists;
     }
+
     public static DiseaseManager getInstance() {
         if(instance==null)instance=new DiseaseManager();
         return instance;

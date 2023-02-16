@@ -34,7 +34,7 @@ public class DiagnoseDoctorPool {
         Patient patient=PatientManager.getInstance().removePatientQueue();
 
         long sessionAddTime = (long) (15 / doctor.getTimeMultiplier());
-        LocalDateTime newSessionTime=patient.getSessionTime().plusSeconds(sessionAddTime);
+        LocalDateTime newSessionTime=LocalDateTime.now().plusSeconds(sessionAddTime);
         patient.setSessionTime(newSessionTime);
 
         doctor.setCurrent(patient);
@@ -45,15 +45,20 @@ public class DiagnoseDoctorPool {
     }
     public void releasePatient(){
 //        throw exception if no inuse Doctor
-        if(!inuse.isEmpty())throw new RuntimeException("No Inuse Doctor");
+        boolean boo=inuse.isEmpty();
+        if(inuse.isEmpty())throw new RuntimeException("No Inuse Doctor");
         DiagnoseDoctor doctor=inuse.remove();
         Patient patient=doctor.getCurrent();
         patient.setDisease(randomDisease());
+        doctor.setCurrent(new Patient("prevent null",true));
+        available.add(doctor);
+
 //        transferDocFromInUseToAvailable
 //        change Patient Disease
 //        change Patient sessionTime
 //        change diagnoseDoc current to null
-
+        DIAGNOSE_DOCTOR_AVAILABLE.writeObjects(available);
+        DIAGNOSE_DOCTOR_INUSE.writeObjects(inuse);
 
 
 //        chose HealingDoc to push
@@ -62,15 +67,21 @@ public class DiagnoseDoctorPool {
     }
 
     private Disease randomDisease() {
-        List<Disease>diseaseList=DiseaseManager.getInstance().getList();
+        Disease result;
+        result = getRandomDisease();
+        return result;
+    }
+
+    private static Disease getRandomDisease() {
         Disease result;
         Random random = new Random();
         int rand = 0;
+        List<Disease>diseaseList=DiseaseManager.getInstance().getList();
         rand = random.nextInt(diseaseList.size()+3);
         try {
             result = diseaseList.get(rand);
         }catch (IndexOutOfBoundsException e){
-            return null;
+            result= new Disease("No Disease",0);
         }
         return result;
     }
@@ -78,5 +89,7 @@ public class DiagnoseDoctorPool {
     public void flushAvailableInuse(){
         DIAGNOSE_DOCTOR_AVAILABLE.writeObjects(DIAGNOSE_DOCTOR_LIST.readObjects());
         DIAGNOSE_DOCTOR_INUSE.writeObjects(new PriorityQueue<>());
+        inuse=new PriorityQueue<>();
+        available=DIAGNOSE_DOCTOR_AVAILABLE.readObjects();
     }
 }
