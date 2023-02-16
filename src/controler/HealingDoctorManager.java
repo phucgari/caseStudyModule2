@@ -15,7 +15,7 @@ public class HealingDoctorManager {
     }
 
     public List<HealingDoctor> getHealingDoctorList() {
-        return healingDoctorList;
+        return serializer.readObjects();
     }
 
     public static HealingDoctorManager getInstance(){

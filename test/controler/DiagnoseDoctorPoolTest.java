@@ -67,7 +67,6 @@ class DiagnoseDoctorPoolTest {
 
         DiagnoseDoctor doctor= tester.getInuse().peek();
         Patient patient=doctor.getCurrent();
-        LocalDateTime time=patient.getSessionTime();
 
         tester.releasePatient();
 
@@ -75,10 +74,14 @@ class DiagnoseDoctorPoolTest {
         assertEquals(inuseSize-1,tester.getInuse().size());
         assertEquals("prevent null",doctor.getCurrent().getName());
         Disease disease= checkDiseaseInListThenReturnDisease(patient);
-        HospitalManager.getInstance().giveDiseaseGetHealingDoc(disease);
+        HealingDoctor healingDoctor=HospitalManager.getInstance().giveDiseaseGetHealingDoc(disease);
+        int diseaseIndex= healingDoctor.getCurableDisease().indexOf(disease);
 //        then push Patient to HealingDocQueue
+        assertTrue(healingDoctor.getPatientQueue().contains(patient));
 //        change Patient sessionTime
+        assertEquals(patient.getSessionTime(),healingDoctor.getLastPatientTimer());
 //        Serialize
+        assertTrue(HealingDoctorManager.getInstance().getHealingDoctorList().contains(healingDoctor));
     }
 
     private Disease checkDiseaseInListThenReturnDisease(Patient patient) {
