@@ -26,6 +26,7 @@ public class HospitalManager {
                     break;
                 }
             }
+            if(kindOfDocIndex!=-1)break;
         }
         ;
         return getDocFromDocIndex(kindOfDocIndex) ;

@@ -62,9 +62,13 @@ public class DiagnoseDoctorPool {
 //        change diagnoseDoc current to null
         DIAGNOSE_DOCTOR_AVAILABLE.writeObjects(available);
         DIAGNOSE_DOCTOR_INUSE.writeObjects(inuse);
-        HealingDoctor healingDoctorChosen=HospitalManager.getInstance().giveDiseaseGetHealingDoc(disease);
+
+        HospitalManager hospitalManager = HospitalManager.getInstance();
+
+        HealingDoctor healingDoctorChosen= hospitalManager.giveDiseaseGetHealingDoc(disease);
         healingDoctorChosen.takePatient(patient);
 
+        HealingDoctorManager.getInstance().serializeList();
 //        chose HealingDoc to push
 //        then push Patient to HealingDocQueue
 //        Serialize
