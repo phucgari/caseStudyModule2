@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8ae30f5-31ee-4e2c-8d3d-8d06c0fe5094" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/data/disease/diseaseList.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/diagnoseDoctorLists/diagnoseDoctorAvailable.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/diagnoseDoctorLists/diagnoseDoctorAvailable.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/doctor/HealingDoctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/doctor/HealingDoctor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/controler/DiagnoseDoctorPoolTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controler/DiagnoseDoctorPoolTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/controler/HealingDoctorManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controler/HealingDoctorManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/model/doctor/DentistTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/doctor/DentistTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/model/doctor/GynecologistTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/doctor/GynecologistTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/model/doctor/OtolaryngologistTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/doctor/OtolaryngologistTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

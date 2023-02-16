@@ -1,9 +1,6 @@
 package controler;
 
-import model.doctor.Dentist;
-import model.doctor.DiagnoseDoctor;
-import model.doctor.Disease;
-import model.doctor.HealingDoctor;
+import model.doctor.*;
 import model.patient.Patient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -79,12 +76,9 @@ class DiagnoseDoctorPoolTest {
         assertEquals("prevent null",doctor.getCurrent().getName());
         Disease disease= checkDiseaseInListThenReturnDisease(patient);
         part2(disease,time);
-//        then push Patient to HealingDocQueue
-//        change Patient sessionTime
-//        Serialize
     }
 
-    private static void part2(Disease disease,LocalDateTime time) {
+    private void part2(Disease disease,LocalDateTime time) {
         //        chose HealingDoc to push
         List<Disease>[]lists=DiseaseManager.getInstance().DiseaseListArray();
         int kindOfDocIndex=-1;
@@ -98,31 +92,213 @@ class DiagnoseDoctorPoolTest {
                 }
             }
         }
-        HealingDoctor doc;
-        List<HealingDoctor>healingDoctorList=HealingDoctorManager.getInstance().getHealingDoctorList();
         LocalDateTime timer;
+        HealingDoctor doc=getDocFromDocIndex(kindOfDocIndex);
+//        then push Patient to HealingDocQueue
+//        change Patient sessionTime
+//        Serialize
+    }
+
+    private HealingDoctor getDocFromDocIndex(int kindOfDocIndex) {
+        HealingDoctor doc=null;
+        List<HealingDoctor>healingDoctorList=HealingDoctorManager.getInstance().getHealingDoctorList();
         switch (kindOfDocIndex){
             case 0:
                 doc= checkDentistIfEmpty(healingDoctorList);
                 if(doc==null)doc= checkDentistWithLowestTime(healingDoctorList);
+                break;
             case 1:
+                doc= checkGynecologistIfEmpty(healingDoctorList);
+                if(doc==null)doc= checkGynecologistWithLowestTime(healingDoctorList);
+                break;
             case 2:
+                doc= checkOtolaryngologistIfEmpty(healingDoctorList);
+                if(doc==null)doc= checkOtolaryngologistWithLowestTime(healingDoctorList);
+                break;
             case 3:
+                doc= checkUrologistsIfEmpty(healingDoctorList);
+                if(doc==null)doc=checkUrologistsWithLowestTime(healingDoctorList);
+                break;
             case 4:
+                doc= checkSurgeonIfEmpty(healingDoctorList);
+                if(doc==null)doc=checkSurgeonWithLowestTime(healingDoctorList);
+                break;
         }
+        return doc;
     }
 
-    private static HealingDoctor checkDentistWithLowestTime(List<HealingDoctor> healingDoctorList) {
-        LocalDateTime time;
+    private HealingDoctor checkSurgeonWithLowestTime(List<HealingDoctor> healingDoctorList) {
+        LocalDateTime time=null;
+        HealingDoctor result=null;
+        for (HealingDoctor doctor :
+                healingDoctorList) {
+            if (doctor instanceof Surgeon){
+                if(time==null){
+                    time=doctor.getLastPatientTimer();
+                    result=doctor;
+                }
+                if(doctor.getLastPatientTimer().isBefore(time)){
+                    time=doctor.getLastPatientTimer();
+                    result=doctor;
+                }
+            }
+        }
+        return result;
+    }
+
+    private HealingDoctor checkUrologistsWithLowestTime(List<HealingDoctor> healingDoctorList) {
+        LocalDateTime time=null;
+        HealingDoctor result=null;
+        for (HealingDoctor doctor :
+                healingDoctorList) {
+            if (doctor instanceof Urologists){
+                if(time==null){
+                    time=doctor.getLastPatientTimer();
+                    result=doctor;
+                }
+                if(doctor.getLastPatientTimer().isBefore(time)){
+                    time=doctor.getLastPatientTimer();
+                    result=doctor;
+                }
+            }
+        }
+        return result;
+    }
+
+    private HealingDoctor checkOtolaryngologistWithLowestTime(List<HealingDoctor> healingDoctorList) {
+        LocalDateTime time=null;
+        HealingDoctor result=null;
+        for (HealingDoctor doctor :
+                healingDoctorList) {
+            if (doctor instanceof Otolaryngologist){
+                if(time==null){
+                    time=doctor.getLastPatientTimer();
+                    result=doctor;
+                }
+                if(doctor.getLastPatientTimer().isBefore(time)){
+                    time=doctor.getLastPatientTimer();
+                    result=doctor;
+                }
+            }
+        }
+        return result;
+    }
+
+    private HealingDoctor checkGynecologistWithLowestTime(List<HealingDoctor> healingDoctorList) {
+        LocalDateTime time=null;
+        HealingDoctor result=null;
+        for (HealingDoctor doctor :
+                healingDoctorList) {
+            if (doctor instanceof Gynecologist){
+                if(time==null){
+                    time=doctor.getLastPatientTimer();
+                    result=doctor;
+                }
+                if(doctor.getLastPatientTimer().isBefore(time)){
+                    time=doctor.getLastPatientTimer();
+                    result=doctor;
+                }
+            }
+        }
+        return result;
+    }
+
+    private HealingDoctor checkDentistWithLowestTime(List<HealingDoctor> healingDoctorList) {
+        LocalDateTime time=null;
+        HealingDoctor result=null;
         for (HealingDoctor doctor :
                 healingDoctorList) {
             if (doctor instanceof Dentist){
+                if(time==null){
+                    time=doctor.getLastPatientTimer();
+                    result=doctor;
+                }
+                if(doctor.getLastPatientTimer().isBefore(time)){
+                    time=doctor.getLastPatientTimer();
+                    result=doctor;
+                }
             }
         }
-        return null;
+        return result;
+    }
+    private HealingDoctor checkSurgeonIfEmpty(List<HealingDoctor> healingDoctorList) {
+        LocalDateTime time=null;
+        HealingDoctor result=null;
+        for (HealingDoctor doctor :
+                healingDoctorList) {
+            if (doctor instanceof Surgeon){
+                if(time==null){
+                    time=doctor.getLastPatientTimer();
+                    result=doctor;
+                }
+                if(doctor.getLastPatientTimer().isBefore(time)){
+                    time=doctor.getLastPatientTimer();
+                    result=doctor;
+                }
+            }
+        }
+        return result;
     }
 
-    private static HealingDoctor checkDentistIfEmpty(List<HealingDoctor> healingDoctorList) {
+    private HealingDoctor checkUrologistsIfEmpty(List<HealingDoctor> healingDoctorList) {
+        LocalDateTime time=null;
+        HealingDoctor result=null;
+        for (HealingDoctor doctor :
+                healingDoctorList) {
+            if (doctor instanceof Urologists){
+                if(time==null){
+                    time=doctor.getLastPatientTimer();
+                    result=doctor;
+                }
+                if(doctor.getLastPatientTimer().isBefore(time)){
+                    time=doctor.getLastPatientTimer();
+                    result=doctor;
+                }
+            }
+        }
+        return result;
+    }
+
+    private HealingDoctor checkOtolaryngologistIfEmpty(List<HealingDoctor> healingDoctorList) {
+        LocalDateTime time=null;
+        HealingDoctor result=null;
+        for (HealingDoctor doctor :
+                healingDoctorList) {
+            if (doctor instanceof Otolaryngologist){
+                if(time==null){
+                    time=doctor.getLastPatientTimer();
+                    result=doctor;
+                }
+                if(doctor.getLastPatientTimer().isBefore(time)){
+                    time=doctor.getLastPatientTimer();
+                    result=doctor;
+                }
+            }
+        }
+        return result;
+    }
+
+    private HealingDoctor checkGynecologistIfEmpty(List<HealingDoctor> healingDoctorList) {
+        LocalDateTime time=null;
+        HealingDoctor result=null;
+        for (HealingDoctor doctor :
+                healingDoctorList) {
+            if (doctor instanceof Gynecologist){
+                if(time==null){
+                    time=doctor.getLastPatientTimer();
+                    result=doctor;
+                }
+                if(doctor.getLastPatientTimer().isBefore(time)){
+                    time=doctor.getLastPatientTimer();
+                    result=doctor;
+                }
+            }
+        }
+        return result;
+    }
+
+
+    private HealingDoctor checkDentistIfEmpty(List<HealingDoctor> healingDoctorList) {
         for (HealingDoctor doctor :
                 healingDoctorList) {
             if(doctor instanceof Dentist){
@@ -132,7 +308,7 @@ class DiagnoseDoctorPoolTest {
         return null;
     }
 
-    private static Disease checkDiseaseInListThenReturnDisease(Patient patient) {
+    private Disease checkDiseaseInListThenReturnDisease(Patient patient) {
         List<Disease>diseaseList=DiseaseManager.getInstance().getList();
         diseaseList.add(new Disease("No Disease",0));
         Disease resultDisease= patient.getDisease();
@@ -148,7 +324,7 @@ class DiagnoseDoctorPoolTest {
         return resultDisease;
     }
 
-    private static void addPatients(int numberOfPatient) {
+    private void addPatients(int numberOfPatient) {
         Patient[] patients=new Patient[7];
         patients[0]=new Patient("demo",false);
         patients[1]=new Patient("adam",true);
