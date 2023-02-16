@@ -1,7 +1,9 @@
 package controler;
 
+import model.doctor.Dentist;
 import model.doctor.DiagnoseDoctor;
 import model.doctor.Disease;
+import model.doctor.HealingDoctor;
 import model.patient.Patient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -76,10 +78,58 @@ class DiagnoseDoctorPoolTest {
         assertEquals(inuseSize-1,tester.getInuse().size());
         assertEquals("prevent null",doctor.getCurrent().getName());
         Disease disease= checkDiseaseInListThenReturnDisease(patient);
-//        chose HealingDoc to push
+        part2(disease,time);
 //        then push Patient to HealingDocQueue
 //        change Patient sessionTime
 //        Serialize
+    }
+
+    private static void part2(Disease disease,LocalDateTime time) {
+        //        chose HealingDoc to push
+        List<Disease>[]lists=DiseaseManager.getInstance().DiseaseListArray();
+        int kindOfDocIndex=-1;
+        int kindOfDiseaseIndex;
+        for (int i = 0; i < lists.length; i++) {
+            for (int j = 0; j < lists[i].size(); j++) {
+                if (disease.getName()==lists[i].get(j).getName()){
+                    kindOfDiseaseIndex=j;
+                    kindOfDocIndex=i;
+                    break;
+                }
+            }
+        }
+        HealingDoctor doc;
+        List<HealingDoctor>healingDoctorList=HealingDoctorManager.getInstance().getHealingDoctorList();
+        LocalDateTime timer;
+        switch (kindOfDocIndex){
+            case 0:
+                doc= checkDentistIfEmpty(healingDoctorList);
+                if(doc==null)doc= checkDentistWithLowestTime(healingDoctorList);
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+        }
+    }
+
+    private static HealingDoctor checkDentistWithLowestTime(List<HealingDoctor> healingDoctorList) {
+        LocalDateTime time;
+        for (HealingDoctor doctor :
+                healingDoctorList) {
+            if (doctor instanceof Dentist){
+            }
+        }
+        return null;
+    }
+
+    private static HealingDoctor checkDentistIfEmpty(List<HealingDoctor> healingDoctorList) {
+        for (HealingDoctor doctor :
+                healingDoctorList) {
+            if(doctor instanceof Dentist){
+                if(doctor.getPatientQueue().isEmpty())return doctor;
+            }
+        }
+        return null;
     }
 
     private static Disease checkDiseaseInListThenReturnDisease(Patient patient) {

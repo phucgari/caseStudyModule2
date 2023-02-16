@@ -9,6 +9,12 @@ import java.util.PriorityQueue;
 public abstract class HealingDoctor extends Doctor implements Comparable<HealingDoctor>{
     private PriorityQueue<Patient>patientQueue=new PriorityQueue<>();
     private List<Disease> curableDisease;
+    private LocalDateTime lastPatientTimer;
+
+    public LocalDateTime getLastPatientTimer() {
+        return lastPatientTimer;
+    }
+
     public HealingDoctor() {}
 
     public HealingDoctor(String name, int experience, List<Disease> curableDisease) {
@@ -39,6 +45,7 @@ public abstract class HealingDoctor extends Doctor implements Comparable<Healing
             newSessionTime = patientQueue.peek().getSessionTime().plusSeconds((long) trueCureTime);
         }
         patient.setSessionTime(newSessionTime);
+        lastPatientTimer=newSessionTime;
         getPatientQueue().add(patient);
     }
 

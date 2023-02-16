@@ -53,11 +53,13 @@ class DentistTest {
         LocalDateTime expected=queue.remove().getSessionTime().plusSeconds((long) (10/1.5));
         LocalDateTime result=queue.peek().getSessionTime();
         assertEquals(result.getSecond(), expected.getSecond());
+        assertEquals(expected.getSecond(),demo1.getLastPatientTimer().getSecond());
 
         Patient test3=new Patient();
         demo2.takePatient(test3,0);
         queue= demo2.getPatientQueue();
-        assertEquals(queue.peek().getSessionTime().getSecond(), LocalDateTime.now().plusSeconds((long) (10/1.25)).getSecond());
-
+        result = LocalDateTime.now().plusSeconds((long) (10 / 1.25));
+        assertEquals(queue.peek().getSessionTime().getSecond(), result.getSecond());
+        assertEquals(demo2.getLastPatientTimer().getSecond(),result.getSecond());
     }
 }
