@@ -45,18 +45,21 @@ class UrologistsTest {
         Patient test1=new Patient();
         Patient test2=new Patient();
 
-        demo1.takePatient(test1,1);
+        test1.setDisease(demo1.getCurableDisease().get(1));
+        demo1.takePatient(test1);
         PriorityQueue<Patient> queue=demo1.getPatientQueue();
         assertEquals(queue.peek().getSessionTime().getSecond(), LocalDateTime.now().plusSeconds((long) (19)).getSecond());
 
-        demo1.takePatient(test2,0);
+        test2.setDisease(demo1.getCurableDisease().get(0));
+        demo1.takePatient(test2);
         LocalDateTime expected=queue.remove().getSessionTime().plusSeconds(9);
         LocalDateTime result=queue.peek().getSessionTime();
         assertEquals(result.getSecond(), expected.getSecond());
         assertEquals(expected.getSecond(),demo1.getLastPatientTimer().getSecond());
 
         Patient test3=new Patient();
-        demo2.takePatient(test3,0);
+        test3.setDisease(demo2.getCurableDisease().get(0));
+        demo2.takePatient(test3);
         queue= demo2.getPatientQueue();
         result = LocalDateTime.now().plusSeconds(9 /2);
         assertEquals(queue.peek().getSessionTime().getSecond(), result.getSecond());

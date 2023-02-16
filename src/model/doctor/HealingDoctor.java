@@ -34,7 +34,14 @@ public abstract class HealingDoctor extends Doctor implements Comparable<Healing
         return patientQueue;
     }
 
-    public void takePatient(Patient patient, int index) {
+    public void takePatient(Patient patient) {
+        int index=-1;
+        String diseaseName=patient.getDisease().getName();
+        for (int i = 0; i < getCurableDisease().size(); i++) {
+            if(getCurableDisease().get(i).getName().equals(diseaseName)){
+                index=i;
+            }
+        }
         Disease disease=getCurableDisease().get(index);
         double trueCureTime = disease.getCureTime()/getTimeMultiplier();
         LocalDateTime newSessionTime;

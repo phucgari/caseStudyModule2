@@ -3,6 +3,7 @@ package controler;
 import inputOutPut.QueueSerializer;
 import model.doctor.DiagnoseDoctor;
 import model.doctor.Disease;
+import model.doctor.HealingDoctor;
 import model.patient.Patient;
 
 import java.time.LocalDateTime;
@@ -49,7 +50,9 @@ public class DiagnoseDoctorPool {
         if(inuse.isEmpty())throw new RuntimeException("No Inuse Doctor");
         DiagnoseDoctor doctor=inuse.remove();
         Patient patient=doctor.getCurrent();
-        patient.setDisease(randomDisease());
+        Disease disease=randomDisease();
+
+        patient.setDisease(disease);
         doctor.setCurrent(new Patient("prevent null",true));
         available.add(doctor);
 
@@ -59,7 +62,8 @@ public class DiagnoseDoctorPool {
 //        change diagnoseDoc current to null
         DIAGNOSE_DOCTOR_AVAILABLE.writeObjects(available);
         DIAGNOSE_DOCTOR_INUSE.writeObjects(inuse);
-
+        HealingDoctor healingDoctorChosen=HospitalManager.getInstance().giveDiseaseGetHealingDoc(disease);
+        healingDoctorChosen.takePatient(patient);
 
 //        chose HealingDoc to push
 //        then push Patient to HealingDocQueue
