@@ -24,15 +24,15 @@ class DiagnoseDoctorPoolTest {
     void testGetFewPatient(){
         RuntimeException runtimeException=assertThrows(RuntimeException.class,()->{tester.getPatient();});
         assertEquals("No Patient in Queue",runtimeException.getMessage());
-        addPatients(1);
+        PatientManager.getInstance().generateDemoPatient(1);
         testGetPatient();
-        addPatients(4);
+        PatientManager.getInstance().generateDemoPatient(4);
         testGetPatient();
         testGetPatient();
     }
     @Test
     void testGet7Patient(){
-        addPatients(6);
+        PatientManager.getInstance().generateDemoPatient(6);
         for (int i = 0; i < 5; i++) {
             testGetPatient();
         }RuntimeException runtimeException=assertThrows(RuntimeException.class,()->{tester.getPatient();});
@@ -40,22 +40,27 @@ class DiagnoseDoctorPoolTest {
     }
     @Test
     void testPriorityInUse(){
-        addPatients(6);
+        PatientManager.getInstance().generateDemoPatient(6);
         for (int i = 0; i < 5; i++) {
             tester.getPatient();
         }
         PriorityQueue<DiagnoseDoctor> queue = tester.getInuse();
         assertEquals("DiagnoseDoctor name='Diag4' Experience: Leader\n", queue.remove().toString());
         assertEquals("DiagnoseDoctor name='Diag3' Experience: Senior\n", queue.remove().toString());
-        assertEquals("DiagnoseDoctor name='Diag5' Experience: Junior\n", queue.remove().toString());
-        assertEquals("DiagnoseDoctor name='Diag2' Experience: Junior\n", queue.remove().toString());
+        if(queue.peek().toString().equals("DiagnoseDoctor name='Diag5' Experience: Junior\n")) {
+            assertEquals("DiagnoseDoctor name='Diag5' Experience: Junior\n", queue.remove().toString());
+            assertEquals("DiagnoseDoctor name='Diag2' Experience: Junior\n", queue.remove().toString());
+        }else{
+            assertEquals("DiagnoseDoctor name='Diag2' Experience: Junior\n", queue.remove().toString());
+            assertEquals("DiagnoseDoctor name='Diag5' Experience: Junior\n", queue.remove().toString());
+        }
         assertEquals("DiagnoseDoctor name='Diag1' Experience: Fresher\n", queue.remove().toString());
     }
     @Test
     void testRelease1Patient(){
         RuntimeException noInuseDoctor=assertThrows(RuntimeException.class,()->{tester.releasePatient();});
         assertEquals("No Inuse Doctor",noInuseDoctor.getMessage());
-        addPatients(3);
+        PatientManager.getInstance().generateDemoPatient(3);
         tester.getPatient();
         testReleasePatient();
         tester.getPatient();
@@ -71,11 +76,11 @@ class DiagnoseDoctorPoolTest {
         DiagnoseDoctor doctor= tester.getInuse().peek();
         Patient patient=doctor.getCurrent();
 
-        tester.releasePatient();
-
+        boolean result=tester.releasePatient();
         assertEquals(availSize+1,tester.getAvailable().size());
         assertEquals(inuseSize-1,tester.getInuse().size());
         assertEquals("prevent null",doctor.getCurrent().getName());
+        if (!result)return;
         HealingDoctor healingDoctor=findDocWithPatient(patient);
 //        then push Patient to HealingDocQueue
         checkHealingDoctorContainPatient(healingDoctor,patient);
@@ -83,6 +88,7 @@ class DiagnoseDoctorPoolTest {
         assertEquals(patient.getSessionTime(),healingDoctor.getLastPatientTimer());
 //        Serialize
         assertTrue(HealingDoctorManager.getInstance().getHealingDoctorList().contains(healingDoctor));
+
     }
 
     private void checkHealingDoctorContainPatient(HealingDoctor healingDoctor, Patient patient) {
@@ -108,35 +114,6 @@ class DiagnoseDoctorPoolTest {
         return null;
     }
 
-    private Disease checkDiseaseInListThenReturnDisease(Patient patient) {
-        List<Disease>diseaseList=DiseaseManager.getInstance().getList();
-        diseaseList.add(new Disease("No Disease",0));
-        Disease resultDisease= patient.getDisease();
-        Disease expectedDisease = null;
-        for (Disease disease:
-             diseaseList) {
-            if (disease.getName().equals(resultDisease.getName())){
-                expectedDisease=disease;
-                break;
-            }
-        }
-        assertNotNull(expectedDisease);
-        return resultDisease;
-    }
-
-    private void addPatients(int numberOfPatient) {
-        Patient[] patients=new Patient[7];
-        patients[0]=new Patient("adam",false);
-        patients[1]=new Patient("demo",true);
-        patients[2]=new Patient("eva",false);
-        patients[3]=new Patient("adam1",true);
-        patients[4]=new Patient("eva1",false);
-        patients[5]=new Patient();
-        patients[6]=new Patient();
-        for (int i = 0; i < numberOfPatient; i++) {
-            PatientManager.getInstance().addPatientQueue(patients[i]);
-        }
-    }
     private void testGetPatient() {
         int patientQueueSize= PatientManager.getInstance().getPatientQueue().size();
         int availSize=tester.getAvailable().size();

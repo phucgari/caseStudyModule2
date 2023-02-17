@@ -29,11 +29,9 @@ public class DiagnoseDoctorPool {
     }
 
     public PriorityQueue<DiagnoseDoctor> getAvailable() {
-        available= DIAGNOSE_DOCTOR_AVAILABLE.readObjects();
         return available;
     }
     public PriorityQueue<DiagnoseDoctor> getInuse() {
-        inuse=DIAGNOSE_DOCTOR_INUSE.readObjects();
         return inuse;
     }
     public void getPatient() {
@@ -44,18 +42,14 @@ public class DiagnoseDoctorPool {
         Patient patient=PatientManager.getInstance().removePatientQueue();
 
         long sessionAddTime = (long) (15 / doctor.getTimeMultiplier());
-        LocalDateTime newSessionTime=LocalDateTime.now().plusSeconds(sessionAddTime);
+        LocalDateTime newSessionTime=patient.getSessionTime().plusSeconds(sessionAddTime);
         patient.setSessionTime(newSessionTime);
 
         doctor.setCurrent(patient);
         getInuse().add(doctor);
-
-        DIAGNOSE_DOCTOR_AVAILABLE.writeObjects(available);
-        DIAGNOSE_DOCTOR_INUSE.writeObjects(inuse);
     }
     public boolean releasePatient(){
 //        throw exception if no inuse Doctor
-        boolean boo=inuse.isEmpty();
         if(inuse.isEmpty())throw new RuntimeException("No Inuse Doctor");
         DiagnoseDoctor doctor=inuse.remove();
         Patient patient=doctor.getCurrent();
@@ -67,21 +61,20 @@ public class DiagnoseDoctorPool {
 //        change Patient Disease
 //        change Patient sessionTime
 //        change diagnoseDoc current to null
-        DIAGNOSE_DOCTOR_AVAILABLE.writeObjects(available);
-        DIAGNOSE_DOCTOR_INUSE.writeObjects(inuse);
         if (disease.getName().equals("No Disease"))return false;
         HospitalManager hospitalManager = HospitalManager.getInstance();
 
         HealingDoctor healingDoctorChosen= hospitalManager.giveDiseaseGetHealingDoc(disease);
         healingDoctorChosen.takePatient(patient);
-
-        HealingDoctorManager.getInstance().serializeList();
         return true;
 //        chose HealingDoc to push
 //        then push Patient to HealingDocQueue
 //        Serialize
     }
-
+    public void saveAvailableInuse(){
+        DIAGNOSE_DOCTOR_AVAILABLE.writeObjects(available);
+        DIAGNOSE_DOCTOR_INUSE.writeObjects(inuse);
+    }
     private Disease randomDisease(Boolean gender) {
         if(gender){
             List<Disease>maleList=DiseaseManager.getInstance().getMaleList();
