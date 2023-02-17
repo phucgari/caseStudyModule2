@@ -30,6 +30,7 @@ public class HospitalManager {
                 else if(queue.peek().getSessionTime().isAfter(now)) {
                     Patient patient=queue.remove();
                     System.out.println(patient+" has cured "+patient.getDisease()+" at "+patient.getSessionTime()+" by "+healer);
+                    HealingDoctorManager.getInstance().serializeList();
                 }
             }
         }
