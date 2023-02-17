@@ -7,10 +7,15 @@
     <list default="true" id="b5c09889-f280-4659-afdb-800a75eb4578" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controler/DiagnoseDoctorPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controler/DiagnoseDoctorPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controler/PatientManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controler/PatientManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controler/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controler/Runner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/controler/DiagnoseDoctorPoolTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controler/DiagnoseDoctorPoolTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/controler/RunnerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controler/RunnerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/model/doctor/DentistTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/doctor/DentistTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/model/doctor/GynecologistTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/doctor/GynecologistTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/model/doctor/OtolaryngologistTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/doctor/OtolaryngologistTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/model/doctor/SurgeonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/doctor/SurgeonTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/model/doctor/UrologistsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/doctor/UrologistsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/model/patient/PatientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/patient/PatientTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +25,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -83,27 +88,14 @@
       <recent name="inputOutPut" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="controler" />
       <recent name="inputOutPut" />
+      <recent name="controler" />
       <recent name="model.doctor" />
       <recent name="data" />
       <recent name="model.patient" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in caseStudy">
-    <configuration name="HealingDoctorCreated" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="creationJunk.HealingDoctorCreated" />
-      <module name="caseStudy" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="creationJunk.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="All in caseStudy" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="caseStudy" />
       <option name="PACKAGE_NAME" value="" />
@@ -144,6 +136,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PatientTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="caseStudy" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.patient.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model.patient" />
+      <option name="MAIN_CLASS_NAME" value="model.patient.PatientTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="RunnerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="caseStudy" />
       <extension name="coverage">
@@ -162,10 +169,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in caseStudy" />
+        <item itemvalue="JUnit.PatientTest" />
         <item itemvalue="JUnit.RunnerTest" />
         <item itemvalue="JUnit.HospitalManagerTest.testCheckPatientInHealer" />
         <item itemvalue="JUnit.DiagnoseDoctorPoolTest.testRelease1Patient" />
-        <item itemvalue="Application.HealingDoctorCreated" />
       </list>
     </recent_temporary>
   </component>
@@ -207,15 +214,6 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/controler/Runner.java</url>
-          <line>38</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="model.doctor.DiagnoseDoctor" memberName="current" />

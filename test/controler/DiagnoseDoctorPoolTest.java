@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -15,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DiagnoseDoctorPoolTest {
     DiagnoseDoctorPool tester=DiagnoseDoctorPool.getInstance();
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     @AfterEach
     void init(){
         HospitalManager.getInstance().flushAll();
@@ -131,7 +133,7 @@ class DiagnoseDoctorPoolTest {
 
         LocalDateTime newSessionTime= patient.getSessionTime();
         LocalDateTime expectedSessionTime=LocalDateTime.now().plusSeconds((long) (15/ doctor.getTimeMultiplier()));
-        assertEquals(expectedSessionTime.getSecond(),newSessionTime.getSecond());
+        assertEquals(expectedSessionTime.format(formatter),newSessionTime.format(formatter));
         PriorityQueue<DiagnoseDoctor> queue=tester.getInuse();
         for (DiagnoseDoctor doctor1:queue) {
             boolean boo=doctor.getName().equals(doctor1.getName());

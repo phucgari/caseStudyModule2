@@ -42,7 +42,7 @@ public class DiagnoseDoctorPool {
         Patient patient=PatientManager.getInstance().removePatientQueue();
 
         long sessionAddTime = (long) (15 / doctor.getTimeMultiplier());
-        LocalDateTime newSessionTime=patient.getSessionTime().plusSeconds(sessionAddTime);
+        LocalDateTime newSessionTime=LocalDateTime.now().plusSeconds(sessionAddTime);
         patient.setSessionTime(newSessionTime);
 
         doctor.setCurrent(patient);

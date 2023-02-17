@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.PriorityQueue;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,6 +19,7 @@ class RunnerTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
     private String newLine = System.getProperty("line.separator");
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     @BeforeEach
     public void setUpStreams() {
@@ -34,6 +36,7 @@ class RunnerTest {
     }
     @Test
     void testCheckQueueToPool(){
+        run.checkQueueToPool();
         PatientManager.getInstance().generateDemoPatient(6);
         String result= new String();
         PriorityQueue<Patient> patients=new PriorityQueue<>(PatientManager.getInstance().getPatientQueue());
@@ -43,10 +46,14 @@ class RunnerTest {
         for (int i = 0; i < 5; i++) {
             patient=patients.remove();
             doctor=doctors.remove();
-            LocalDateTime patientTime = patient.getSessionTime().plusSeconds((long) (15 / doctor.getTimeMultiplier()));
-            result+=patient+" started diagnose, finish at "+patientTime+" by "+doctor+newLine;
+            LocalDateTime patientTime = LocalDateTime.now().plusSeconds((long) (15 / doctor.getTimeMultiplier()));
+            result+=patient+" started diagnose, finish at "+patientTime.format(formatter)+" by "+doctor+newLine;
         }
         run.checkQueueToPool();
-        assertEquals(result.toString(),outContent.toString());
+        assertEquals(result,outContent.toString());
+    }
+    @Test
+    void testCheckPoolToHeal(){
+
     }
 }

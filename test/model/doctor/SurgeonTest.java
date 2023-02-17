@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.PriorityQueue;
 
 
@@ -13,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class SurgeonTest {
     Surgeon demo1=new Surgeon();
     Surgeon demo2=new Surgeon("test2",2);
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     @BeforeEach
     void init(){
         demo1.setExperience(3);
@@ -49,20 +51,20 @@ class SurgeonTest {
         test1.setDisease(demo1.getCurableDisease().get(1));
         demo1.takePatient(test1);
         PriorityQueue<Patient> queue=demo1.getPatientQueue();
-        assertEquals(queue.peek().getSessionTime().getSecond(), LocalDateTime.now().plusSeconds((long) (30/1.5)).getSecond());
+        assertEquals(queue.peek().getSessionTime().format(formatter), LocalDateTime.now().plusSeconds((long) (30/1.5)).format(formatter));
 
         test2.setDisease(demo1.getCurableDisease().get(0));
         demo1.takePatient(test2);
         LocalDateTime expected=queue.remove().getSessionTime().plusSeconds((long) (23/1.5));
         LocalDateTime result=queue.peek().getSessionTime();
-        assertEquals(result.getSecond(), expected.getSecond());
-        assertEquals(expected.getSecond(),demo1.getLastPatientTimer().getSecond());
+        assertEquals(result.format(formatter), expected.format(formatter));
+        assertEquals(expected.format(formatter),demo1.getLastPatientTimer().format(formatter));
 
         Patient test3=new Patient();
         test3.setDisease(demo2.getCurableDisease().get(0));
         demo2.takePatient(test3);
         queue= demo2.getPatientQueue();
         result = LocalDateTime.now().plusSeconds((long) (23 / 1.25));
-        assertEquals(queue.peek().getSessionTime().getSecond(), result.getSecond());
-        assertEquals(demo2.getLastPatientTimer().getSecond(),result.getSecond());    }
+        assertEquals(queue.peek().getSessionTime().format(formatter), result.format(formatter));
+        assertEquals(demo2.getLastPatientTimer().format(formatter),result.format(formatter));    }
 }

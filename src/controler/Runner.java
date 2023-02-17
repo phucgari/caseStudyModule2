@@ -5,6 +5,7 @@ import model.doctor.HealingDoctor;
 import model.patient.Patient;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.PriorityQueue;
 
@@ -14,6 +15,7 @@ public class Runner extends Thread{
     HealingDoctorManager healingDoctorManager=HealingDoctorManager.getInstance();
     HospitalManager hospitalManager=HospitalManager.getInstance();
     PatientManager patientManager=PatientManager.getInstance();
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     @Override
     public void run() {
         checkQueueToPool();
@@ -29,7 +31,6 @@ public class Runner extends Thread{
     }
 
     public void checkPoolToHeal() {
-
         while(true){
 
         }
@@ -42,7 +43,7 @@ public class Runner extends Thread{
             Patient patient=patientPriorityQueue.peek();
             DiagnoseDoctor doctor=availableQueue.peek();
             pool.getPatient();
-            System.out.println(patient+ " started diagnose, finish at " +patient.getSessionTime()+" by "+doctor);
+            System.out.println(patient+ " started diagnose, finish at " +patient.getSessionTime().format(formatter)+" by "+doctor);
             pool.saveAvailableInuse();
         }
     }
