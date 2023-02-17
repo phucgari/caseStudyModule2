@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,7 +19,7 @@ class DiagnoseDoctorPoolTest {
         tester.flushAvailableInuse();
         PatientManager.getInstance().emptyPatientQueue();
         assertEquals(0,PatientManager.getInstance().getPatientQueue().size());
-
+        HealingDoctorManager.getInstance().flushHealingDoctorManager();
     }
 
     @Test
@@ -56,8 +57,12 @@ class DiagnoseDoctorPoolTest {
     void testRelease1Patient(){
         RuntimeException noInuseDoctor=assertThrows(RuntimeException.class,()->{tester.releasePatient();});
         assertEquals("No Inuse Doctor",noInuseDoctor.getMessage());
-        addPatients(1);
+        addPatients(3);
         tester.getPatient();
+        testReleasePatient();
+        tester.getPatient();
+        tester.getPatient();
+        testReleasePatient();
         testReleasePatient();
     }
 
@@ -73,17 +78,35 @@ class DiagnoseDoctorPoolTest {
         assertEquals(availSize+1,tester.getAvailable().size());
         assertEquals(inuseSize-1,tester.getInuse().size());
         assertEquals("prevent null",doctor.getCurrent().getName());
-        Disease disease= checkDiseaseInListThenReturnDisease(patient);
         HealingDoctor healingDoctor=findDocWithPatient(patient);
 //        then push Patient to HealingDocQueue
-        assertTrue(healingDoctor.getPatientQueue().contains(patient));
+        checkHealingDoctorContainPatient(healingDoctor,patient);
 //        change Patient sessionTime
         assertEquals(patient.getSessionTime(),healingDoctor.getLastPatientTimer());
 //        Serialize
         assertTrue(HealingDoctorManager.getInstance().getHealingDoctorList().contains(healingDoctor));
     }
 
+    private void checkHealingDoctorContainPatient(HealingDoctor healingDoctor, Patient patient) {
+        Queue<Patient>queue=healingDoctor.getPatientQueue();
+        for (Patient p :
+                queue) {
+            if(p.getName().equals(patient.getName())){
+                assertEquals(patient,p);
+                return ;
+            }
+        }
+        throw new RuntimeException("Healing doctor queue does not contain patient");
+    }
+
     private HealingDoctor findDocWithPatient(Patient patient) {
+        for (HealingDoctor doctor :
+                HealingDoctorManager.getInstance().getHealingDoctorList()) {
+            for (Patient p :
+                    doctor.getPatientQueue()) {
+                if (p.getName().equals(patient.getName()))return doctor;
+            }
+        }
         return null;
     }
 
@@ -105,8 +128,8 @@ class DiagnoseDoctorPoolTest {
 
     private void addPatients(int numberOfPatient) {
         Patient[] patients=new Patient[7];
-        patients[0]=new Patient("demo",false);
-        patients[1]=new Patient("adam",true);
+        patients[0]=new Patient("adam",false);
+        patients[1]=new Patient("demo",true);
         patients[2]=new Patient("eva",false);
         patients[3]=new Patient("adam1",true);
         patients[4]=new Patient("eva1",false);

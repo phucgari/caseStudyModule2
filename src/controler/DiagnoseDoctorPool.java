@@ -44,48 +44,49 @@ public class DiagnoseDoctorPool {
         DIAGNOSE_DOCTOR_AVAILABLE.writeObjects(available);
         DIAGNOSE_DOCTOR_INUSE.writeObjects(inuse);
     }
-    public void releasePatient(){
+    public boolean releasePatient(){
 //        throw exception if no inuse Doctor
         boolean boo=inuse.isEmpty();
         if(inuse.isEmpty())throw new RuntimeException("No Inuse Doctor");
         DiagnoseDoctor doctor=inuse.remove();
         Patient patient=doctor.getCurrent();
-        Disease disease=randomDisease();
-
+        Disease disease=randomDisease(patient.getGender());
         patient.setDisease(disease);
         doctor.setCurrent(new Patient("prevent null",true));
         available.add(doctor);
-
 //        transferDocFromInUseToAvailable
 //        change Patient Disease
 //        change Patient sessionTime
 //        change diagnoseDoc current to null
         DIAGNOSE_DOCTOR_AVAILABLE.writeObjects(available);
         DIAGNOSE_DOCTOR_INUSE.writeObjects(inuse);
-
+        if (disease.getName().equals("No Disease"))return false;
         HospitalManager hospitalManager = HospitalManager.getInstance();
 
         HealingDoctor healingDoctorChosen= hospitalManager.giveDiseaseGetHealingDoc(disease);
         healingDoctorChosen.takePatient(patient);
 
         HealingDoctorManager.getInstance().serializeList();
+        return true;
 //        chose HealingDoc to push
 //        then push Patient to HealingDocQueue
 //        Serialize
     }
 
-    private Disease randomDisease() {
-        Disease result;
-        result = getRandomDisease();
-        return result;
+    private Disease randomDisease(Boolean gender) {
+        if(gender){
+            List<Disease>maleList=DiseaseManager.getInstance().getMaleList();
+            return getRandomDisease(maleList);
+        }else {
+            List<Disease>femaleList=DiseaseManager.getInstance().getFemaleList();
+            return getRandomDisease(femaleList);
+        }
     }
-
-    private static Disease getRandomDisease() {
+    private static Disease getRandomDisease(List<Disease> diseaseList) {
         Disease result;
         Random random = new Random();
         int rand = 0;
-        List<Disease>diseaseList=DiseaseManager.getInstance().getList();
-        rand = random.nextInt(diseaseList.size()+3);
+        rand = random.nextInt(diseaseList.size()+2);
         try {
             result = diseaseList.get(rand);
         }catch (IndexOutOfBoundsException e){
