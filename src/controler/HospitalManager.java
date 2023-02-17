@@ -1,9 +1,11 @@
 package controler;
 
 import model.doctor.*;
+import model.patient.Patient;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.PriorityQueue;
 
 public class HospitalManager {
     private static HospitalManager instance;
@@ -13,6 +15,29 @@ public class HospitalManager {
     public static HospitalManager getInstance() {
         if(instance==null)instance=new HospitalManager();
         return instance;
+    }
+    public void checkPatientInHealer(){
+        LocalDateTime now=LocalDateTime.now();
+        int counter=0;
+        List<HealingDoctor> healingDoctorList=HealingDoctorManager.getInstance().getHealingDoctorList();
+        int numberOfHealingDoc=healingDoctorList.size();
+        while(counter<numberOfHealingDoc){
+            counter=0;
+            for (HealingDoctor healer :
+                    healingDoctorList) {
+                PriorityQueue<Patient> queue=healer.getPatientQueue();
+                if(queue.isEmpty())counter++;
+                else if(queue.peek().getSessionTime().isAfter(now)) {
+                    Patient patient=queue.remove();
+                    System.out.println(patient+" has cured "+patient.getDisease()+" at "+patient.getSessionTime()+" by "+healer);
+                }
+            }
+        }
+    }
+    public void flushAll(){
+        DiagnoseDoctorPool.getInstance().flushAvailableInuse();
+        PatientManager.getInstance().emptyPatientQueue();
+        HealingDoctorManager.getInstance().flushHealingDoctorManager();
     }
     public HealingDoctor giveDiseaseGetHealingDoc(Disease disease) {
         //        chose HealingDoc to push

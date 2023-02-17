@@ -2,6 +2,7 @@ package controler;
 
 import model.doctor.*;
 import model.patient.Patient;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,12 +15,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DiagnoseDoctorPoolTest {
     DiagnoseDoctorPool tester=DiagnoseDoctorPool.getInstance();
-    @BeforeEach
+    @AfterEach
     void init(){
-        tester.flushAvailableInuse();
-        PatientManager.getInstance().emptyPatientQueue();
-        assertEquals(0,PatientManager.getInstance().getPatientQueue().size());
-        HealingDoctorManager.getInstance().flushHealingDoctorManager();
+        HospitalManager.getInstance().flushAll();
     }
 
     @Test
