@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DiseaseManager {
-    public static Serializer<Disease> serializer=new Serializer<>("src/data/disease/diseaseList.dat");
     private static DiseaseManager instance;
+    public static Serializer<Disease> serializer=new Serializer<>("src/data/disease/diseaseList.dat");
     private List<Disease> dentistDisease = Dentist.DISEASE_SERIALIZER.readObjects();
     private List<Disease> gynecologistDisease= Gynecologist.DISEASE_SERIALIZER.readObjects();
     private List<Disease> otolaryngologistDisease= Otolaryngologist.DISEASE_SERIALIZER.readObjects();

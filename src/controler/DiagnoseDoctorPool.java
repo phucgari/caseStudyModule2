@@ -13,13 +13,13 @@ import java.util.Random;
 
 // design pattern Object pool
 public class DiagnoseDoctorPool {
+    static private DiagnoseDoctorPool instance;
     private static final String linkToDiagnoseDoctorListAndQueue="src/data/diagnoseDoctorLists";
     public static final QueueSerializer<DiagnoseDoctor> DIAGNOSE_DOCTOR_LIST =new QueueSerializer<>(linkToDiagnoseDoctorListAndQueue+"/diagnoseDoctorList.dat");
     public static final QueueSerializer<DiagnoseDoctor> DIAGNOSE_DOCTOR_AVAILABLE =new QueueSerializer<>(linkToDiagnoseDoctorListAndQueue+"/diagnoseDoctorAvailable.dat");
     public static final QueueSerializer<DiagnoseDoctor> DIAGNOSE_DOCTOR_INUSE =new QueueSerializer<>(linkToDiagnoseDoctorListAndQueue+"/diagnoseDoctorInuse.dat");
     private PriorityQueue<DiagnoseDoctor> available= DIAGNOSE_DOCTOR_AVAILABLE.readObjects();
     private PriorityQueue<DiagnoseDoctor> inuse= DIAGNOSE_DOCTOR_INUSE.readObjects();
-    static private DiagnoseDoctorPool instance;
 
     private DiagnoseDoctorPool(){}
 
