@@ -19,6 +19,15 @@ public class DiagnoseDoctorPool {
     public static final QueueSerializer<DiagnoseDoctor> DIAGNOSE_DOCTOR_INUSE =new QueueSerializer<>(linkToDiagnoseDoctorListAndQueue+"/diagnoseDoctorInuse.dat");
     private PriorityQueue<DiagnoseDoctor> available= DIAGNOSE_DOCTOR_AVAILABLE.readObjects();
     private PriorityQueue<DiagnoseDoctor> inuse= DIAGNOSE_DOCTOR_INUSE.readObjects();
+    static private DiagnoseDoctorPool instance;
+
+    private DiagnoseDoctorPool(){}
+
+    public static DiagnoseDoctorPool getInstance() {
+        if (instance==null)instance=new DiagnoseDoctorPool();
+        return instance;
+    }
+
     public PriorityQueue<DiagnoseDoctor> getAvailable() {
         available= DIAGNOSE_DOCTOR_AVAILABLE.readObjects();
         return available;

@@ -13,7 +13,7 @@ import java.util.Queue;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DiagnoseDoctorPoolTest {
-    DiagnoseDoctorPool tester=new DiagnoseDoctorPool();;
+    DiagnoseDoctorPool tester=DiagnoseDoctorPool.getInstance();
     @BeforeEach
     void init(){
         tester.flushAvailableInuse();

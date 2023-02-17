@@ -14,7 +14,6 @@ public class HospitalManager {
         if(instance==null)instance=new HospitalManager();
         return instance;
     }
-
     public HealingDoctor giveDiseaseGetHealingDoc(Disease disease) {
         //        chose HealingDoc to push
         List<Disease>[]lists=DiseaseManager.getInstance().DiseaseListArray();
@@ -31,7 +30,6 @@ public class HospitalManager {
         ;
         return getDocFromDocIndex(kindOfDocIndex) ;
     }
-
     private HealingDoctor getDocFromDocIndex(int kindOfDocIndex) {
         HealingDoctor doc=null;
         List<HealingDoctor>healingDoctorList=HealingDoctorManager.getInstance().getHealingDoctorList();
