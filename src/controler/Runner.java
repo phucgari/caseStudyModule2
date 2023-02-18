@@ -1,29 +1,33 @@
 package controler;
 
 import model.doctor.DiagnoseDoctor;
-import model.doctor.HealingDoctor;
 import model.patient.Patient;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 import java.util.PriorityQueue;
 
 public class Runner extends Thread{
-    DiagnoseDoctorPool pool=DiagnoseDoctorPool.getInstance();
-    DiseaseManager diseaseManager=DiseaseManager.getInstance();
-    HealingDoctorManager healingDoctorManager=HealingDoctorManager.getInstance();
-    HospitalManager hospitalManager=HospitalManager.getInstance();
-    PatientManager patientManager=PatientManager.getInstance();
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    private final DiagnoseDoctorPool pool=DiagnoseDoctorPool.getInstance();
+    private final HospitalManager hospitalManager=HospitalManager.getInstance();
+    private final PatientManager patientManager=PatientManager.getInstance();
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    private boolean onOff=true;
     @Override
     public void run() {
-        checkQueueToPool();
-        checkPoolToHeal();
-        checkHealToOut();
-        //check add from queue to pool
-        //check add from pool to Heal
-        //check heal to out
+        while (onOff) {
+            checkQueueToPool();
+            checkPoolToHeal();
+            checkHealToOut();
+            try {
+                Thread.sleep(950);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+    public void switchOnOff(){
+        onOff=!onOff;
     }
 
     public void checkHealToOut() {
@@ -31,9 +35,11 @@ public class Runner extends Thread{
     }
 
     public void checkPoolToHeal() {
-
-        while(true){
-
+        LocalDateTime now=LocalDateTime.now();
+        PriorityQueue<DiagnoseDoctor>inuseQueue=pool.getInuse();
+        while(inuseQueue.peek().getCurrent().getSessionTime().isAfter(now)){
+            pool.releasePatient();
+            if(inuseQueue.isEmpty())return;
         }
     }
 

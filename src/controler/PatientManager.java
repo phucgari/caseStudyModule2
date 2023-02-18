@@ -44,4 +44,19 @@ public class PatientManager {
             addPatientQueue(patients[i]);
         }
     }
+
+    public void generateDemoPatientWith100SecEarly(int numberOfPatient) {
+        Patient[] patients=new Patient[7];
+        patients[0]=new Patient("adam",false);
+        patients[1]=new Patient("demo",true);
+        patients[2]=new Patient("eva",false);
+        patients[3]=new Patient("adam1",true);
+        patients[4]=new Patient("eva1",false);
+        patients[5]=new Patient();
+        patients[6]=new Patient();
+        for (int i = 0; i < numberOfPatient; i++) {
+            patients[i].setSessionTime(patients[i].getSessionTime().minusSeconds(100));
+            addPatientQueue(patients[i]);
+        }
+    }
 }

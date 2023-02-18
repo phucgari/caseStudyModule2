@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b5c09889-f280-4659-afdb-800a75eb4578" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controler/DiagnoseDoctorPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controler/DiagnoseDoctorPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controler/PatientManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controler/PatientManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controler/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controler/Runner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/controler/DiagnoseDoctorPoolTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controler/DiagnoseDoctorPoolTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controler/RunnerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controler/RunnerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +88,7 @@
       <recent name="model.patient" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in caseStudy">
+  <component name="RunManager">
     <configuration name="All in caseStudy" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="caseStudy" />
       <option name="PACKAGE_NAME" value="" />
@@ -112,37 +112,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DiagnoseDoctorPoolTest.testGetFewPatient" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="caseStudy" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="controler.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="controler" />
-      <option name="MAIN_CLASS_NAME" value="controler.DiagnoseDoctorPoolTest" />
-      <option name="METHOD_NAME" value="testGetFewPatient" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PatientTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="caseStudy" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.patient.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model.patient" />
-      <option name="MAIN_CLASS_NAME" value="model.patient.PatientTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="RunnerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="caseStudy" />
       <extension name="coverage">
@@ -158,13 +127,45 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RunnerTest.testCheckHealToOut" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="caseStudy" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controler.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controler" />
+      <option name="MAIN_CLASS_NAME" value="controler.RunnerTest" />
+      <option name="METHOD_NAME" value="testCheckHealToOut" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RunnerTest.testCheckPoolToHeal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="caseStudy" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controler.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controler" />
+      <option name="MAIN_CLASS_NAME" value="controler.RunnerTest" />
+      <option name="METHOD_NAME" value="testCheckPoolToHeal" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in caseStudy" />
-        <item itemvalue="JUnit.DiagnoseDoctorPoolTest" />
-        <item itemvalue="JUnit.DiagnoseDoctorPoolTest.testGetFewPatient" />
-        <item itemvalue="JUnit.PatientTest" />
         <item itemvalue="JUnit.RunnerTest" />
+        <item itemvalue="JUnit.RunnerTest.testCheckHealToOut" />
+        <item itemvalue="JUnit.RunnerTest.testCheckPoolToHeal" />
+        <item itemvalue="JUnit.DiagnoseDoctorPoolTest" />
       </list>
     </recent_temporary>
   </component>
@@ -185,7 +186,7 @@
       <workItem from="1676423677565" duration="4679000" />
       <workItem from="1676431074328" duration="21320000" />
       <workItem from="1676610403448" duration="15023000" />
-      <workItem from="1676701744426" duration="2826000" />
+      <workItem from="1676701744426" duration="9991000" />
     </task>
     <servers />
   </component>
@@ -207,15 +208,6 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/controler/DiagnoseDoctorPool.java</url>
-          <line>56</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="model.doctor.DiagnoseDoctor" memberName="current" />
