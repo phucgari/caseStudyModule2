@@ -6,6 +6,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -16,9 +18,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DiagnoseDoctorPoolTest {
     DiagnoseDoctorPool tester=DiagnoseDoctorPool.getInstance();
+
+    private String newLine = System.getProperty("line.separator");
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+    @BeforeEach
+    public void setUpStreams() {
+
+    }
     @AfterEach
-    void init(){
+    void end(){
         HospitalManager.getInstance().flushAll();
     }
 
@@ -78,11 +87,20 @@ class DiagnoseDoctorPoolTest {
         DiagnoseDoctor doctor= tester.getInuse().peek();
         Patient patient=doctor.getCurrent();
 
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        PrintStream originalOut = System.out;
+        System.setOut(new PrintStream(outContent));
+
         boolean result=tester.releasePatient();
         assertEquals(availSize+1,tester.getAvailable().size());
         assertEquals(inuseSize-1,tester.getInuse().size());
         assertEquals("prevent null",doctor.getCurrent().getName());
-        if (!result)return;
+        if (!result){
+            String resultStr=outContent.toString();
+            assertEquals(patient+ " have no Disease"+newLine,resultStr);
+            System.setOut(originalOut);
+            return;
+        }
         HealingDoctor healingDoctor=findDocWithPatient(patient);
 //        then push Patient to HealingDocQueue
         checkHealingDoctorContainPatient(healingDoctor,patient);
@@ -90,7 +108,10 @@ class DiagnoseDoctorPoolTest {
         assertEquals(patient.getSessionTime(),healingDoctor.getLastPatientTimer());
 //        Serialize
         assertTrue(HealingDoctorManager.getInstance().getHealingDoctorList().contains(healingDoctor));
-
+        String str = patient + " diagnose as " + patient.getDisease().getName() + " and send to " + healingDoctor.getName() + " estimate Session Time " + healingDoctor.getLastPatientTimer().format(formatter) + newLine;
+        String newContent=outContent.toString();
+        assertEquals(str,newContent);
+        System.setOut(originalOut);
     }
 
     private void checkHealingDoctorContainPatient(HealingDoctor healingDoctor, Patient patient) {

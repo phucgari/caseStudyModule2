@@ -7,6 +7,7 @@ import model.doctor.HealingDoctor;
 import model.patient.Patient;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Random;
@@ -20,6 +21,7 @@ public class DiagnoseDoctorPool {
     public static final QueueSerializer<DiagnoseDoctor> DIAGNOSE_DOCTOR_INUSE =new QueueSerializer<>(linkToDiagnoseDoctorListAndQueue+"/diagnoseDoctorInuse.dat");
     private PriorityQueue<DiagnoseDoctor> available= DIAGNOSE_DOCTOR_AVAILABLE.readObjects();
     private PriorityQueue<DiagnoseDoctor> inuse= DIAGNOSE_DOCTOR_INUSE.readObjects();
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     private DiagnoseDoctorPool(){}
 
@@ -61,11 +63,16 @@ public class DiagnoseDoctorPool {
 //        change Patient Disease
 //        change Patient sessionTime
 //        change diagnoseDoc current to null
-        if (disease.getName().equals("No Disease"))return false;
+        if (disease.getName().equals("No Disease")){
+            System.out.println(patient+" have no Disease");
+            return false;
+        }
         HospitalManager hospitalManager = HospitalManager.getInstance();
 
         HealingDoctor healingDoctorChosen= hospitalManager.giveDiseaseGetHealingDoc(disease);
         healingDoctorChosen.takePatient(patient);
+        String str =patient + " diagnose as " + patient.getDisease().getName() + " and send to " + healingDoctorChosen.getName() + " estimate Session Time " + patient.getSessionTime().format(formatter);
+        System.out.println(str);
         return true;
 //        chose HealingDoc to push
 //        then push Patient to HealingDocQueue

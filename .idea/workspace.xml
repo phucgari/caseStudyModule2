@@ -9,13 +9,6 @@
       <change beforePath="$PROJECT_DIR$/src/controler/DiagnoseDoctorPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controler/DiagnoseDoctorPool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controler/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controler/Runner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/controler/DiagnoseDoctorPoolTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controler/DiagnoseDoctorPoolTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/controler/RunnerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controler/RunnerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/model/doctor/DentistTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/doctor/DentistTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/model/doctor/GynecologistTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/doctor/GynecologistTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/model/doctor/OtolaryngologistTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/doctor/OtolaryngologistTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/model/doctor/SurgeonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/doctor/SurgeonTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/model/doctor/UrologistsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/doctor/UrologistsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/model/patient/PatientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/patient/PatientTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +88,7 @@
       <recent name="model.patient" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.All in caseStudy">
     <configuration name="All in caseStudy" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="caseStudy" />
       <option name="PACKAGE_NAME" value="" />
@@ -104,7 +97,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DiagnoseDoctorPoolTest.testRelease1Patient" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DiagnoseDoctorPoolTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="caseStudy" />
       <extension name="coverage">
         <pattern>
@@ -114,13 +107,12 @@
       </extension>
       <option name="PACKAGE_NAME" value="controler" />
       <option name="MAIN_CLASS_NAME" value="controler.DiagnoseDoctorPoolTest" />
-      <option name="METHOD_NAME" value="testRelease1Patient" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HospitalManagerTest.testCheckPatientInHealer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DiagnoseDoctorPoolTest.testGetFewPatient" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="caseStudy" />
       <extension name="coverage">
         <pattern>
@@ -129,8 +121,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="controler" />
-      <option name="MAIN_CLASS_NAME" value="controler.HospitalManagerTest" />
-      <option name="METHOD_NAME" value="testCheckPatientInHealer" />
+      <option name="MAIN_CLASS_NAME" value="controler.DiagnoseDoctorPoolTest" />
+      <option name="METHOD_NAME" value="testGetFewPatient" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -169,17 +161,17 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in caseStudy" />
+        <item itemvalue="JUnit.DiagnoseDoctorPoolTest" />
+        <item itemvalue="JUnit.DiagnoseDoctorPoolTest.testGetFewPatient" />
         <item itemvalue="JUnit.PatientTest" />
         <item itemvalue="JUnit.RunnerTest" />
-        <item itemvalue="JUnit.HospitalManagerTest.testCheckPatientInHealer" />
-        <item itemvalue="JUnit.DiagnoseDoctorPoolTest.testRelease1Patient" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e8ae30f5-31ee-4e2c-8d3d-8d06c0fe5094" name="Changes" comment="" />
+      <changelist id="b5c09889-f280-4659-afdb-800a75eb4578" name="Changes" comment="" />
       <created>1676016970508</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -193,6 +185,7 @@
       <workItem from="1676423677565" duration="4679000" />
       <workItem from="1676431074328" duration="21320000" />
       <workItem from="1676610403448" duration="15023000" />
+      <workItem from="1676701744426" duration="2826000" />
     </task>
     <servers />
   </component>
@@ -214,6 +207,15 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/controler/DiagnoseDoctorPool.java</url>
+          <line>56</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="model.doctor.DiagnoseDoctor" memberName="current" />
