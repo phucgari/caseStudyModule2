@@ -57,7 +57,7 @@ public class Runner extends Thread{
             Patient patient=patientPriorityQueue.peek();
             DiagnoseDoctor doctor=availableQueue.peek();
             pool.getPatient();
-            System.out.println(patient+ " started diagnose, finish at " +patient.getSessionTime().format(formatter)+" by "+doctor);
+            System.out.println(LocalDateTime.now().format(formatter)+": "+patient+ " started diagnose, finish at " +patient.getSessionTime().format(formatter)+" by "+doctor);
             pool.saveAvailableInuse();
         }
     }

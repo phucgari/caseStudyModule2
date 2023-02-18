@@ -4,6 +4,7 @@ import model.doctor.*;
 import model.patient.Patient;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.PriorityQueue;
 
@@ -11,7 +12,7 @@ public class HospitalManager {
     private static HospitalManager instance;
 
     private HospitalManager() {}
-
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     public static HospitalManager getInstance() {
         if(instance==null)instance=new HospitalManager();
         return instance;
@@ -26,7 +27,7 @@ public class HospitalManager {
                 LocalDateTime patientSessionTime = queue.peek().getSessionTime();
                 if (patientSessionTime.isBefore(now)) {
                     Patient patient = queue.remove();
-                    System.out.println(patient + " has cured " + patient.getDisease() + " at " + patient.getSessionTime() + " by " + healer);
+                    System.out.println(LocalDateTime.now().format(formatter)+": "+patient + " has cured " + patient.getDisease() + " at " + patient.getSessionTime().format(formatter) + " by " + healer);
                     HealingDoctorManager.getInstance().serializeList();
                 }else break;
             }

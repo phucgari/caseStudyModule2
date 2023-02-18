@@ -59,19 +59,20 @@ public class DiagnoseDoctorPool {
         patient.setDisease(disease);
         doctor.setCurrent(new Patient("prevent null",true));
         available.add(doctor);
+        LocalDateTime patientTime=patient.getSessionTime();
 //        transferDocFromInUseToAvailable
 //        change Patient Disease
 //        change Patient sessionTime
 //        change diagnoseDoc current to null
         if (disease.getName().equals("No Disease")){
-            System.out.println(patient+" have no Disease");
+            System.out.println(LocalDateTime.now().format(formatter)+": "+patient+" have no Disease");
             return false;
         }
         HospitalManager hospitalManager = HospitalManager.getInstance();
-
+        LocalDateTime now=LocalDateTime.now();
         HealingDoctor healingDoctorChosen= hospitalManager.giveDiseaseGetHealingDoc(disease);
         healingDoctorChosen.takePatient(patient);
-        String str =patient + " diagnose as " + patient.getDisease().getName() + " and send to " + healingDoctorChosen.getName() + " estimate Session Time " + patient.getSessionTime().format(formatter);
+        String str =LocalDateTime.now().format(formatter)+": "+patient + " diagnose as " + patient.getDisease().getName() + " and send to " + healingDoctorChosen.getName() + " estimate Session Time " + patient.getSessionTime().format(formatter);
         System.out.println(str);
         return true;
 //        chose HealingDoc to push

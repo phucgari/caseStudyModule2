@@ -10,7 +10,7 @@ public class AddPatients {
     public static void main(String[] args) {
         Runner runner=new Runner();
         hospitalManager.flushAll();
+        runner.start();
         patientManager.generateDemoPatient(7);
-
     }
 }

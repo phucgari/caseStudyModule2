@@ -102,7 +102,7 @@ class RunnerTest {
         for (HealingDoctor doctor: healingDoctorList) {
             for (Patient patientInQueue: doctor.getPatientQueue()) {
                 if(patientInQueue.getName().equals(patient.getName())) {
-                    return patient + " diagnose as " + patient.getDisease().getName() + " and send to " + doctor.getName() + " estimate Session Time " + patient.getSessionTime().format(formatter)+newLine;
+                    return LocalDateTime.now().format(formatter)+": "+ patient + " diagnose as " + patient.getDisease().getName() + " and send to " + doctor.getName() + " estimate Session Time " + patient.getSessionTime().format(formatter)+newLine;
                 }
             }
         }
@@ -115,7 +115,7 @@ class RunnerTest {
             PriorityQueue<Patient> queue = new PriorityQueue<>(doctor.getPatientQueue());
             while (!queue.isEmpty()){
                 Patient patient = queue.remove();
-                String str=patient + " has cured " + patient.getDisease() + " at " + patient.getSessionTime() + " by " + doctor+newLine;
+                String str=LocalDateTime.now().format(formatter)+": "+patient + " has cured " + patient.getDisease() + " at " + patient.getSessionTime().format(formatter) + " by " + doctor+newLine;
                 if (!result.contains(str))result += str;
             }
         }
@@ -132,7 +132,7 @@ class RunnerTest {
             patient=patients.remove();
             doctor=doctors.remove();
             LocalDateTime patientTime = LocalDateTime.now().plusSeconds((long) (15 / doctor.getTimeMultiplier()));
-            result+=patient+" started diagnose, finish at "+patientTime.format(formatter)+" by "+doctor+newLine;
+            result+=LocalDateTime.now().format(formatter)+": "+patient+" started diagnose, finish at "+patientTime.format(formatter)+" by "+doctor+newLine;
         }
         return result;
     }
@@ -156,7 +156,7 @@ class RunnerTest {
         while (!patients.isEmpty()) {
             Patient patient= patients.remove();
             if(patient.getDisease().getName().equals("No Disease")) {
-                result+= patient+" have no Disease"+newLine;
+                result+=LocalDateTime.now().format(formatter)+": "+ patient+" have no Disease"+newLine;
                 continue;
             }
             result+= findPatientInHealingDocReturnPrintedString(patient);

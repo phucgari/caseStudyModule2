@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,6 +22,7 @@ class HospitalManagerTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
     private String newLine = System.getProperty("line.separator");
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     @BeforeEach
     public void setUpStreams() {
@@ -63,8 +65,8 @@ class HospitalManagerTest {
         healer.takePatient(patient);
 
         tester.checkPatientInHealer();
-        String expected="Patient{name='adam', gender=male} has cured Disease{name='Làm răng giả', cureTime=20} " +
-                "at "+ patient.getSessionTime() + " by Dentist name='Dentist1' Experience: Junior\n"+newLine;
+        String expected=LocalDateTime.now().format(formatter)+": "+"Patient{name='adam', gender=male} has cured Disease{name='Làm răng giả', cureTime=20} " +
+                "at "+ patient.getSessionTime().format(formatter) + " by Dentist name='Dentist1' Experience: Junior\n"+newLine;
         assertEquals(expected, outContent.toString());
     }
     @Test
@@ -88,9 +90,9 @@ class HospitalManagerTest {
         tester.checkPatientInHealer();
 
 
-        String expected="Patient{name='adam', gender=male} has cured Disease{name='Làm răng giả', cureTime=20} " +
-                "at "+ patient.getSessionTime() + " by Dentist name='Dentist2' Experience: Senior\n"+newLine+
-                "Patient{name='eva', gender=female} has cured Disease{name='Vô sinh', cureTime=19} at " +patient2.getSessionTime()+ " by Urologists name='Urologist2' Experience: Senior\n"+newLine;
+        String expected=LocalDateTime.now().format(formatter)+": "+"Patient{name='adam', gender=male} has cured Disease{name='Làm răng giả', cureTime=20} " +
+                "at "+ patient.getSessionTime().format(formatter) + " by Dentist name='Dentist2' Experience: Senior\n"+newLine+
+                LocalDateTime.now().format(formatter)+": "+"Patient{name='eva', gender=female} has cured Disease{name='Vô sinh', cureTime=19} at " +patient2.getSessionTime().format(formatter)+ " by Urologists name='Urologist2' Experience: Senior\n"+newLine;
         assertEquals(expected, outContent.toString());
     }
 }

@@ -97,7 +97,7 @@ class DiagnoseDoctorPoolTest {
         assertEquals("prevent null",doctor.getCurrent().getName());
         if (!result){
             String resultStr=outContent.toString();
-            assertEquals(patient+ " have no Disease"+newLine,resultStr);
+            assertEquals(LocalDateTime.now().format(formatter)+": "+patient+ " have no Disease"+newLine,resultStr);
             System.setOut(originalOut);
             return;
         }
@@ -108,7 +108,7 @@ class DiagnoseDoctorPoolTest {
         assertEquals(patient.getSessionTime(),healingDoctor.getLastPatientTimer());
 //        Serialize
         assertTrue(HealingDoctorManager.getInstance().getHealingDoctorList().contains(healingDoctor));
-        String str = patient + " diagnose as " + patient.getDisease().getName() + " and send to " + healingDoctor.getName() + " estimate Session Time " + healingDoctor.getLastPatientTimer().format(formatter) + newLine;
+        String str =LocalDateTime.now().format(formatter)+": "+ patient + " diagnose as " + patient.getDisease().getName() + " and send to " + healingDoctor.getName() + " estimate Session Time " + healingDoctor.getLastPatientTimer().format(formatter) + newLine;
         String newContent=outContent.toString();
         assertEquals(str,newContent);
         System.setOut(originalOut);
