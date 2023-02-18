@@ -38,8 +38,8 @@ public class PatientManager {
         patients[2]=new Patient("eva",false);
         patients[3]=new Patient("adam1",true);
         patients[4]=new Patient("eva1",false);
-        patients[5]=new Patient();
-        patients[6]=new Patient();
+        patients[5]=new Patient("yes",false);
+        patients[6]=new Patient("no",true);
         for (int i = 0; i < numberOfPatient; i++) {
             addPatientQueue(patients[i]);
         }
@@ -52,8 +52,8 @@ public class PatientManager {
         patients[2]=new Patient("eva",false);
         patients[3]=new Patient("adam1",true);
         patients[4]=new Patient("eva1",false);
-        patients[5]=new Patient();
-        patients[6]=new Patient();
+        patients[5]=new Patient("yes",false);
+        patients[6]=new Patient("no",true);
         for (int i = 0; i < numberOfPatient; i++) {
             patients[i].setSessionTime(patients[i].getSessionTime().minusSeconds(100));
             addPatientQueue(patients[i]);

@@ -42,9 +42,7 @@ public class Runner extends Thread{
         LocalDateTime now=LocalDateTime.now();
         PriorityQueue<DiagnoseDoctor>inuseQueue=pool.getInuse();
         if(inuseQueue.isEmpty())return;
-        while(true){
-            LocalDateTime patientTime = inuseQueue.peek().getCurrent().getSessionTime();
-            if (patientTime.isAfter(now)) break;
+        while(inuseQueue.peek().getCurrent().getSessionTime().isBefore(now)){
             pool.releasePatient();
             if(inuseQueue.isEmpty())break;
         }

@@ -18,24 +18,17 @@ public class HospitalManager {
     }
     public void checkPatientInHealer(){
         LocalDateTime now=LocalDateTime.now();
-        int counter=0;
         List<HealingDoctor> healingDoctorList=HealingDoctorManager.getInstance().getHealingDoctorList();
-        int numberOfHealingDoc=healingDoctorList.size();
-        while(counter<numberOfHealingDoc){
-            counter=0;
-            for (HealingDoctor healer :
-                    healingDoctorList) {
-                PriorityQueue<Patient> queue=healer.getPatientQueue();
-                if(queue.isEmpty()){
-                    counter++;
-                } else {
-                    LocalDateTime patientSessionTime = queue.peek().getSessionTime();
-                    if(patientSessionTime.isBefore(now)) {
-                        Patient patient=queue.remove();
-                        System.out.println(patient+" has cured "+patient.getDisease()+" at "+patient.getSessionTime()+" by "+healer);
-                        HealingDoctorManager.getInstance().serializeList();
-                    } else counter++;
-                }
+        for (HealingDoctor healer :
+                healingDoctorList) {
+            PriorityQueue<Patient> queue = healer.getPatientQueue();
+            while (!queue.isEmpty()) {
+                LocalDateTime patientSessionTime = queue.peek().getSessionTime();
+                if (patientSessionTime.isBefore(now)) {
+                    Patient patient = queue.remove();
+                    System.out.println(patient + " has cured " + patient.getDisease() + " at " + patient.getSessionTime() + " by " + healer);
+                    HealingDoctorManager.getInstance().serializeList();
+                }else break;
             }
         }
     }

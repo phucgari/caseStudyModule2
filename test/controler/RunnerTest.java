@@ -4,7 +4,6 @@ import model.doctor.DiagnoseDoctor;
 import model.doctor.HealingDoctor;
 import model.patient.Patient;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -19,7 +18,6 @@ class RunnerTest {
     Runner run=new Runner();
     private String newLine = System.getProperty("line.separator");
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-    @BeforeEach
     @AfterEach
     void end(){
         HospitalManager.getInstance().flushAll();
@@ -92,6 +90,13 @@ class RunnerTest {
         assertEquals(result,outContent.toString());
         System.setOut(originalOut);
     }
+    @Test
+    void testALLINLarge(){
+        for (int i = 0; i < 100; i++) {
+            HospitalManager.getInstance().flushAll();
+            testAll();
+        }
+    }
     private String findPatientInHealingDocReturnPrintedString(Patient patient) {
         List<HealingDoctor> healingDoctorList=HealingDoctorManager.getInstance().getHealingDoctorList();
         for (HealingDoctor doctor: healingDoctorList) {
@@ -101,27 +106,17 @@ class RunnerTest {
                 }
             }
         }
-        return "";
-//        throw new RuntimeException();
+        throw new RuntimeException();
     }
     private String getStringHealToOut() {
         String result="";
         List<HealingDoctor> healingDoctorList=new ArrayList<>(HealingDoctorManager.getInstance().getHealingDoctorList());
-        int counter=0;
-        while (counter<healingDoctorList.size()) {
-            counter=0;
-            for (HealingDoctor doctor : healingDoctorList) {
-                PriorityQueue<Patient> queue = new PriorityQueue<>(doctor.getPatientQueue());
-                if (queue.isEmpty()) counter++;
-                else {
-                    Patient patient = queue.remove();
-                    String str=patient + " has cured " + patient.getDisease() + " at " + patient.getSessionTime() + " by " + doctor+newLine;
-                    if (result.contains(str)){
-                        counter++;
-                        continue;
-                    }
-                    result += str;
-                }
+        for (HealingDoctor doctor : healingDoctorList) {
+            PriorityQueue<Patient> queue = new PriorityQueue<>(doctor.getPatientQueue());
+            while (!queue.isEmpty()){
+                Patient patient = queue.remove();
+                String str=patient + " has cured " + patient.getDisease() + " at " + patient.getSessionTime() + " by " + doctor+newLine;
+                if (!result.contains(str))result += str;
             }
         }
         return result;
@@ -142,14 +137,14 @@ class RunnerTest {
         return result;
     }
 
-    private static Queue<Patient> getPatientQueueToCheckString() {
+    private Queue<Patient> getPatientQueueToCheckString() {
         Queue<Patient> patients=new LinkedList<>();
 
         PriorityQueue<DiagnoseDoctor>Inuse=new PriorityQueue<>(DiagnoseDoctorPool.getInstance().getInuse());
 
         for (int i = 0; i < 5; i++) {
             Patient current = Inuse.remove().getCurrent();
-            current.setSessionTime(current.getSessionTime().minusSeconds(30));
+            current.setSessionTime(current.getSessionTime().minusSeconds(100));
             patients.add(current);
         }
         return patients;
