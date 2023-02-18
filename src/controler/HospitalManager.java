@@ -26,11 +26,15 @@ public class HospitalManager {
             for (HealingDoctor healer :
                     healingDoctorList) {
                 PriorityQueue<Patient> queue=healer.getPatientQueue();
-                if(queue.isEmpty())counter++;
-                else if(queue.peek().getSessionTime().isAfter(now)) {
-                    Patient patient=queue.remove();
-                    System.out.println(patient+" has cured "+patient.getDisease()+" at "+patient.getSessionTime()+" by "+healer);
-                    HealingDoctorManager.getInstance().serializeList();
+                if(queue.isEmpty()){
+                    counter++;
+                } else {
+                    LocalDateTime patientSessionTime = queue.peek().getSessionTime();
+                    if(patientSessionTime.isBefore(now)) {
+                        Patient patient=queue.remove();
+                        System.out.println(patient+" has cured "+patient.getDisease()+" at "+patient.getSessionTime()+" by "+healer);
+                        HealingDoctorManager.getInstance().serializeList();
+                    } else counter++;
                 }
             }
         }

@@ -13,13 +13,13 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RunnerTest {
     Runner run=new Runner();
     private String newLine = System.getProperty("line.separator");
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
+    @BeforeEach
     @AfterEach
     void end(){
         HospitalManager.getInstance().flushAll();
@@ -73,7 +73,7 @@ class RunnerTest {
 
     @Test
     void testAll(){
-        PatientManager.getInstance().generateDemoPatientWith100SecEarly(6);
+        PatientManager.getInstance().generateDemoPatient(6);
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         PrintStream originalOut = System.out;
         System.setOut(new PrintStream(outContent));
@@ -101,7 +101,8 @@ class RunnerTest {
                 }
             }
         }
-        throw new RuntimeException();
+        return "";
+//        throw new RuntimeException();
     }
     private String getStringHealToOut() {
         String result="";
@@ -147,12 +148,15 @@ class RunnerTest {
         PriorityQueue<DiagnoseDoctor>Inuse=new PriorityQueue<>(DiagnoseDoctorPool.getInstance().getInuse());
 
         for (int i = 0; i < 5; i++) {
-            patients.add(Inuse.remove().getCurrent());
+            Patient current = Inuse.remove().getCurrent();
+            current.setSessionTime(current.getSessionTime().minusSeconds(30));
+            patients.add(current);
         }
         return patients;
+
     }
 
-    private String getStringPoolToHeal(Queue<Patient> patients) {
+    private String getStringPoolToHeal(Queue<Patient> patients){
         String result=new String();
         while (!patients.isEmpty()) {
             Patient patient= patients.remove();

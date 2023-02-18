@@ -11,8 +11,12 @@ public class Runner extends Thread{
     private final DiagnoseDoctorPool pool=DiagnoseDoctorPool.getInstance();
     private final HospitalManager hospitalManager=HospitalManager.getInstance();
     private final PatientManager patientManager=PatientManager.getInstance();
+    private final HealingDoctorManager healingDoctorManager=HealingDoctorManager.getInstance();
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private boolean onOff=true;
+
+    public Runner() {}
+
     @Override
     public void run() {
         while (onOff) {
@@ -37,10 +41,15 @@ public class Runner extends Thread{
     public void checkPoolToHeal() {
         LocalDateTime now=LocalDateTime.now();
         PriorityQueue<DiagnoseDoctor>inuseQueue=pool.getInuse();
-        while(inuseQueue.peek().getCurrent().getSessionTime().isAfter(now)){
+        if(inuseQueue.isEmpty())return;
+        while(true){
+            LocalDateTime patientTime = inuseQueue.peek().getCurrent().getSessionTime();
+            if (patientTime.isAfter(now)) break;
             pool.releasePatient();
-            if(inuseQueue.isEmpty())return;
+            if(inuseQueue.isEmpty())break;
         }
+        pool.saveAvailableInuse();
+        healingDoctorManager.serializeList();
     }
 
     public void checkQueueToPool() {

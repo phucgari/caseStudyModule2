@@ -58,7 +58,7 @@ class HospitalManagerTest {
         HealingDoctor healer=healingDoctorList.get(0);
 
         Patient patient=new Patient("adam",true);
-        patient.setSessionTime(LocalDateTime.now().minusSeconds(2));
+        patient.setSessionTime(LocalDateTime.now().minusSeconds(200));
         patient.setDisease(healer.getCurableDisease().get(1));
         healer.takePatient(patient);
 
@@ -72,7 +72,7 @@ class HospitalManagerTest {
         HealingDoctor healer=healingDoctorList.get(1);
 
         Patient patient=new Patient("adam",true);
-        patient.setSessionTime(LocalDateTime.now().minusSeconds(2));
+        patient.setSessionTime(LocalDateTime.now().minusSeconds(2000));
         patient.setDisease(healer.getCurableDisease().get(1));
         healer.takePatient(patient);
 
@@ -81,7 +81,7 @@ class HospitalManagerTest {
 
         healer=healingDoctorList.get(7);
         Patient patient2=new Patient("eva",false);
-        patient2.setSessionTime(LocalDateTime.now().minusSeconds(1));
+        patient2.setSessionTime(LocalDateTime.now().minusSeconds(100));
         patient2.setDisease(healer.getCurableDisease().get(1));
         healer.takePatient(patient2);
 
