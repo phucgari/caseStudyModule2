@@ -7,13 +7,10 @@
     <list default="true" id="b5c09889-f280-4659-afdb-800a75eb4578" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/AddPatients.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/AddPatients.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controler/DiagnoseDoctorPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controler/DiagnoseDoctorPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controler/HospitalManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controler/HospitalManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controler/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controler/Runner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/controler/DiagnoseDoctorPoolTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controler/DiagnoseDoctorPoolTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/controler/HospitalManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controler/HospitalManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controler/PatientManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controler/PatientManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/diagnoseDoctorLists/diagnoseDoctorAvailable.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/diagnoseDoctorLists/diagnoseDoctorAvailable.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/healingDoctorList.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/healingDoctorList.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/controler/RunnerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controler/RunnerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/model/doctor/UrologistsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/doctor/UrologistsTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,7 +189,7 @@
       <workItem from="1676423677565" duration="4679000" />
       <workItem from="1676431074328" duration="21320000" />
       <workItem from="1676610403448" duration="15023000" />
-      <workItem from="1676701744426" duration="21245000" />
+      <workItem from="1676701744426" duration="22230000" />
     </task>
     <servers />
   </component>

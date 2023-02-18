@@ -24,7 +24,7 @@ class RunnerTest {
     }
     @Test
     void testCheckHealToOut(){
-        PatientManager.getInstance().generateDemoPatientWith100SecEarly(6);
+        PatientManager.getInstance().generateDemoPatient(6);
         run.checkQueueToPool();
         run.checkPoolToHeal();
 
@@ -42,7 +42,7 @@ class RunnerTest {
     @Test
     void testCheckQueueToPool(){
         run.checkQueueToPool();
-        PatientManager.getInstance().generateDemoPatientWith100SecEarly(6);
+        PatientManager.getInstance().generateDemoPatient(6);
         String result = getStringQueueToPool();
 
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -54,7 +54,7 @@ class RunnerTest {
     }
     @Test
     void testCheckPoolToHeal(){
-        PatientManager.getInstance().generateDemoPatientWith100SecEarly(6);
+        PatientManager.getInstance().generateDemoPatient(6);
         run.checkQueueToPool();
 
         Queue<Patient> patients = getPatientQueueToCheckString();
