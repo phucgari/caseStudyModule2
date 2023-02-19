@@ -21,10 +21,6 @@ public class HealingDoctorManager {
     public void serializeList(){
         serializer.writeObjects(healingDoctorList);
     }
-
-    public void setHealingDoctorList(List<HealingDoctor> healingDoctorList) {
-        this.healingDoctorList = healingDoctorList;
-    }
     public void flushHealingDoctorManager(){
         HealingDoctor doc1=new Dentist("Dentist1",2);
         HealingDoctor doc2=new Dentist("Dentist2", 3);
@@ -32,8 +28,8 @@ public class HealingDoctorManager {
         HealingDoctor doc4=new Gynecologist("Gynecologist2",1);
         HealingDoctor doc5=new Otolaryngologist("Otolaryngologist1",2);
         HealingDoctor doc6=new Otolaryngologist("Otolaryngologist2",2);
-        HealingDoctor doc7=new Urologists("Urologist1",1);
-        HealingDoctor doc8=new Urologists("Urologist2",3);
+        HealingDoctor doc7=new Urologist("Urologist1",1);
+        HealingDoctor doc8=new Urologist("Urologist2",3);
         HealingDoctor doc9=new Surgeon("Surgeon1",3);
         HealingDoctor doc10=new Surgeon("Surgeon2",4);
         List<HealingDoctor> list=new ArrayList<>();
@@ -55,5 +51,35 @@ public class HealingDoctorManager {
     public static HealingDoctorManager getInstance(){
         if(instance==null)instance=new HealingDoctorManager();
         return instance;
+    }
+
+    public void addDentist(String name, int exp) {
+        healingDoctorList.add(new Dentist(name,exp));
+        serializer.writeObjects(healingDoctorList);
+    }
+
+    public void addGynecologist(String name, int exp) {
+        healingDoctorList.add(new Gynecologist(name,exp));
+        serializer.writeObjects(healingDoctorList);
+    }
+
+    public void addUrologist(String name, int exp) {
+        healingDoctorList.add(new Urologist(name,exp));
+        serializer.writeObjects(healingDoctorList);
+    }
+
+    public void addOtolaryngologist(String name, int exp) {
+        healingDoctorList.add(new Otolaryngologist(name,exp));
+        serializer.writeObjects(healingDoctorList);
+    }
+
+    public void addSurgeon(String name, int exp) {
+        healingDoctorList.add(new Surgeon(name,exp));
+        serializer.writeObjects(healingDoctorList);
+    }
+
+    public void remove(int i) {
+        healingDoctorList.remove(i);
+        serializer.writeObjects(healingDoctorList);
     }
 }

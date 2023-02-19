@@ -12,7 +12,7 @@ public class DiseaseManager {
     private List<Disease> dentistDisease = Dentist.DISEASE_SERIALIZER.readObjects();
     private List<Disease> gynecologistDisease= Gynecologist.DISEASE_SERIALIZER.readObjects();
     private List<Disease> otolaryngologistDisease= Otolaryngologist.DISEASE_SERIALIZER.readObjects();
-    private List<Disease> urologistDisease= Urologists.DISEASE_SERIALIZER.readObjects();
+    private List<Disease> urologistDisease= Urologist.DISEASE_SERIALIZER.readObjects();
     private List<Disease> surgeonDisease=Surgeon.DISEASE_SERIALIZER.readObjects();
     private List<Disease> list=new ArrayList<>();
     private DiseaseManager(){

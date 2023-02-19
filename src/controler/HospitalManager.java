@@ -118,7 +118,7 @@ public class HospitalManager {
         HealingDoctor result=null;
         for (HealingDoctor doctor :
                 healingDoctorList) {
-            if (doctor instanceof Urologists){
+            if (doctor instanceof Urologist){
                 if(time==null){
                     time=doctor.getLastPatientTimer();
                     result=doctor;
@@ -197,7 +197,7 @@ public class HospitalManager {
     private HealingDoctor checkUrologistsIfEmpty(List<HealingDoctor> healingDoctorList) {
         for (HealingDoctor doctor :
                 healingDoctorList) {
-            if(doctor instanceof Urologists){
+            if(doctor instanceof Urologist){
                 if(doctor.getPatientQueue().isEmpty())return doctor;
             }
         }

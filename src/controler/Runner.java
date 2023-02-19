@@ -1,6 +1,7 @@
 package controler;
 
 import model.doctor.DiagnoseDoctor;
+import model.doctor.Disease;
 import model.patient.Patient;
 
 import java.time.LocalDateTime;

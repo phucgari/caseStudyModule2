@@ -2,7 +2,6 @@ package controler;
 
 import model.doctor.Disease;
 import model.doctor.HealingDoctor;
-import model.doctor.Urologists;
 import model.patient.Patient;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

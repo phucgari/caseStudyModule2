@@ -14,8 +14,8 @@ public class HealingDoctorCreated {
         HealingDoctor doc4=new Gynecologist("Gynecologist2",1);
         HealingDoctor doc5=new Otolaryngologist("Otolaryngologist1",2);
         HealingDoctor doc6=new Otolaryngologist("Otolaryngologist2",2);
-        HealingDoctor doc7=new Urologists("Urologist1",1);
-        HealingDoctor doc8=new Urologists("Urologist2",3);
+        HealingDoctor doc7=new Urologist("Urologist1",1);
+        HealingDoctor doc8=new Urologist("Urologist2",3);
         HealingDoctor doc9=new Surgeon("Surgeon1",3);
         HealingDoctor doc10=new Surgeon("Surgeon2",4);
         List<HealingDoctor> list=new ArrayList<>();

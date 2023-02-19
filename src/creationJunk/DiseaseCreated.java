@@ -4,7 +4,7 @@ import model.doctor.Dentist;
 import model.doctor.Disease;
 import model.doctor.Surgeon;
 import model.doctor.Gynecologist;
-import model.doctor.Urologists;
+import model.doctor.Urologist;
 import model.doctor.Otolaryngologist;
 
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class DiseaseCreated {
         List<Disease> arrayList2=new ArrayList<>();
         arrayList2.add(new Disease("Rối loạn cương dương",9));
         arrayList2.add(new Disease("Vô sinh",19));
-        Urologists.DISEASE_SERIALIZER.writeObjects(arrayList2);
+        Urologist.DISEASE_SERIALIZER.writeObjects(arrayList2);
 
         List<Disease> arrayList3=new ArrayList<>();
         arrayList3.add(new Disease("Đau họng",13));

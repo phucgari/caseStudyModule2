@@ -6,14 +6,13 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 import java.util.PriorityQueue;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class UrologistsTest {
-    Urologists demo1=new Urologists();
-    Urologists demo2=new Urologists("test2",4);
+class UrologistTest {
+    Urologist demo1=new Urologist();
+    Urologist demo2=new Urologist("test2",4);
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     @BeforeEach
     void init(){
@@ -38,9 +37,9 @@ class UrologistsTest {
     }
     @Test
     void testToString(){
-        String result="Urologists name='test1' Experience: Fresher";
+        String result="Urologist name='test1' Experience: Fresher";
         assertEquals(demo1.toString(),result);
-        result="Urologists name='test2' Experience: Leader";
+        result="Urologist name='test2' Experience: Leader";
         assertEquals(demo2.toString(),result);
     }
     @Test

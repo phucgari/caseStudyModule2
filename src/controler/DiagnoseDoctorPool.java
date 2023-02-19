@@ -61,9 +61,16 @@ public class DiagnoseDoctorPool {
     public boolean releasePatient(){
 //        throw exception if no inuse Doctor
         if(inuse.isEmpty())throw new RuntimeException("No Inuse Doctor");
-        DiagnoseDoctor doctor=inuse.remove();
+        DiagnoseDoctor doctor=inuse.peek();
         Patient patient=doctor.getCurrent();
         Disease disease=randomDisease(patient.getGender());
+        HospitalManager hospitalManager = HospitalManager.getInstance();
+
+        HealingDoctor healingDoctorChosen= hospitalManager.giveDiseaseGetHealingDoc(disease);
+        if (healingDoctorChosen==null){
+            return false;
+        }
+        inuse.remove();
         patient.setDisease(disease);
         doctor.setCurrent(new Patient("prevent null",true));
         for (DiagnoseDoctor diagnoseDoctor :
@@ -72,7 +79,6 @@ public class DiagnoseDoctorPool {
                 available.add(doctor);
             }
         }
-        LocalDateTime patientTime=patient.getSessionTime();
 //        transferDocFromInUseToAvailable
 //        change Patient Disease
 //        change Patient sessionTime
@@ -81,9 +87,7 @@ public class DiagnoseDoctorPool {
             System.out.printf("%s: %-40s go from %-60s with %-50s to %-60s with %-50s"+newLine, LocalDateTime.now().format(formatter),patient,doctor,"No Disease","out of Hospital","No Disease");
             return false;
         }
-        HospitalManager hospitalManager = HospitalManager.getInstance();
-        LocalDateTime now=LocalDateTime.now();
-        HealingDoctor healingDoctorChosen= hospitalManager.giveDiseaseGetHealingDoc(disease);
+
         healingDoctorChosen.takePatient(patient);
             System.out.printf("%s: %-40s go from %-60s with %-50s to %-60s with %-50s newSessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,doctor,"No Disease",healingDoctorChosen,patient.getDisease(),healingDoctorChosen.getLastPatientTimer().format(formatter));
         return true;
