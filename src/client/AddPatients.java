@@ -15,6 +15,7 @@ public class AddPatients {
         hospitalManager.flushAll();
         runner.start();
         boolean on=true;
+        patientManager.generateDemoPatient(5);
         while (on){
             patientManager.addPatientQueue(inputPatient());
         }

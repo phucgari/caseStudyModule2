@@ -5,12 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5c09889-f280-4659-afdb-800a75eb4578" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/client/main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/AddPatients.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/AddPatients.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controler/PatientManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controler/PatientManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controler/DiagnoseDoctorPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controler/DiagnoseDoctorPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controler/HospitalManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controler/HospitalManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controler/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controler/Runner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data/diagnoseDoctorLists/diagnoseDoctorAvailable.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/diagnoseDoctorLists/diagnoseDoctorAvailable.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data/healingDoctorList.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/healingDoctorList.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/doctor/DiagnoseDoctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/doctor/DiagnoseDoctor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/doctor/Doctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/doctor/Doctor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controler/DiagnoseDoctorPoolTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controler/DiagnoseDoctorPoolTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controler/HealingDoctorManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controler/HealingDoctorManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controler/HospitalManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controler/HospitalManagerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/controler/RunnerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controler/RunnerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/model/doctor/DentistTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/doctor/DentistTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/model/doctor/DiagnoseDoctorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/doctor/DiagnoseDoctorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/model/doctor/GynecologistTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/doctor/GynecologistTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/model/doctor/OtolaryngologistTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/doctor/OtolaryngologistTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/model/doctor/SurgeonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/doctor/SurgeonTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/model/doctor/UrologistsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/doctor/UrologistsTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,32 +53,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/1.knowledge/code/caseStudyModule2&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "last_opened_file_path": "D:/1.knowledge/code/caseStudyModule2",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="model.doctor" />
@@ -90,11 +104,26 @@
       <recent name="model.patient" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.All in caseStudy">
     <configuration name="All in caseStudy" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="caseStudy" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HospitalManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="caseStudy" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controler.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controler" />
+      <option name="MAIN_CLASS_NAME" value="controler.HospitalManagerTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -114,7 +143,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RunnerTest.testALLINLarge" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RunnerTest.testCheckHealToOut" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="caseStudy" />
       <extension name="coverage">
         <pattern>
@@ -124,23 +153,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="controler" />
       <option name="MAIN_CLASS_NAME" value="controler.RunnerTest" />
-      <option name="METHOD_NAME" value="testALLINLarge" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RunnerTest.testAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="caseStudy" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="controler.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="controler" />
-      <option name="MAIN_CLASS_NAME" value="controler.RunnerTest" />
-      <option name="METHOD_NAME" value="testAll" />
+      <option name="METHOD_NAME" value="testCheckHealToOut" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -165,10 +178,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in caseStudy" />
-        <item itemvalue="JUnit.RunnerTest.testALLINLarge" />
-        <item itemvalue="JUnit.RunnerTest.testAll" />
+        <item itemvalue="JUnit.RunnerTest.testCheckHealToOut" />
         <item itemvalue="JUnit.RunnerTest.testCheckPoolToHeal" />
         <item itemvalue="JUnit.RunnerTest" />
+        <item itemvalue="JUnit.HospitalManagerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -189,7 +202,9 @@
       <workItem from="1676423677565" duration="4679000" />
       <workItem from="1676431074328" duration="21320000" />
       <workItem from="1676610403448" duration="15023000" />
-      <workItem from="1676701744426" duration="22230000" />
+      <workItem from="1676701744426" duration="22624000" />
+      <workItem from="1676773053438" duration="283000" />
+      <workItem from="1676773675304" duration="16063000" />
     </task>
     <servers />
   </component>
@@ -211,6 +226,15 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/controler/HospitalManager.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="model.doctor.DiagnoseDoctor" memberName="current" />

@@ -65,8 +65,7 @@ class HospitalManagerTest {
         healer.takePatient(patient);
 
         tester.checkPatientInHealer();
-        String expected=LocalDateTime.now().format(formatter)+": "+"Patient{name='adam', gender=male} has cured Disease{name='Làm răng giả', cureTime=20} " +
-                "at "+ patient.getSessionTime().format(formatter) + " by Dentist name='Dentist1' Experience: Junior\n"+newLine;
+        String expected=String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s newSessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,healer,patient.getDisease(),"out of hospital", "No Disease",patient.getSessionTime().format(formatter));
         assertEquals(expected, outContent.toString());
     }
     @Test
@@ -90,9 +89,8 @@ class HospitalManagerTest {
         tester.checkPatientInHealer();
 
 
-        String expected=LocalDateTime.now().format(formatter)+": "+"Patient{name='adam', gender=male} has cured Disease{name='Làm răng giả', cureTime=20} " +
-                "at "+ patient.getSessionTime().format(formatter) + " by Dentist name='Dentist2' Experience: Senior\n"+newLine+
-                LocalDateTime.now().format(formatter)+": "+"Patient{name='eva', gender=female} has cured Disease{name='Vô sinh', cureTime=19} at " +patient2.getSessionTime().format(formatter)+ " by Urologists name='Urologist2' Experience: Senior\n"+newLine;
+        String expected=String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s newSessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,"Dentist name='Dentist2' Experience: Senior",patient.getDisease(),"out of hospital", "No Disease",patient.getSessionTime().format(formatter));
+        expected+=String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s newSessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),"Patient{name='eva', gender=female}",healer,"Disease{name='Vô sinh', cureTime=19}","out of hospital", "No Disease",patient2.getSessionTime().format(formatter));
         assertEquals(expected, outContent.toString());
     }
 }

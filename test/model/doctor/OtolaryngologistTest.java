@@ -38,9 +38,9 @@ class OtolaryngologistTest {
     }
     @Test
     void testToString(){
-        String result="Otolaryngologist name='test1' Experience: Senior\n";
+        String result="Otolaryngologist name='test1' Experience: Senior";
         assertEquals(demo1.toString(),result);
-        result="Otolaryngologist name='test2' Experience: Junior\n";
+        result="Otolaryngologist name='test2' Experience: Junior";
         assertEquals(demo2.toString(),result);
     }
     @Test

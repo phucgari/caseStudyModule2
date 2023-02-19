@@ -35,6 +35,6 @@ public abstract class Doctor implements Serializable {
     @Override
     public String toString() {
         return  "name='" + name + '\''
-                + experience +"\n";
+                + experience ;
     }
 }

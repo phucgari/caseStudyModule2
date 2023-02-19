@@ -11,6 +11,7 @@ import java.util.PriorityQueue;
 public class HospitalManager {
     private static HospitalManager instance;
 
+    private String newLine = System.getProperty("line.separator");
     private HospitalManager() {}
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     public static HospitalManager getInstance() {
@@ -27,7 +28,7 @@ public class HospitalManager {
                 LocalDateTime patientSessionTime = queue.peek().getSessionTime();
                 if (patientSessionTime.isBefore(now)) {
                     Patient patient = queue.remove();
-                    System.out.println(LocalDateTime.now().format(formatter)+": "+patient + " has cured " + patient.getDisease() + " at " + patient.getSessionTime().format(formatter) + " by " + healer);
+                    System.out.printf("%s: %-40s go from %-60s with %-50s to %-60s with %-50s newSessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,healer,patient.getDisease(),"out of hospital","No Disease",patient.getSessionTime().format(formatter));
                     HealingDoctorManager.getInstance().serializeList();
                 }else break;
             }

@@ -56,16 +56,11 @@ class DiagnoseDoctorPoolTest {
             tester.getPatient();
         }
         PriorityQueue<DiagnoseDoctor> queue = tester.getInuse();
-        assertEquals("DiagnoseDoctor name='Diag4' Experience: Leader\n", queue.remove().toString());
-        assertEquals("DiagnoseDoctor name='Diag3' Experience: Senior\n", queue.remove().toString());
-        if(queue.peek().toString().equals("DiagnoseDoctor name='Diag5' Experience: Junior\n")) {
-            assertEquals("DiagnoseDoctor name='Diag5' Experience: Junior\n", queue.remove().toString());
-            assertEquals("DiagnoseDoctor name='Diag2' Experience: Junior\n", queue.remove().toString());
-        }else{
-            assertEquals("DiagnoseDoctor name='Diag2' Experience: Junior\n", queue.remove().toString());
-            assertEquals("DiagnoseDoctor name='Diag5' Experience: Junior\n", queue.remove().toString());
-        }
-        assertEquals("DiagnoseDoctor name='Diag1' Experience: Fresher\n", queue.remove().toString());
+        assertEquals("DiagnoseDoctor name='Diag4' Experience: Leader", queue.remove().toString());
+        assertEquals("DiagnoseDoctor name='Diag3' Experience: Senior", queue.remove().toString());
+        assertEquals("DiagnoseDoctor name='Diag2' Experience: Junior", queue.remove().toString());
+        assertEquals("DiagnoseDoctor name='Diag5' Experience: Junior", queue.remove().toString());
+        assertEquals("DiagnoseDoctor name='Diag1' Experience: Fresher", queue.remove().toString());
     }
     @Test
     void testRelease1Patient(){
@@ -97,7 +92,9 @@ class DiagnoseDoctorPoolTest {
         assertEquals("prevent null",doctor.getCurrent().getName());
         if (!result){
             String resultStr=outContent.toString();
-            assertEquals(LocalDateTime.now().format(formatter)+": "+patient+ " have no Disease"+newLine,resultStr);
+
+            String expected=String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s"+newLine, LocalDateTime.now().format(formatter),patient,doctor,"No Disease","out of Hospital","No Disease");
+            assertEquals(expected,resultStr);
             System.setOut(originalOut);
             return;
         }
@@ -108,7 +105,7 @@ class DiagnoseDoctorPoolTest {
         assertEquals(patient.getSessionTime(),healingDoctor.getLastPatientTimer());
 //        Serialize
         assertTrue(HealingDoctorManager.getInstance().getHealingDoctorList().contains(healingDoctor));
-        String str =LocalDateTime.now().format(formatter)+": "+ patient + " diagnose as " + patient.getDisease().getName() + " and send to " + healingDoctor.getName() + " estimate Session Time " + healingDoctor.getLastPatientTimer().format(formatter) + newLine;
+        String str =String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s newSessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,doctor,"No Disease",healingDoctor,patient.getDisease(),patient.getSessionTime().format(formatter));
         String newContent=outContent.toString();
         assertEquals(str,newContent);
         System.setOut(originalOut);

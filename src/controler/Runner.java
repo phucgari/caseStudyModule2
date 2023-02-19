@@ -14,6 +14,7 @@ public class Runner extends Thread{
     private final HealingDoctorManager healingDoctorManager=HealingDoctorManager.getInstance();
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private boolean onOff=true;
+    private String newLine = System.getProperty("line.separator");
 
     public Runner() {}
 
@@ -57,7 +58,7 @@ public class Runner extends Thread{
             Patient patient=patientPriorityQueue.peek();
             DiagnoseDoctor doctor=availableQueue.peek();
             pool.getPatient();
-            System.out.println(LocalDateTime.now().format(formatter)+": "+patient+ " started diagnose, finish at " +patient.getSessionTime().format(formatter)+" by "+doctor);
+            System.out.printf("%s: %-40s go from %-60s with %-50s to %-60s with %-50s newSessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,"Queue","No Disease",doctor,"No Disease",patient.getSessionTime().format(formatter));
             pool.saveAvailableInuse();
         }
     }

@@ -38,9 +38,9 @@ class UrologistsTest {
     }
     @Test
     void testToString(){
-        String result="Urologists name='test1' Experience: Fresher\n";
+        String result="Urologists name='test1' Experience: Fresher";
         assertEquals(demo1.toString(),result);
-        result="Urologists name='test2' Experience: Leader\n";
+        result="Urologists name='test2' Experience: Leader";
         assertEquals(demo2.toString(),result);
     }
     @Test

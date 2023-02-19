@@ -22,6 +22,7 @@ public class DiagnoseDoctorPool {
     private PriorityQueue<DiagnoseDoctor> available= DIAGNOSE_DOCTOR_AVAILABLE.readObjects();
     private PriorityQueue<DiagnoseDoctor> inuse= DIAGNOSE_DOCTOR_INUSE.readObjects();
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    private String newLine = System.getProperty("line.separator");
 
     private DiagnoseDoctorPool(){}
 
@@ -65,15 +66,14 @@ public class DiagnoseDoctorPool {
 //        change Patient sessionTime
 //        change diagnoseDoc current to null
         if (disease.getName().equals("No Disease")){
-            System.out.println(LocalDateTime.now().format(formatter)+": "+patient+" have no Disease");
+            System.out.printf("%s: %-40s go from %-60s with %-50s to %-60s with %-50s"+newLine, LocalDateTime.now().format(formatter),patient,doctor,"No Disease","out of Hospital","No Disease");
             return false;
         }
         HospitalManager hospitalManager = HospitalManager.getInstance();
         LocalDateTime now=LocalDateTime.now();
         HealingDoctor healingDoctorChosen= hospitalManager.giveDiseaseGetHealingDoc(disease);
         healingDoctorChosen.takePatient(patient);
-        String str =LocalDateTime.now().format(formatter)+": "+patient + " diagnose as " + patient.getDisease().getName() + " and send to " + healingDoctorChosen.getName() + " estimate Session Time " + patient.getSessionTime().format(formatter);
-        System.out.println(str);
+            System.out.printf("%s: %-40s go from %-60s with %-50s to %-60s with %-50s newSessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,doctor,"No Disease",healingDoctorChosen,patient.getDisease(),healingDoctorChosen.getLastPatientTimer().format(formatter));
         return true;
 //        chose HealingDoc to push
 //        then push Patient to HealingDocQueue

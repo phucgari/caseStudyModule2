@@ -26,6 +26,7 @@ public class DiagnoseDoctor extends Doctor implements Comparable<DiagnoseDoctor>
 
     @Override
     public int compareTo(DiagnoseDoctor o) {
+        if(current.getSessionTime().isEqual(o.getCurrent().getSessionTime()))return getName().compareTo(o.getName());
         return current.compareTo(o.getCurrent());
     }
 }
