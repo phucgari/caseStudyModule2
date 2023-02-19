@@ -3,6 +3,8 @@ package creationJunk;
 import controler.DiagnoseDoctorPool;
 import model.doctor.DiagnoseDoctor;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.PriorityQueue;
 
 
@@ -13,7 +15,7 @@ public class DiagnoseDoctorCreated {
         DiagnoseDoctor doctor3=new DiagnoseDoctor("Diag3",3);
         DiagnoseDoctor doctor4=new DiagnoseDoctor("Diag4",4);
         DiagnoseDoctor doctor5=new DiagnoseDoctor("Diag5",2);
-        PriorityQueue<DiagnoseDoctor> doctors=new PriorityQueue<>();
+        List<DiagnoseDoctor> doctors=new ArrayList<>();
         doctors.add(doctor1);
         doctors.add(doctor5);
         doctors.add(doctor2);
@@ -24,6 +26,5 @@ public class DiagnoseDoctorCreated {
 //            System.out.println(doctors.remove().getCurrent().getSessionTime());
 //        }
         DiagnoseDoctorPool.DIAGNOSE_DOCTOR_LIST.writeObjects(doctors);
-
     }
 }

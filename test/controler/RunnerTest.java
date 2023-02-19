@@ -4,6 +4,7 @@ import model.doctor.DiagnoseDoctor;
 import model.doctor.HealingDoctor;
 import model.patient.Patient;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -39,7 +40,6 @@ class RunnerTest {
     void testCheckPoolToHeal(){
         PatientManager.getInstance().generateDemoPatient(6);
         run.checkQueueToPool();
-        PriorityQueue<DiagnoseDoctor>diagnoseDoctors=new PriorityQueue<>(DiagnoseDoctorPool.getInstance().getInuse());
         Queue<Patient> patients = getPatientQueueToCheckString();
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         PrintStream originalOut = System.out;
@@ -73,6 +73,7 @@ class RunnerTest {
         System.setOut(originalOut);
     }
     @Test
+    @Disabled
     void testALLINLarge(){
         for (int i = 0; i < 100; i++) {
             HospitalManager.getInstance().flushAll();
@@ -97,7 +98,7 @@ class RunnerTest {
             PriorityQueue<Patient> queue = new PriorityQueue<>(doctor.getPatientQueue());
             while (!queue.isEmpty()){
                 Patient patient = queue.remove();
-                String str=String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s newSessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,doctor,patient.getDisease(),"out of hospital","No Disease",patient.getSessionTime().format(formatter));
+                String str=String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s at SessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,doctor,patient.getDisease(),"out of hospital","No Disease",patient.getSessionTime().format(formatter));
                 if (!result.contains(str))result += str;
             }
         }

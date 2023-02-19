@@ -1,5 +1,7 @@
 package inputOutPut;
 
+import model.doctor.DiagnoseDoctor;
+
 import java.io.*;
 import java.util.PriorityQueue;
 

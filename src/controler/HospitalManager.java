@@ -5,6 +5,7 @@ import model.patient.Patient;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
 
@@ -28,7 +29,7 @@ public class HospitalManager {
                 LocalDateTime patientSessionTime = queue.peek().getSessionTime();
                 if (patientSessionTime.isBefore(now)) {
                     Patient patient = queue.remove();
-                    System.out.printf("%s: %-40s go from %-60s with %-50s to %-60s with %-50s newSessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,healer,patient.getDisease(),"out of hospital","No Disease",patient.getSessionTime().format(formatter));
+                    System.out.printf("%s: %-40s go from %-60s with %-50s to %-60s with %-50s at SessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,healer,patient.getDisease(),"out of hospital","No Disease",patient.getSessionTime().format(formatter));
                     HealingDoctorManager.getInstance().serializeList();
                 }else break;
             }
@@ -38,6 +39,18 @@ public class HospitalManager {
         DiagnoseDoctorPool.getInstance().flushAvailableInuse();
         PatientManager.getInstance().emptyPatientQueue();
         HealingDoctorManager.getInstance().flushHealingDoctorManager();
+        DiagnoseDoctor doctor1=new DiagnoseDoctor("Diag1",1);
+        DiagnoseDoctor doctor2=new DiagnoseDoctor("Diag2",2);
+        DiagnoseDoctor doctor3=new DiagnoseDoctor("Diag3",3);
+        DiagnoseDoctor doctor4=new DiagnoseDoctor("Diag4",4);
+        DiagnoseDoctor doctor5=new DiagnoseDoctor("Diag5",2);
+        List<DiagnoseDoctor> doctors=new ArrayList<>();
+        doctors.add(doctor1);
+        doctors.add(doctor5);
+        doctors.add(doctor2);
+        doctors.add(doctor3);
+        doctors.add(doctor4);
+        DiagnoseDoctorPool.DIAGNOSE_DOCTOR_LIST.writeObjects(doctors);
     }
     public HealingDoctor giveDiseaseGetHealingDoc(Disease disease) {
         //        chose HealingDoc to push

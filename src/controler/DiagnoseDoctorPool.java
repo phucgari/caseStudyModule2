@@ -1,6 +1,7 @@
 package controler;
 
 import inputOutPut.QueueSerializer;
+import inputOutPut.Serializer;
 import model.doctor.DiagnoseDoctor;
 import model.doctor.Disease;
 import model.doctor.HealingDoctor;
@@ -8,15 +9,14 @@ import model.patient.Patient;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Random;
+import java.util.*;
 
 // design pattern Object pool
 public class DiagnoseDoctorPool {
     static private DiagnoseDoctorPool instance;
     private static final String linkToDiagnoseDoctorListAndQueue="src/data/diagnoseDoctorLists";
-    public static final QueueSerializer<DiagnoseDoctor> DIAGNOSE_DOCTOR_LIST =new QueueSerializer<>(linkToDiagnoseDoctorListAndQueue+"/diagnoseDoctorList.dat");
+    public static final Serializer<DiagnoseDoctor> DIAGNOSE_DOCTOR_LIST =new Serializer<>(linkToDiagnoseDoctorListAndQueue+"/diagnoseDoctorList.dat");
+    private List<DiagnoseDoctor> list=new LinkedList<>(DIAGNOSE_DOCTOR_LIST.readObjects());
     public static final QueueSerializer<DiagnoseDoctor> DIAGNOSE_DOCTOR_AVAILABLE =new QueueSerializer<>(linkToDiagnoseDoctorListAndQueue+"/diagnoseDoctorAvailable.dat");
     public static final QueueSerializer<DiagnoseDoctor> DIAGNOSE_DOCTOR_INUSE =new QueueSerializer<>(linkToDiagnoseDoctorListAndQueue+"/diagnoseDoctorInuse.dat");
     private PriorityQueue<DiagnoseDoctor> available= DIAGNOSE_DOCTOR_AVAILABLE.readObjects();
@@ -31,6 +31,13 @@ public class DiagnoseDoctorPool {
         return instance;
     }
 
+    public List<DiagnoseDoctor> getList() {
+        return list;
+    }
+    public void removeDiagnoseDoctor(int index){
+        list.remove(index);
+        DIAGNOSE_DOCTOR_LIST.writeObjects(list);
+    }
     public PriorityQueue<DiagnoseDoctor> getAvailable() {
         return available;
     }
@@ -59,7 +66,12 @@ public class DiagnoseDoctorPool {
         Disease disease=randomDisease(patient.getGender());
         patient.setDisease(disease);
         doctor.setCurrent(new Patient("prevent null",true));
-        available.add(doctor);
+        for (DiagnoseDoctor diagnoseDoctor :
+                list) {
+            if(diagnoseDoctor.getName().equals(doctor.getName())){
+                available.add(doctor);
+            }
+        }
         LocalDateTime patientTime=patient.getSessionTime();
 //        transferDocFromInUseToAvailable
 //        change Patient Disease
@@ -104,11 +116,21 @@ public class DiagnoseDoctorPool {
         }
         return result;
     }
-
     public void flushAvailableInuse(){
-        DIAGNOSE_DOCTOR_AVAILABLE.writeObjects(DIAGNOSE_DOCTOR_LIST.readObjects());
+        PriorityQueue<DiagnoseDoctor> queue=new PriorityQueue<>();
+        for (DiagnoseDoctor doctor :
+                list) {
+            queue.add(doctor);
+        }
+        DIAGNOSE_DOCTOR_AVAILABLE.writeObjects(queue);
         DIAGNOSE_DOCTOR_INUSE.writeObjects(new PriorityQueue<>());
         inuse=new PriorityQueue<>();
         available=DIAGNOSE_DOCTOR_AVAILABLE.readObjects();
+    }
+    public void addNewDiagnoseDoctor(DiagnoseDoctor doctor) {
+        list.add(doctor);
+        DIAGNOSE_DOCTOR_LIST.writeObjects(list);
+        available.add(doctor);
+        DIAGNOSE_DOCTOR_AVAILABLE.writeObjects(available);
     }
 }

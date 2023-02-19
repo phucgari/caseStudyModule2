@@ -1,5 +1,6 @@
 package client;
 
+import controler.DiagnoseDoctorPool;
 import controler.HospitalManager;
 import controler.PatientManager;
 import controler.Runner;
@@ -12,11 +13,18 @@ public class AddPatients {
     static PatientManager patientManager = PatientManager.getInstance();
     public static void main(String[] args) {
         Runner runner=new Runner();
-        hospitalManager.flushAll();
+//        hospitalManager.flushAll();
+        DiagnoseDoctorPool.getInstance().flushAvailableInuse();
         runner.start();
         boolean on=true;
-        patientManager.generateDemoPatient(5);
+        patientManager.generateDemoPatient(7);
         while (on){
+            System.out.println("Adding Patient");
+            System.out.println("Do you want to quit?");
+            System.out.println("q for quit,other for add");
+            Scanner scanner=new Scanner(System.in);
+            String q=scanner.nextLine();
+            if(q.equals("q"))break;
             patientManager.addPatientQueue(inputPatient());
         }
         runner.switchOnOff();
@@ -24,7 +32,7 @@ public class AddPatients {
 
     private static Patient inputPatient() {
         Scanner scanner=new Scanner(System.in);
-        System.out.println("input name");
+        System.out.println("Input Patient name");
         String name= scanner.nextLine();
         int input=-1;
         while (input>1||input<0){

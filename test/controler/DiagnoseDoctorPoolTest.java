@@ -74,6 +74,15 @@ class DiagnoseDoctorPoolTest {
         testReleasePatient();
         testReleasePatient();
     }
+    @Test
+    void testRemoveDoc(){
+        tester.removeDiagnoseDoctor(0);
+        assertEquals("[DiagnoseDoctor name='Diag5' Experience: Junior, DiagnoseDoctor name='Diag2' Experience: Junior, DiagnoseDoctor name='Diag3' Experience: Senior, DiagnoseDoctor name='Diag4' Experience: Leader]",tester.getList().toString());
+        tester.removeDiagnoseDoctor(3);
+        assertEquals("[DiagnoseDoctor name='Diag5' Experience: Junior, DiagnoseDoctor name='Diag2' Experience: Junior, DiagnoseDoctor name='Diag3' Experience: Senior]",tester.getList().toString());
+        tester.removeDiagnoseDoctor(1);
+        assertEquals("[DiagnoseDoctor name='Diag5' Experience: Junior, DiagnoseDoctor name='Diag3' Experience: Senior]",tester.getList().toString());
+    }
 
     private void testReleasePatient() {
         int availSize=tester.getAvailable().size();
