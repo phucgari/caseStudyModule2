@@ -3,6 +3,7 @@ package controler;
 import model.doctor.*;
 import model.patient.Patient;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -22,9 +23,9 @@ class DiagnoseDoctorPoolTest {
     private String newLine = System.getProperty("line.separator");
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-    @BeforeEach
-    public void setUpStreams() {
-
+    @BeforeAll
+    public static void setUpStreams() {
+        HospitalManager.getInstance().flushAll();
     }
     @AfterEach
     void end(){

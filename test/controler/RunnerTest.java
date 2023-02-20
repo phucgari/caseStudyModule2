@@ -4,6 +4,7 @@ import model.doctor.DiagnoseDoctor;
 import model.doctor.HealingDoctor;
 import model.patient.Patient;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -19,6 +20,10 @@ class RunnerTest {
     Runner run=new Runner();
     private String newLine = System.getProperty("line.separator");
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    @BeforeAll
+    static void begin(){
+        HospitalManager.getInstance().flushAll();
+    }
     @AfterEach
     void end(){
         HospitalManager.getInstance().flushAll();

@@ -67,7 +67,7 @@ public class DiagnoseDoctorPool {
         HospitalManager hospitalManager = HospitalManager.getInstance();
 
         HealingDoctor healingDoctorChosen= hospitalManager.giveDiseaseGetHealingDoc(disease);
-        if (healingDoctorChosen==null){
+        if (healingDoctorChosen==null&&!disease.getName().equals("No Disease")){
             return false;
         }
         inuse.remove();
