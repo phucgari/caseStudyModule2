@@ -1,5 +1,6 @@
 package controler;
 
+import inputOutPut.FileReaderWriter;
 import inputOutPut.QueueSerializer;
 import inputOutPut.Serializer;
 import model.doctor.DiagnoseDoctor;
@@ -23,6 +24,7 @@ public class DiagnoseDoctorPool {
     private PriorityQueue<DiagnoseDoctor> inuse= DIAGNOSE_DOCTOR_INUSE.readObjects();
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private String newLine = System.getProperty("line.separator");
+    FileReaderWriter fileReaderWriter=new FileReaderWriter("src/data/sout.txt");
 
     private DiagnoseDoctorPool(){}
 
@@ -67,7 +69,7 @@ public class DiagnoseDoctorPool {
 
         HealingDoctor healingDoctorChosen= hospitalManager.giveDiseaseGetHealingDoc(disease);
         if (healingDoctorChosen==null&&!disease.getName().equals("No Disease")){
-            System.err.println(patient+"do not have the suitable doctor, "+disease);
+            fileReaderWriter.write(patient+"do not have the suitable doctor, "+disease+newLine);
             return false;
         }
         inuse.remove();
@@ -80,12 +82,14 @@ public class DiagnoseDoctorPool {
             }
         }
         if (disease.getName().equals("No Disease")){
-            System.out.printf("%s: %-40s go from %-60s with %-50s to %-60s with %-50s"+newLine, LocalDateTime.now().format(formatter),patient,doctor,"No Disease","out of Hospital","No Disease");
+            String str=String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s"+newLine, LocalDateTime.now().format(formatter),patient,doctor,"No Disease","out of Hospital","No Disease");
+            fileReaderWriter.write(str);
             return false;
         }
 
         healingDoctorChosen.takePatient(patient);
-            System.out.printf("%s: %-40s go from %-60s with %-50s to %-60s with %-50s newSessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,doctor,"No Disease",healingDoctorChosen,patient.getDisease(),healingDoctorChosen.getLastPatientTimer().format(formatter));
+        String str=String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s newSessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,doctor,"No Disease",healingDoctorChosen,patient.getDisease(),healingDoctorChosen.getLastPatientTimer().format(formatter));
+        fileReaderWriter.write(str);
         return true;
     }
     public void saveAvailableInuse(){

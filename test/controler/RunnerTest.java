@@ -1,5 +1,6 @@
 package controler;
 
+import inputOutPut.FileReaderWriter;
 import model.doctor.DiagnoseDoctor;
 import model.doctor.HealingDoctor;
 import model.patient.Patient;
@@ -8,8 +9,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -20,12 +19,15 @@ class RunnerTest {
     Runner run=new Runner();
     private String newLine = System.getProperty("line.separator");
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    static FileReaderWriter readerWriter=new FileReaderWriter("src/data/sout.txt");
     @BeforeAll
     static void begin(){
+        readerWriter.delete();
         HospitalManager.getInstance().flushAll();
     }
     @AfterEach
     void end(){
+        readerWriter.delete();
         HospitalManager.getInstance().flushAll();
     }
     @Test
@@ -34,34 +36,24 @@ class RunnerTest {
         PatientManager.getInstance().generateDemoPatient(6);
         String result = getStringQueueToPool();
 
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        PrintStream originalOut = System.out;
-        System.setOut(new PrintStream(outContent));
         run.checkQueueToPool();
-        assertEquals(result,outContent.toString());
-        System.setOut(originalOut);
+        assertEquals(result,readerWriter.read());
     }
     @Test
     void testCheckPoolToHeal(){
         PatientManager.getInstance().generateDemoPatient(6);
         run.checkQueueToPool();
         Queue<Patient> patients = getPatientQueueToCheckString();
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        PrintStream originalOut = System.out;
-        System.setOut(new PrintStream(outContent));
+        readerWriter.delete();
         run.checkPoolToHeal();
         String result = getStringPoolToHeal(patients);
 
-        assertEquals(result,outContent.toString());
-        System.setOut(originalOut);
+        assertEquals(result,readerWriter.read());
     }
 
     @Test
     void testAll(){
         PatientManager.getInstance().generateDemoPatient(6);
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        PrintStream originalOut = System.out;
-        System.setOut(new PrintStream(outContent));
 
         String result="";
         result+=getStringQueueToPool();
@@ -69,19 +61,18 @@ class RunnerTest {
 
         Queue<Patient>patients=getPatientQueueToCheckString();
         run.checkPoolToHeal();
-
         result+=getStringPoolToHeal(patients);
         result+=getStringHealToOut();
         run.checkHealToOut();
 
-        assertEquals(result,outContent.toString());
-        System.setOut(originalOut);
+        assertEquals(result,readerWriter.read());
     }
     @Test
     @Disabled
     void testALLINLarge(){
         for (int i = 0; i < 100; i++) {
             HospitalManager.getInstance().flushAll();
+            readerWriter.delete();
             testAll();
         }
     }

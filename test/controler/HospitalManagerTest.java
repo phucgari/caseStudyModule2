@@ -1,5 +1,6 @@
 package controler;
 
+import inputOutPut.FileReaderWriter;
 import model.doctor.Disease;
 import model.doctor.HealingDoctor;
 import model.patient.Patient;
@@ -18,19 +19,17 @@ import static org.junit.jupiter.api.Assertions.*;
 class HospitalManagerTest {
     HospitalManager tester=HospitalManager.getInstance();
     List<HealingDoctor> healingDoctorList=HealingDoctorManager.getInstance().getHealingDoctorList();
-    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final PrintStream originalOut = System.out;
+    FileReaderWriter readerWriter=new FileReaderWriter("src/data/sout.txt");
     private String newLine = System.getProperty("line.separator");
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     @BeforeEach
     public void setUpStreams() {
-        System.setOut(new PrintStream(outContent));
+        readerWriter.delete();
     }
     @AfterEach
     void end(){
         HospitalManager.getInstance().flushAll();
-        System.setOut(originalOut);
     }
     @Test
     void testGetDocFromDisease(){
@@ -65,7 +64,7 @@ class HospitalManagerTest {
 
         tester.checkPatientInHealer();
         String expected=String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s at SessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,healer,patient.getDisease(),"out of hospital", "No Disease",patient.getSessionTime().format(formatter));
-        assertEquals(expected, outContent.toString());
+        assertEquals(expected, readerWriter.read());
     }
     @Test
     void testCheck2PatientInHealer(){
@@ -90,6 +89,6 @@ class HospitalManagerTest {
 
         String expected=String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s at SessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,"Dentist name='Dentist2' Experience: Senior",patient.getDisease(),"out of hospital", "No Disease",patient.getSessionTime().format(formatter));
         expected+=String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s at SessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),"Patient{name='eva', gender=female}",healer,"Disease{name='Vô sinh', cureTime=19}","out of hospital", "No Disease",patient2.getSessionTime().format(formatter));
-        assertEquals(expected, outContent.toString());
+        assertEquals(expected, readerWriter.read());
     }
 }

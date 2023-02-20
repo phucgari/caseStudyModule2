@@ -1,5 +1,6 @@
 package controler;
 
+import inputOutPut.FileReaderWriter;
 import model.doctor.*;
 import model.patient.Patient;
 
@@ -13,6 +14,7 @@ public class HospitalManager {
     private static HospitalManager instance;
 
     private String newLine = System.getProperty("line.separator");
+    FileReaderWriter fileReaderWriter=new FileReaderWriter("src/data/sout.txt");
     private HospitalManager() {}
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     public static HospitalManager getInstance() {
@@ -29,7 +31,8 @@ public class HospitalManager {
                 LocalDateTime patientSessionTime = queue.peek().getSessionTime();
                 if (patientSessionTime.isBefore(now)) {
                     Patient patient = queue.remove();
-                    System.out.printf("%s: %-40s go from %-60s with %-50s to %-60s with %-50s at SessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,healer,patient.getDisease(),"out of hospital","No Disease",patient.getSessionTime().format(formatter));
+                    String str=String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s at SessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,healer,patient.getDisease(),"out of hospital","No Disease",patient.getSessionTime().format(formatter));
+                    fileReaderWriter.write(str);
                     HealingDoctorManager.getInstance().serializeList();
                 }else break;
             }

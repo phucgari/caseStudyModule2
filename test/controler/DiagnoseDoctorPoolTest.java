@@ -1,5 +1,6 @@
 package controler;
 
+import inputOutPut.FileReaderWriter;
 import model.doctor.*;
 import model.patient.Patient;
 import org.junit.jupiter.api.AfterEach;
@@ -19,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DiagnoseDoctorPoolTest {
     DiagnoseDoctorPool tester=DiagnoseDoctorPool.getInstance();
-
+    FileReaderWriter readerWriter=new FileReaderWriter("src/data/sout.txt");
     private String newLine = System.getProperty("line.separator");
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
@@ -29,6 +30,7 @@ class DiagnoseDoctorPoolTest {
     }
     @AfterEach
     void end(){
+        readerWriter.delete();
         HospitalManager.getInstance().flushAll();
     }
 
@@ -92,20 +94,15 @@ class DiagnoseDoctorPoolTest {
         DiagnoseDoctor doctor= tester.getInuse().peek();
         Patient patient=doctor.getCurrent();
 
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        PrintStream originalOut = System.out;
-        System.setOut(new PrintStream(outContent));
 
         boolean result=tester.releasePatient();
         assertEquals(availSize+1,tester.getAvailable().size());
         assertEquals(inuseSize-1,tester.getInuse().size());
         assertEquals("prevent null",doctor.getCurrent().getName());
         if (!result){
-            String resultStr=outContent.toString();
-
             String expected=String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s"+newLine, LocalDateTime.now().format(formatter),patient,doctor,"No Disease","out of Hospital","No Disease");
-            assertEquals(expected,resultStr);
-            System.setOut(originalOut);
+            assertEquals(expected,readerWriter.read());
+            readerWriter.delete();
             return;
         }
         HealingDoctor healingDoctor=findDocWithPatient(patient);
@@ -116,9 +113,9 @@ class DiagnoseDoctorPoolTest {
 //        Serialize
         assertTrue(HealingDoctorManager.getInstance().getHealingDoctorList().contains(healingDoctor));
         String str =String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s newSessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,doctor,"No Disease",healingDoctor,patient.getDisease(),patient.getSessionTime().format(formatter));
-        String newContent=outContent.toString();
-        assertEquals(str,newContent);
-        System.setOut(originalOut);
+
+        assertEquals(str,readerWriter.read());
+        readerWriter.delete();
     }
 
     private void checkHealingDoctorContainPatient(HealingDoctor healingDoctor, Patient patient) {

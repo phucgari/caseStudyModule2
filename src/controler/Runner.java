@@ -1,5 +1,6 @@
 package controler;
 
+import inputOutPut.FileReaderWriter;
 import model.doctor.DiagnoseDoctor;
 import model.doctor.Disease;
 import model.patient.Patient;
@@ -16,6 +17,7 @@ public class Runner extends Thread{
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private boolean onOff=true;
     private String newLine = System.getProperty("line.separator");
+    FileReaderWriter fileReaderWriter=new FileReaderWriter("src/data/sout.txt");
 
     public Runner() {}
 
@@ -59,7 +61,8 @@ public class Runner extends Thread{
             Patient patient=patientPriorityQueue.peek();
             DiagnoseDoctor doctor=availableQueue.peek();
             pool.getPatient();
-            System.out.printf("%s: %-40s go from %-60s with %-50s to %-60s with %-50s newSessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,"Queue","No Disease",doctor,"No Disease",patient.getSessionTime().format(formatter));
+            String str=String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s newSessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,"Queue","No Disease",doctor,"No Disease",patient.getSessionTime().format(formatter));
+            fileReaderWriter.write(str);
             pool.saveAvailableInuse();
         }
     }
