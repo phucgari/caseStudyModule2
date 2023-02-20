@@ -59,7 +59,6 @@ public class DiagnoseDoctorPool {
         getInuse().add(doctor);
     }
     public boolean releasePatient(){
-//        throw exception if no inuse Doctor
         if(inuse.isEmpty())throw new RuntimeException("No Inuse Doctor");
         DiagnoseDoctor doctor=inuse.peek();
         Patient patient=doctor.getCurrent();
@@ -80,10 +79,6 @@ public class DiagnoseDoctorPool {
                 available.add(doctor);
             }
         }
-//        transferDocFromInUseToAvailable
-//        change Patient Disease
-//        change Patient sessionTime
-//        change diagnoseDoc current to null
         if (disease.getName().equals("No Disease")){
             System.out.printf("%s: %-40s go from %-60s with %-50s to %-60s with %-50s"+newLine, LocalDateTime.now().format(formatter),patient,doctor,"No Disease","out of Hospital","No Disease");
             return false;
@@ -92,9 +87,6 @@ public class DiagnoseDoctorPool {
         healingDoctorChosen.takePatient(patient);
             System.out.printf("%s: %-40s go from %-60s with %-50s to %-60s with %-50s newSessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,doctor,"No Disease",healingDoctorChosen,patient.getDisease(),healingDoctorChosen.getLastPatientTimer().format(formatter));
         return true;
-//        chose HealingDoc to push
-//        then push Patient to HealingDocQueue
-//        Serialize
     }
     public void saveAvailableInuse(){
         DIAGNOSE_DOCTOR_AVAILABLE.writeObjects(available);
