@@ -49,25 +49,30 @@ public class DiseaseManager {
 
     public void addDentistDisease(String name, int cureTime) {
         dentistDisease.add(new Disease(name,cureTime));
+        list.add(new Disease(name,cureTime));
         Dentist.DISEASE_SERIALIZER.writeObjects(dentistDisease);
     }
     public void addGynecologistDisease(String name, int cureTime) {
         gynecologistDisease.add(new Disease(name,cureTime));
+        list.add(new Disease(name,cureTime));
         Gynecologist.DISEASE_SERIALIZER.writeObjects(gynecologistDisease);
     }
 
     public void addUrologistDisease(String name, int cureTime) {
         urologistDisease.add(new Disease(name,cureTime));
+        list.add(new Disease(name,cureTime));
         Urologist.DISEASE_SERIALIZER.writeObjects(urologistDisease);
     }
 
     public void addOtolaryngologistDisease(String name, int cureTime) {
         otolaryngologistDisease.add(new Disease(name,cureTime));
+        list.add(new Disease(name,cureTime));
         Otolaryngologist.DISEASE_SERIALIZER.writeObjects(otolaryngologistDisease);
     }
 
     public void addSurgeonDisease(String name, int cureTime) {
         surgeonDisease.add(new Disease(name,cureTime));
+        list.add(new Disease(name,cureTime));
         Surgeon.DISEASE_SERIALIZER.writeObjects(surgeonDisease);
     }
 }

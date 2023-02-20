@@ -2,6 +2,7 @@ package client;
 
 import controler.*;
 import model.doctor.DiagnoseDoctor;
+import model.doctor.Disease;
 import model.doctor.HealingDoctor;
 import model.patient.Patient;
 
@@ -27,7 +28,7 @@ public class Main {
             System.out.println("1 for add Patient");
             System.out.println("2 for access Diagnose Doctor");
             System.out.println("3 for access Healing Doctor");
-            System.out.println("4 for adding new Disease");
+            System.out.println("4 for viewing/adding new Disease");
             System.out.println("other for quit");
             String choice= scanner.nextLine();
             switch (choice){
@@ -42,6 +43,7 @@ public class Main {
                     break;
                 case "4":
                     addNewDisease(scanner);
+                    break;
                 default:
                     on=false;
             }
@@ -52,6 +54,12 @@ public class Main {
 
     private static void addNewDisease(Scanner scanner) {
         while (true) {
+            System.out.println("List of Disease");
+            List<Disease>list=diseaseManager.getList();
+            for (Disease disease :
+                    list) {
+                System.out.println(disease);
+            }
             System.out.println("What kinds of Diagnose do you want to add");
             System.out.println("1 for Dentist");
             System.out.println("2 for Gynecologist");
@@ -92,13 +100,12 @@ public class Main {
 
     private static void accessHealingDoctor(Scanner scanner) {
         boolean on=true;
-        String input="";
         while (on){
             System.out.println("Input");
             System.out.println("1 for add new Healing Doctor");
             System.out.println("2 for view and delete Healing Doctor");
             System.out.println("3 for quit");
-            input= scanner.nextLine();
+            String input = scanner.nextLine();
             switch (input){
                 case "1":
                     addHealingDoc(scanner);
@@ -115,9 +122,8 @@ public class Main {
 
     private static void viewAndDeleteHealingDoctor(Scanner scanner) {
         System.out.println("View and Delete Healing Doctor chosen");
-        boolean on=true;
         int input=0;
-        while (on) {
+        while (true) {
             List<HealingDoctor> list = healingDoctorManager.getHealingDoctorList();
             if (list.isEmpty()) {
                 System.out.println("no available DiagnoseDoctor");
@@ -212,13 +218,12 @@ public class Main {
 
     private static void accessDiagnoseDoctor(Scanner scanner) {
         boolean on=true;
-        String input="";
         while (on){
             System.out.println("Input");
             System.out.println("1 for add new DiagnoseDoctor");
             System.out.println("2 for view and delete Diagnose Doctor");
             System.out.println("3 for quit");
-            input= scanner.nextLine();
+            String input = scanner.nextLine();
             switch (input){
                 case "1":
                     addDiagnoseDoctor(scanner);
