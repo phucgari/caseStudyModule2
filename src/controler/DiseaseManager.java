@@ -9,12 +9,12 @@ import java.util.List;
 public class DiseaseManager {
     private static DiseaseManager instance;
     public static Serializer<Disease> serializer=new Serializer<>("src/data/disease/diseaseList.dat");
-    private List<Disease> dentistDisease = Dentist.DISEASE_SERIALIZER.readObjects();
-    private List<Disease> gynecologistDisease= Gynecologist.DISEASE_SERIALIZER.readObjects();
-    private List<Disease> otolaryngologistDisease= Otolaryngologist.DISEASE_SERIALIZER.readObjects();
-    private List<Disease> urologistDisease= Urologist.DISEASE_SERIALIZER.readObjects();
-    private List<Disease> surgeonDisease=Surgeon.DISEASE_SERIALIZER.readObjects();
-    private List<Disease> list=new ArrayList<>();
+    private final List<Disease> dentistDisease = Dentist.DISEASE_SERIALIZER.readObjects();
+    private final List<Disease> gynecologistDisease= Gynecologist.DISEASE_SERIALIZER.readObjects();
+    private final List<Disease> otolaryngologistDisease= Otolaryngologist.DISEASE_SERIALIZER.readObjects();
+    private final List<Disease> urologistDisease= Urologist.DISEASE_SERIALIZER.readObjects();
+    private final List<Disease> surgeonDisease=Surgeon.DISEASE_SERIALIZER.readObjects();
+    private final List<Disease> list=new ArrayList<>();
     private DiseaseManager(){
         List<Disease>[] lists=DiseaseListArray();
         for (List<Disease>smallist:lists){
@@ -45,5 +45,29 @@ public class DiseaseManager {
         List<Disease> result = new ArrayList<>(list);
         result.removeAll(urologistDisease);
         return result;
+    }
+
+    public void addDentistDisease(String name, int cureTime) {
+        dentistDisease.add(new Disease(name,cureTime));
+        Dentist.DISEASE_SERIALIZER.writeObjects(dentistDisease);
+    }
+    public void addGynecologistDisease(String name, int cureTime) {
+        gynecologistDisease.add(new Disease(name,cureTime));
+        Gynecologist.DISEASE_SERIALIZER.writeObjects(gynecologistDisease);
+    }
+
+    public void addUrologistDisease(String name, int cureTime) {
+        urologistDisease.add(new Disease(name,cureTime));
+        Urologist.DISEASE_SERIALIZER.writeObjects(urologistDisease);
+    }
+
+    public void addOtolaryngologistDisease(String name, int cureTime) {
+        otolaryngologistDisease.add(new Disease(name,cureTime));
+        Otolaryngologist.DISEASE_SERIALIZER.writeObjects(otolaryngologistDisease);
+    }
+
+    public void addSurgeonDisease(String name, int cureTime) {
+        surgeonDisease.add(new Disease(name,cureTime));
+        Surgeon.DISEASE_SERIALIZER.writeObjects(surgeonDisease);
     }
 }

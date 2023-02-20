@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5c09889-f280-4659-afdb-800a75eb4578" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/diagnoseDoctorLists/diagnoseDoctorAvailable.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/diagnoseDoctorLists/diagnoseDoctorAvailable.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/diagnoseDoctorLists/diagnoseDoctorList.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/diagnoseDoctorLists/diagnoseDoctorList.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/controler/DiagnoseDoctorPoolTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controler/DiagnoseDoctorPoolTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/controler/RunnerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controler/RunnerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +184,7 @@
       <workItem from="1676701744426" duration="22624000" />
       <workItem from="1676773053438" duration="283000" />
       <workItem from="1676773675304" duration="33220000" />
-      <workItem from="1676855997614" duration="625000" />
+      <workItem from="1676855997614" duration="1042000" />
     </task>
     <servers />
   </component>
@@ -212,16 +208,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/test/controler/DiagnoseDoctorPoolTest.java</url>
-          <line>99</line>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/test/controler/DiagnoseDoctorPoolTest.java</url>
-          <line>70</line>
-          <option name="timeStamp" value="36" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/controler/DiagnoseDoctorPool.java</url>
           <line>70</line>

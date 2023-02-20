@@ -13,6 +13,7 @@ public class Main {
     private static final PatientManager patientManager = PatientManager.getInstance();
     private static final DiagnoseDoctorPool diagnoseDoctorPool=DiagnoseDoctorPool.getInstance();
     private static final HealingDoctorManager healingDoctorManager = HealingDoctorManager.getInstance();
+    private static final DiseaseManager diseaseManager = DiseaseManager.getInstance();
     public static void main(String[] args) {
         Runner runner=new Runner();
         hospitalManager.flushAll();
@@ -26,6 +27,7 @@ public class Main {
             System.out.println("1 for add Patient");
             System.out.println("2 for access Diagnose Doctor");
             System.out.println("3 for access Healing Doctor");
+            System.out.println("4 for adding new Disease");
             System.out.println("other for quit");
             String choice= scanner.nextLine();
             switch (choice){
@@ -38,12 +40,54 @@ public class Main {
                 case "3":
                     accessHealingDoctor(scanner);
                     break;
+                case "4":
+                    addNewDisease(scanner);
                 default:
                     on=false;
             }
 
         }
         runner.switchOnOff();
+    }
+
+    private static void addNewDisease(Scanner scanner) {
+        while (true) {
+            System.out.println("What kinds of Diagnose do you want to add");
+            System.out.println("1 for Dentist");
+            System.out.println("2 for Gynecologist");
+            System.out.println("3 for Urologist");
+            System.out.println("4 for Otolaryngologist");
+            System.out.println("5 for Surgeon");
+            System.out.println("others for exit");
+            String action = scanner.nextLine();
+            if(!action.matches("[1-5]"))break;
+            System.out.println("Enter Name");
+            String name = scanner.nextLine();
+            String expInt;
+            do {
+                System.out.println("Enter Cure time");
+                System.out.println("Enter 0 to 99");
+                expInt = scanner.nextLine();
+            } while (!expInt.matches("[0-9][0-9]"));
+            int cureTime = Integer.parseInt(expInt);
+            switch (action) {
+                case "1":
+                    diseaseManager.addDentistDisease(name, cureTime);
+                    break;
+                case "2":
+                    diseaseManager.addGynecologistDisease(name, cureTime);
+                    break;
+                case "3":
+                    diseaseManager.addUrologistDisease(name, cureTime);
+                    break;
+                case "4":
+                    diseaseManager.addOtolaryngologistDisease(name, cureTime);
+                    break;
+                case "5":
+                    diseaseManager.addSurgeonDisease(name, cureTime);
+                    break;
+            }
+        }
     }
 
     private static void accessHealingDoctor(Scanner scanner) {
