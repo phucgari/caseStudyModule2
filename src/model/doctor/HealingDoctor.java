@@ -58,7 +58,6 @@ public abstract class HealingDoctor extends Doctor implements Comparable<Healing
 
     @Override
     public int compareTo(HealingDoctor o) {
-
         return patientQueue.peek().compareTo(o.patientQueue.peek());
     }
 }

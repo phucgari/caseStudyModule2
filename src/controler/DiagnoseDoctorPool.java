@@ -68,6 +68,7 @@ public class DiagnoseDoctorPool {
 
         HealingDoctor healingDoctorChosen= hospitalManager.giveDiseaseGetHealingDoc(disease);
         if (healingDoctorChosen==null&&!disease.getName().equals("No Disease")){
+            System.err.println(patient+"do not have the suitable doctor, "+disease);
             return false;
         }
         inuse.remove();
