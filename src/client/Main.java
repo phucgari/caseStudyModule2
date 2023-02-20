@@ -17,7 +17,7 @@ public class Main {
     private static final DiseaseManager diseaseManager = DiseaseManager.getInstance();
     public static void main(String[] args) {
         Runner runner=new Runner();
-        hospitalManager.flushAll();
+//        hospitalManager.flushAll();
         DiagnoseDoctorPool.getInstance().flushAvailableInuse();
         runner.start();
         boolean on=true;

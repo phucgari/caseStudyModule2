@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b5c09889-f280-4659-afdb-800a75eb4578" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/text.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/diagnoseDoctorLists/diagnoseDoctorAvailable.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/diagnoseDoctorLists/diagnoseDoctorAvailable.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/diagnoseDoctorLists/diagnoseDoctorInuse.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/diagnoseDoctorLists/diagnoseDoctorInuse.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/diagnoseDoctorLists/diagnoseDoctorList.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/diagnoseDoctorLists/diagnoseDoctorList.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/patient/patientQueue.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/patient/patientQueue.dat" afterDir="false" />
-    </list>
+    <list default="true" id="b5c09889-f280-4659-afdb-800a75eb4578" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -190,7 +183,7 @@
       <workItem from="1676773053438" duration="283000" />
       <workItem from="1676773675304" duration="33220000" />
       <workItem from="1676855997614" duration="9262000" />
-      <workItem from="1676876745775" duration="461000" />
+      <workItem from="1676876745775" duration="585000" />
     </task>
     <servers />
   </component>
