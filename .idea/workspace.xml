@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5c09889-f280-4659-afdb-800a75eb4578" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/controler/HealingDoctorProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controler/HealingDoctorProcessorTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controler/DiagnoseDoctorPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controler/DiagnoseDoctorPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controler/HospitalManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controler/HospitalManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controler/Runner.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/controler/HealingDoctorManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controler/HealingDoctorManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/controler/HospitalManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controler/HospitalManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/controler/RunnerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controler/HealingDoctorProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controler/HealingDoctorProcessor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +186,7 @@
       <workItem from="1676876745775" duration="585000" />
       <workItem from="1676961347401" duration="854000" />
       <workItem from="1677470501783" duration="413000" />
-      <workItem from="1677471219651" duration="4233000" />
+      <workItem from="1677471219651" duration="5295000" />
     </task>
     <servers />
   </component>
