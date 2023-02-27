@@ -5,11 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5c09889-f280-4659-afdb-800a75eb4578" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/controler/HealingDoctorProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/controler/HealingDoctorProcessorTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/diagnoseDoctorLists/diagnoseDoctorAvailable.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/diagnoseDoctorLists/diagnoseDoctorAvailable.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/healingDoctorList.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/healingDoctorList.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/sout.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/sout.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controler/DiagnoseDoctorPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controler/DiagnoseDoctorPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controler/HospitalManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controler/HospitalManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controler/Runner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controler/HealingDoctorManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controler/HealingDoctorManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controler/HospitalManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controler/HospitalManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controler/RunnerTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +133,7 @@
       <module name="caseStudy" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="controler.*" />
+          <option name="PATTERN" value="controler.HospitalManager" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -143,7 +148,7 @@
       <module name="caseStudy" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="controler.*" />
+          <option name="PATTERN" value="controler.HospitalManager" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -188,6 +193,8 @@
       <workItem from="1676855997614" duration="9262000" />
       <workItem from="1676876745775" duration="585000" />
       <workItem from="1676961347401" duration="854000" />
+      <workItem from="1677470501783" duration="413000" />
+      <workItem from="1677471219651" duration="4233000" />
     </task>
     <servers />
   </component>
@@ -211,11 +218,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/controler/HospitalManager.java</url>
-          <line>83</line>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/inputOutPut/FileReaderWriter.java</url>
           <line>12</line>

@@ -1,94 +1,150 @@
 package controler;
 
 import inputOutPut.FileReaderWriter;
-import model.doctor.Disease;
+import model.doctor.DiagnoseDoctor;
 import model.doctor.HealingDoctor;
 import model.patient.Patient;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
+import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class HospitalManagerTest {
-    HospitalManager tester=HospitalManager.getInstance();
-    List<HealingDoctor> healingDoctorList=HealingDoctorManager.getInstance().getHealingDoctorList();
-    FileReaderWriter readerWriter=new FileReaderWriter("src/data/sout.txt");
+    HospitalManager run=HospitalManager.getInstance();
     private String newLine = System.getProperty("line.separator");
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
-    @BeforeEach
-    public void setUpStreams() {
+    static FileReaderWriter readerWriter=new FileReaderWriter("src/data/sout.txt");
+    @BeforeAll
+    static void begin(){
         readerWriter.delete();
+        HospitalManager.getInstance().flushAll();
     }
     @AfterEach
     void end(){
+        readerWriter.delete();
         HospitalManager.getInstance().flushAll();
     }
     @Test
-    void testGetDocFromDisease(){
-        Disease disease=DiseaseManager.getInstance().getList().get(0);
-        HealingDoctor doc=tester.giveDiseaseGetHealingDoc(disease);
-        assertEquals(disease.toString(),doc.getCurableDisease().get(0).toString());
+    void testCheckQueueToPool(){
+        run.checkQueueToPool();
+        PatientManager.getInstance().generateDemoPatient(6);
+        String result = getStringQueueToPool();
 
-        disease=DiseaseManager.getInstance().getList().get(5);
-        doc=tester.giveDiseaseGetHealingDoc(disease);
-        assertEquals(disease.toString(),doc.getCurableDisease().get(1).toString());
-
-        disease=DiseaseManager.getInstance().getList().get(7);
-        HealingDoctor doctor1=HealingDoctorManager.getInstance().getHealingDoctorList().get(6);
-        HealingDoctor doctor2=HealingDoctorManager.getInstance().getHealingDoctorList().get(7);
-        Patient patient1=new Patient("adam",true);
-        patient1.setDisease(doctor2.getCurableDisease().get(0));
-        Patient patient2=new Patient("adam1",true);
-        patient2.setDisease(doctor2.getCurableDisease().get(1));
-        doctor1.takePatient(patient1);
-        doctor2.takePatient(patient2);
-        doc=tester.giveDiseaseGetHealingDoc(disease);
-        assertEquals(doctor1.toString(),doc.toString());
+        run.checkQueueToPool();
+        assertEquals(result,readerWriter.read());
     }
     @Test
-    void testCheckPatientInHealer(){
-        HealingDoctor healer=healingDoctorList.get(0);
+    void testCheckPoolToHeal(){
+        PatientManager.getInstance().generateDemoPatient(6);
+        run.checkQueueToPool();
+        Queue<Patient> patients = getPatientQueueToCheckString();
+        readerWriter.delete();
+        run.checkPoolToHeal();
+        String result = getStringPoolToHeal(patients);
 
-        Patient patient=new Patient("adam",true);
-        patient.setSessionTime(LocalDateTime.now().minusSeconds(200));
-        patient.setDisease(healer.getCurableDisease().get(1));
-        healer.takePatient(patient);
+        assertEquals(result,readerWriter.read());
+    }
 
-        tester.checkPatientInHealer();
-        String expected=String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s at SessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,healer,patient.getDisease(),"out of hospital", "No Disease",patient.getSessionTime().format(formatter));
-        assertEquals(expected, readerWriter.read());
+    @Test
+    void testAll(){
+        PatientManager.getInstance().generateDemoPatient(6);
+
+        String result="";
+        result+=getStringQueueToPool();
+        run.checkQueueToPool();
+
+        Queue<Patient>patients=getPatientQueueToCheckString();
+        run.checkPoolToHeal();
+        result+=getStringPoolToHeal(patients);
+        result+=getStringHealToOut();
+        run.checkHealToOut();
+
+        assertEquals(result,readerWriter.read());
     }
     @Test
-    void testCheck2PatientInHealer(){
-        HealingDoctor healer=healingDoctorList.get(1);
+    @Disabled
+    void testALLINLarge(){
+        for (int i = 0; i < 100; i++) {
+            HospitalManager.getInstance().flushAll();
+            readerWriter.delete();
+            testAll();
+        }
+    }
+    private String findPatientInHealingDocReturnPrintedString(Patient patient, String diagnoseDoctor) {
+        List<HealingDoctor> healingDoctorList=HealingDoctorManager.getInstance().getHealingDoctorList();
+        for (HealingDoctor healingDoctor: healingDoctorList) {
+            for (Patient patientInQueue: healingDoctor.getPatientQueue()) {
+                if(patientInQueue.getName().equals(patient.getName())) {
+                    return String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s newSessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,diagnoseDoctor,"No Disease",healingDoctor,patient.getDisease(),patient.getSessionTime().format(formatter));
+                }
+            }
+        }
+        throw new RuntimeException();
+    }
+    private String getStringHealToOut() {
+        String result="";
+        List<HealingDoctor> healingDoctorList=new ArrayList<>(HealingDoctorManager.getInstance().getHealingDoctorList());
+        for (HealingDoctor doctor : healingDoctorList) {
+            PriorityQueue<Patient> queue = new PriorityQueue<>(doctor.getPatientQueue());
+            while (!queue.isEmpty()){
+                Patient patient = queue.remove();
+                String str=String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s at SessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,doctor,patient.getDisease(),"out of hospital","No Disease",patient.getSessionTime().format(formatter));
+                if (!result.contains(str))result += str;
+            }
+        }
+        return result;
+    }
 
-        Patient patient=new Patient("adam",true);
-        patient.setSessionTime(LocalDateTime.now().minusSeconds(2000));
-        patient.setDisease(healer.getCurableDisease().get(1));
-        healer.takePatient(patient);
+    private String getStringQueueToPool() {
+        String result= new String();
+        PriorityQueue<Patient> patients=new PriorityQueue<>(PatientManager.getInstance().getPatientQueue());
+        PriorityQueue<DiagnoseDoctor> doctors=new PriorityQueue<>(DiagnoseDoctorPool.getInstance().getAvailable());
+        Patient patient;
+        DiagnoseDoctor doctor;
+        for (int i = 0; i < 5; i++) {
+            patient=patients.remove();
+            doctor=doctors.remove();
+            result+=String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s newSessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,"Queue","No Disease",doctor,"No Disease",patient.getSessionTime().plusSeconds((long) (15/doctor.getTimeMultiplier())).format(formatter));
+        }
+        return result;
+    }
 
-        tester.checkPatientInHealer();
+    private Queue<Patient> getPatientQueueToCheckString() {
+        PriorityQueue<DiagnoseDoctor>diagnoseDoctors=new PriorityQueue<>(DiagnoseDoctorPool.getInstance().getInuse());
+        Queue<Patient> patients=new LinkedList<>();
+        PriorityQueue<DiagnoseDoctor>inuse=new PriorityQueue<>(diagnoseDoctors);
+        for (int i = 0; i < 5; i++) {
+            Patient current = inuse.remove().getCurrent();
+            current.setSessionTime(current.getSessionTime().minusSeconds(100));
+            patients.add(current);
+        }
+        return patients;
 
+    }
 
-        healer=healingDoctorList.get(7);
-        Patient patient2=new Patient("eva",false);
-        patient2.setSessionTime(LocalDateTime.now().minusSeconds(100));
-        patient2.setDisease(healer.getCurableDisease().get(1));
-        healer.takePatient(patient2);
-
-        tester.checkPatientInHealer();
-
-
-        String expected=String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s at SessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,"Dentist name='Dentist2' Experience: Senior",patient.getDisease(),"out of hospital", "No Disease",patient.getSessionTime().format(formatter));
-        expected+=String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s at SessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),"Patient{name='eva', gender=female}",healer,"Disease{name='Vô sinh', cureTime=19}","out of hospital", "No Disease",patient2.getSessionTime().format(formatter));
-        assertEquals(expected, readerWriter.read());
+    private String getStringPoolToHeal(Queue<Patient> patients){
+        String result=new String();
+        String[]doctors=new String[]{
+                "DiagnoseDoctor name='Diag4' Experience: Leader ",
+                "DiagnoseDoctor name='Diag3' Experience: Senior",
+                "DiagnoseDoctor name='Diag2' Experience: Junior",
+                "DiagnoseDoctor name='Diag5' Experience: Junior",
+                "DiagnoseDoctor name='Diag1' Experience: Fresher"};
+        for (int i = 0; i < 5; i++) {
+            Patient patient= patients.remove();
+            String doctor=doctors[i];
+            if(patient.getDisease().getName().equals("No Disease")) {
+                result+=String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s"+newLine, LocalDateTime.now().format(formatter),patient,doctor,"No Disease","out of Hospital","No Disease");
+                continue;
+            }
+            result+= findPatientInHealingDocReturnPrintedString(patient,doctor);
+        }
+        return result;
     }
 }

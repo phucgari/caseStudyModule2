@@ -1,7 +1,5 @@
 package controler;
 
-import inputOutPut.Serializer;
-import model.doctor.HealingDoctor;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 

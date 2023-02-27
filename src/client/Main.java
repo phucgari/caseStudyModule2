@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    private static final HospitalManager hospitalManager = HospitalManager.getInstance();
     private static final PatientManager patientManager = PatientManager.getInstance();
     private static final DiagnoseDoctorPool diagnoseDoctorPool=DiagnoseDoctorPool.getInstance();
     private static final HealingDoctorManager healingDoctorManager = HealingDoctorManager.getInstance();
@@ -19,10 +18,10 @@ public class Main {
     private static final FileReaderWriter readerWriter= new FileReaderWriter("src/data/sout.txt");
     public static void main(String[] args) {
         readerWriter.delete();
-        Runner runner=new Runner();
+        HospitalManager hospitalManager =HospitalManager.getInstance();
 //        hospitalManager.flushAll();
         DiagnoseDoctorPool.getInstance().flushAvailableInuse();
-        runner.start();
+        hospitalManager.start();
         boolean on=true;
         patientManager.generateDemoPatient(7);
         Scanner scanner=new Scanner(System.in);
@@ -52,7 +51,7 @@ public class Main {
             }
 
         }
-        runner.switchOnOff();
+        hospitalManager.switchOnOff();
     }
 
     private static void addNewDisease(Scanner scanner) {

@@ -65,9 +65,9 @@ public class DiagnoseDoctorPool {
         DiagnoseDoctor doctor=inuse.peek();
         Patient patient=doctor.getCurrent();
         Disease disease=randomDisease(patient.getGender());
-        HospitalManager hospitalManager = HospitalManager.getInstance();
+        HealingDoctorProcessor healingDoctorProcessor = HealingDoctorProcessor.getInstance();
 
-        HealingDoctor healingDoctorChosen= hospitalManager.giveDiseaseGetHealingDoc(disease);
+        HealingDoctor healingDoctorChosen= healingDoctorProcessor.giveDiseaseGetHealingDoc(disease);
         if (healingDoctorChosen==null&&!disease.getName().equals("No Disease")){
             fileReaderWriter.write(patient+"do not have the suitable doctor, "+disease+newLine);
             return false;
