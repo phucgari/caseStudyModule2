@@ -22,7 +22,7 @@ class DiagnoseDoctorPoolTest {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     @BeforeAll
-    public static void setUpStreams() {
+    public static void setUp() {
         HospitalManager.getInstance().flushAll();
     }
     @AfterEach

@@ -39,6 +39,7 @@ public class DiagnoseDoctorPool {
     public void removeDiagnoseDoctor(int index){
         list.remove(index);
         DIAGNOSE_DOCTOR_LIST.writeObjects(list);
+
     }
     public PriorityQueue<DiagnoseDoctor> getAvailable() {
         return available;
@@ -118,6 +119,7 @@ public class DiagnoseDoctorPool {
         return result;
     }
     public void flushAvailableInuse(){
+        list=new LinkedList<>(DIAGNOSE_DOCTOR_LIST.readObjects());
         PriorityQueue<DiagnoseDoctor> queue=new PriorityQueue<>();
         for (DiagnoseDoctor doctor :
                 list) {

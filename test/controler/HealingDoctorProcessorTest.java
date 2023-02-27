@@ -5,6 +5,7 @@ import model.doctor.Disease;
 import model.doctor.HealingDoctor;
 import model.patient.Patient;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +21,10 @@ class HealingDoctorProcessorTest {
     FileReaderWriter readerWriter=new FileReaderWriter("src/data/sout.txt");
     private String newLine = System.getProperty("line.separator");
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
+    @BeforeAll
+    public static void before(){
+        HospitalManager.getInstance().flushAll();
+    }
     @BeforeEach
     public void setUpStreams() {
         readerWriter.delete();

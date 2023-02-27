@@ -29,9 +29,6 @@ public class HospitalManager extends Thread{
     }
 
     public void flushAll(){
-        DiagnoseDoctorPool.getInstance().flushAvailableInuse();
-        PatientManager.getInstance().emptyPatientQueue();
-        HealingDoctorManager.getInstance().flushHealingDoctorManager();
         DiagnoseDoctor doctor1=new DiagnoseDoctor("Diag1",1);
         DiagnoseDoctor doctor2=new DiagnoseDoctor("Diag2",2);
         DiagnoseDoctor doctor3=new DiagnoseDoctor("Diag3",3);
@@ -69,6 +66,9 @@ public class HospitalManager extends Thread{
         arrayList4.add(new Disease("Gãy tay",23));
         arrayList4.add(new Disease("Gãy chân",30));
         Surgeon.DISEASE_SERIALIZER.writeObjects(arrayList4);
+        healingDoctorManager.flushHealingDoctorManager();
+        pool.flushAvailableInuse();
+        patientManager.emptyPatientQueue();
     }
 
     @Override

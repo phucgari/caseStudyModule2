@@ -19,7 +19,7 @@ public class Main {
     public static void main(String[] args) {
         readerWriter.delete();
         HospitalManager hospitalManager =HospitalManager.getInstance();
-//        hospitalManager.flushAll();
+        hospitalManager.flushAll();
         DiagnoseDoctorPool.getInstance().flushAvailableInuse();
         hospitalManager.start();
         boolean on=true;
