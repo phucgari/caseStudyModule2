@@ -1,6 +1,7 @@
 package client;
 
 import controler.*;
+import inputOutPut.FileReaderWriter;
 import model.doctor.DiagnoseDoctor;
 import model.doctor.Disease;
 import model.doctor.HealingDoctor;
@@ -15,7 +16,9 @@ public class Main {
     private static final DiagnoseDoctorPool diagnoseDoctorPool=DiagnoseDoctorPool.getInstance();
     private static final HealingDoctorManager healingDoctorManager = HealingDoctorManager.getInstance();
     private static final DiseaseManager diseaseManager = DiseaseManager.getInstance();
+    private static final FileReaderWriter readerWriter= new FileReaderWriter("src/data/sout.txt");
     public static void main(String[] args) {
+        readerWriter.delete();
         Runner runner=new Runner();
 //        hospitalManager.flushAll();
         DiagnoseDoctorPool.getInstance().flushAvailableInuse();

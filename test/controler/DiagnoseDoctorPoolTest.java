@@ -1,18 +1,15 @@
 package controler;
 
 import inputOutPut.FileReaderWriter;
-import model.doctor.*;
+import model.doctor.DiagnoseDoctor;
+import model.doctor.HealingDoctor;
 import model.patient.Patient;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -66,7 +63,7 @@ class DiagnoseDoctorPoolTest {
         assertEquals("DiagnoseDoctor name='Diag1' Experience: Fresher", queue.remove().toString());
     }
     @Test
-    void testRelease1Patient(){
+    void testReleasePatients(){
         RuntimeException noInuseDoctor=assertThrows(RuntimeException.class,()->{tester.releasePatient();});
         assertEquals("No Inuse Doctor",noInuseDoctor.getMessage());
         PatientManager.getInstance().generateDemoPatient(3);
