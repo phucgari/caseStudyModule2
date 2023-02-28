@@ -19,12 +19,29 @@ public class Main {
     public static void main(String[] args) {
         readerWriter.delete();
         HospitalManager hospitalManager =HospitalManager.getInstance();
-        hospitalManager.flushAll();
+//        hospitalManager.flushAll();
         DiagnoseDoctorPool.getInstance().flushAvailableInuse();
         hospitalManager.start();
-        boolean on=true;
-        patientManager.generateDemoPatient(7);
         Scanner scanner=new Scanner(System.in);
+        generatePatient(scanner);
+        mainMenu(scanner);
+        hospitalManager.switchOnOff();
+    }
+
+    private static void generatePatient(Scanner scanner) {
+        System.out.println("Do you want input demo Patients?");
+        System.out.println("input the number of demo Patients to add (max:7)");
+        System.out.println("others to skip");
+        try {
+            int patientNum = Math.min(Integer.parseInt(scanner.nextLine()),7);
+            if(patientNum<0)return;
+            System.out.println("added " + patientNum +" patient(s)");
+            patientManager.generateDemoPatient(patientNum);
+        }catch (Exception ignored){}
+    }
+
+    private static void mainMenu(Scanner scanner) {
+        boolean on=true;
         while (on){
             System.out.println("Enter your choice");
             System.out.println("1 for add Patient");
@@ -51,7 +68,6 @@ public class Main {
             }
 
         }
-        hospitalManager.switchOnOff();
     }
 
     private static void addNewDisease(Scanner scanner) {
