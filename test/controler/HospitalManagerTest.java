@@ -81,7 +81,7 @@ class HospitalManagerTest {
         for (HealingDoctor healingDoctor: healingDoctorList) {
             for (Patient patientInQueue: healingDoctor.getPatientQueue()) {
                 if(patientInQueue.getName().equals(patient.getName())) {
-                    return String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s newSessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,diagnoseDoctor,"No Disease",healingDoctor,patient.getDisease(),patient.getSessionTime().format(formatter));
+                    return String.format("|%s|%-40s|%-60s|%-50s|%-60s|%-50s|%-19s|"+newLine, LocalDateTime.now().format(formatter),patient,diagnoseDoctor,"No Disease",healingDoctor,patient.getDisease(),patient.getSessionTime().format(formatter));
                 }
             }
         }
@@ -94,7 +94,7 @@ class HospitalManagerTest {
             PriorityQueue<Patient> queue = new PriorityQueue<>(doctor.getPatientQueue());
             while (!queue.isEmpty()){
                 Patient patient = queue.remove();
-                String str=String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s at SessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,doctor,patient.getDisease(),"out of hospital","No Disease",patient.getSessionTime().format(formatter));
+                String str=String.format("|%s|%-40s|%-60s|%-50s|%-60s|%-50s|%-19s|"+newLine, LocalDateTime.now().format(formatter),patient,doctor,patient.getDisease(),"out of hospital","No Disease","");
                 if (!result.contains(str))result += str;
             }
         }
@@ -110,7 +110,7 @@ class HospitalManagerTest {
         for (int i = 0; i < 5; i++) {
             patient=patients.remove();
             doctor=doctors.remove();
-            result+=String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s newSessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,"Queue","No Disease",doctor,"No Disease",patient.getSessionTime().plusSeconds((long) (15/doctor.getTimeMultiplier())).format(formatter));
+            result+=String.format("|%s|%-40s|%-60s|%-50s|%-60s|%-50s|%-19s|"+newLine, LocalDateTime.now().format(formatter),patient,"Queue","No Disease",doctor,"No Disease",patient.getSessionTime().plusSeconds((long) (15/doctor.getTimeMultiplier())).format(formatter));
         }
         return result;
     }
@@ -140,7 +140,7 @@ class HospitalManagerTest {
             Patient patient= patients.remove();
             String doctor=doctors[i];
             if(patient.getDisease().getName().equals("No Disease")) {
-                result+=String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s"+newLine, LocalDateTime.now().format(formatter),patient,doctor,"No Disease","out of Hospital","No Disease");
+                result+=String.format("|%s|%-40s|%-60s|%-50s|%-60s|%-50s|%-19s|"+newLine, LocalDateTime.now().format(formatter),patient,doctor,"No Disease","out of Hospital","No Disease","");
                 continue;
             }
             result+= findPatientInHealingDocReturnPrintedString(patient,doctor);

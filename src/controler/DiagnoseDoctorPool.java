@@ -79,12 +79,12 @@ public class DiagnoseDoctorPool {
             }
         }
         if (healingDoctorChosen==null&&!disease.getName().equals("No Disease")){
-            String str=String.format("|%s:%-40s|%-60s|%-50s|%-60s|%-50s|%-19s|"+newLine,LocalDateTime.now().format(formatter),patient,doctor,disease,"out of Hospital",disease,"");
+            String str=String.format("|%s|%-40s|%-60s|%-50s|%-60s|%-50s|%-19s|"+newLine,LocalDateTime.now().format(formatter),patient,doctor,disease,"out of Hospital",disease,"");
             fileReaderWriter.write(str);
             return false;
         }
         if (disease.getName().equals("No Disease")){
-            String str=String.format("|%s:%-40s|%-60s|%-50s|%-60s|%-50s|%-19s|"+newLine, LocalDateTime.now().format(formatter),patient,doctor,"No Disease","out of Hospital","No Disease","");
+            String str=String.format("|%s|%-40s|%-60s|%-50s|%-60s|%-50s|%-19s|"+newLine, LocalDateTime.now().format(formatter),patient,doctor,"No Disease","out of Hospital","No Disease","");
             fileReaderWriter.write(str);
             return false;
         }

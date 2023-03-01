@@ -96,7 +96,7 @@ class DiagnoseDoctorPoolTest {
         assertEquals(inuseSize-1,tester.getInuse().size());
         assertEquals("prevent null",doctor.getCurrent().getName());
         if (!result){
-            String expected=String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s"+newLine, LocalDateTime.now().format(formatter),patient,doctor,"No Disease","out of Hospital","No Disease");
+            String expected=String.format("|%s|%-40s|%-60s|%-50s|%-60s|%-50s|%-19s|"+newLine, LocalDateTime.now().format(formatter),patient,doctor,"No Disease","out of Hospital","No Disease","");
             assertEquals(expected,readerWriter.read());
             readerWriter.delete();
             return;
@@ -105,7 +105,7 @@ class DiagnoseDoctorPoolTest {
         checkHealingDoctorContainPatient(healingDoctor,patient);
         assertEquals(patient.getSessionTime(),healingDoctor.getLastPatientTimer());
         assertTrue(HealingDoctorManager.getInstance().getHealingDoctorList().contains(healingDoctor));
-        String str =String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s newSessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,doctor,"No Disease",healingDoctor,patient.getDisease(),patient.getSessionTime().format(formatter));
+        String str =String.format("|%s|%-40s|%-60s|%-50s|%-60s|%-50s|%-19s|"+newLine, LocalDateTime.now().format(formatter),patient,doctor,"No Disease",healingDoctor,patient.getDisease(),healingDoctor.getLastPatientTimer().format(formatter));
 
         assertEquals(str,readerWriter.read());
         readerWriter.delete();
