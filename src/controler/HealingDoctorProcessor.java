@@ -30,7 +30,7 @@ public class HealingDoctorProcessor {
                 LocalDateTime patientSessionTime = queue.peek().getSessionTime();
                 if (patientSessionTime.isBefore(now)) {
                     Patient patient = queue.remove();
-                    String str=String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s at SessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,healer,patient.getDisease(),"out of hospital","No Disease",patient.getSessionTime().format(formatter));
+                    String str=String.format("|%s|%-40s|%-60s|%-50s|%-60s|%-50s|%-19s|"+newLine, LocalDateTime.now().format(formatter),patient,healer,patient.getDisease(),"out of hospital","No Disease","");
                     fileReaderWriter.write(str);
                     HealingDoctorManager.getInstance().serializeList();
                 }else break;

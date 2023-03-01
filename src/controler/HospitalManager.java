@@ -73,6 +73,10 @@ public class HospitalManager extends Thread{
 
     @Override
     public void run() {
+        fileReaderWriter.write("__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________"+newLine);
+        String str=String.format("|%-19s|%-40s|%-60s|%-50s|%-60s|%-50s|%-19s|"+newLine,"Checked Time","Patient","go from","with","to","with","Latest Session Time");
+        fileReaderWriter.write(str);
+        fileReaderWriter.write("|================================================================================================================================================================================================================================================================================================================|"+newLine);
         while (onOff) {
             checkQueueToPool();
             checkPoolToHeal();
@@ -83,6 +87,7 @@ public class HospitalManager extends Thread{
                 throw new RuntimeException(e);
             }
         }
+        fileReaderWriter.write("__________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________"+newLine);
     }
     public void switchOnOff(){
         onOff=!onOff;
@@ -111,7 +116,7 @@ public class HospitalManager extends Thread{
             Patient patient=patientPriorityQueue.peek();
             DiagnoseDoctor doctor=availableQueue.peek();
             pool.getPatient();
-            String str=String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s newSessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,"Queue","No Disease",doctor,"No Disease",patient.getSessionTime().format(formatter));
+            String str=String.format("|%s|%-40s|%-60s|%-50s|%-60s|%-50s|%-19s|"+newLine, LocalDateTime.now().format(formatter),patient,"Queue","No Disease",doctor,"No Disease",patient.getSessionTime().format(formatter));
             fileReaderWriter.write(str);
             pool.saveAvailableInuse();
         }

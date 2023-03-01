@@ -69,10 +69,6 @@ public class DiagnoseDoctorPool {
         HealingDoctorProcessor healingDoctorProcessor = HealingDoctorProcessor.getInstance();
 
         HealingDoctor healingDoctorChosen= healingDoctorProcessor.giveDiseaseGetHealingDoc(disease);
-        if (healingDoctorChosen==null&&!disease.getName().equals("No Disease")){
-            fileReaderWriter.write(patient+"do not have the suitable doctor, "+disease+newLine);
-            return false;
-        }
         inuse.remove();
         patient.setDisease(disease);
         doctor.setCurrent(new Patient("prevent null",true));
@@ -82,14 +78,19 @@ public class DiagnoseDoctorPool {
                 available.add(doctor);
             }
         }
+        if (healingDoctorChosen==null&&!disease.getName().equals("No Disease")){
+            String str=String.format("|%s:%-40s|%-60s|%-50s|%-60s|%-50s|%-19s|"+newLine,LocalDateTime.now().format(formatter),patient,doctor,disease,"out of Hospital",disease,"");
+            fileReaderWriter.write(str);
+            return false;
+        }
         if (disease.getName().equals("No Disease")){
-            String str=String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s"+newLine, LocalDateTime.now().format(formatter),patient,doctor,"No Disease","out of Hospital","No Disease");
+            String str=String.format("|%s:%-40s|%-60s|%-50s|%-60s|%-50s|%-19s|"+newLine, LocalDateTime.now().format(formatter),patient,doctor,"No Disease","out of Hospital","No Disease","");
             fileReaderWriter.write(str);
             return false;
         }
 
         healingDoctorChosen.takePatient(patient);
-        String str=String.format("%s: %-40s go from %-60s with %-50s to %-60s with %-50s newSessionTime %-50s"+newLine, LocalDateTime.now().format(formatter),patient,doctor,"No Disease",healingDoctorChosen,patient.getDisease(),healingDoctorChosen.getLastPatientTimer().format(formatter));
+        String str=String.format("|%s|%-40s|%-60s|%-50s|%-60s|%-50s|%-19s|"+newLine, LocalDateTime.now().format(formatter),patient,doctor,"No Disease",healingDoctorChosen,patient.getDisease(),healingDoctorChosen.getLastPatientTimer().format(formatter));
         fileReaderWriter.write(str);
         return true;
     }
