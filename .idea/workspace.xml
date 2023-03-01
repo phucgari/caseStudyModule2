@@ -10,7 +10,6 @@
       <change beforePath="$PROJECT_DIR$/src/data/diagnoseDoctorLists/diagnoseDoctorAvailable.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/diagnoseDoctorLists/diagnoseDoctorAvailable.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data/healingDoctorList.dat" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/healingDoctorList.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data/sout.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/sout.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/controler/DiagnoseDoctorPoolTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controler/DiagnoseDoctorPoolTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,7 +191,8 @@
       <workItem from="1677470501783" duration="413000" />
       <workItem from="1677471219651" duration="11121000" />
       <workItem from="1677566699225" duration="3606000" />
-      <workItem from="1677579167093" duration="1038000" />
+      <workItem from="1677579167093" duration="1113000" />
+      <workItem from="1677639720863" duration="1867000" />
     </task>
     <servers />
   </component>

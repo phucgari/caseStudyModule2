@@ -19,8 +19,6 @@ public class Main {
     public static void main(String[] args) {
         readerWriter.delete();
         HospitalManager hospitalManager =HospitalManager.getInstance();
-//        hospitalManager.flushAll();
-        DiagnoseDoctorPool.getInstance().flushAvailableInuse();
         hospitalManager.start();
         Scanner scanner=new Scanner(System.in);
         generatePatient(scanner);
@@ -30,14 +28,18 @@ public class Main {
 
     private static void generatePatient(Scanner scanner) {
         System.out.println("Do you want input demo Patients?");
-        System.out.println("input the number of demo Patients to add (max:7)");
-        System.out.println("others to skip");
-        try {
-            int patientNum = Math.min(Integer.parseInt(scanner.nextLine()),7);
-            if(patientNum<0)return;
-            System.out.println("added " + patientNum +" patient(s)");
-            patientManager.generateDemoPatient(patientNum);
-        }catch (Exception ignored){}
+        while(true) {
+            try {
+                System.out.println("input the number of demo Patients to add (max:7)");
+                System.out.println("0 to skip");
+                int patientNum = Math.min(Integer.parseInt(scanner.nextLine()), 7);
+                if (patientNum == 0) break;
+                System.out.println("added " + patientNum + " patient(s)");
+                patientManager.generateDemoPatient(patientNum);
+                break;
+            } catch (Exception ignored) {
+            }
+        }
     }
 
     private static void mainMenu(Scanner scanner) {
@@ -48,7 +50,7 @@ public class Main {
             System.out.println("2 for access Diagnose Doctor");
             System.out.println("3 for access Healing Doctor");
             System.out.println("4 for viewing/adding new Disease");
-            System.out.println("other for quit");
+            System.out.println("0 for quit");
             String choice= scanner.nextLine();
             switch (choice){
                 case "1":
@@ -63,10 +65,9 @@ public class Main {
                 case "4":
                     addNewDisease(scanner);
                     break;
-                default:
+                case "0":
                     on=false;
             }
-
         }
     }
 
@@ -84,9 +85,10 @@ public class Main {
             System.out.println("3 for Urologist");
             System.out.println("4 for Otolaryngologist");
             System.out.println("5 for Surgeon");
-            System.out.println("others for exit");
+            System.out.println("0 for exit");
             String action = scanner.nextLine();
-            if(!action.matches("[1-5]"))break;
+            if(action.equals("0"))break;
+            else if (!action.matches("[1-5]")) continue;
             System.out.println("Enter Name");
             String name = scanner.nextLine();
             String expInt;
@@ -122,7 +124,7 @@ public class Main {
             System.out.println("Input");
             System.out.println("1 for add new Healing Doctor");
             System.out.println("2 for view and delete Healing Doctor");
-            System.out.println("3 for quit");
+            System.out.println("0 for quit");
             String input = scanner.nextLine();
             switch (input){
                 case "1":
@@ -131,7 +133,7 @@ public class Main {
                 case "2":
                     viewAndDeleteHealingDoctor(scanner);
                     break;
-                case "3":
+                case "0":
                     on=false;
                     break;
             }
@@ -147,7 +149,7 @@ public class Main {
                 System.out.println("no available DiagnoseDoctor");
                 return;
             }
-            int index = 0;
+            int index = 1;
             for (HealingDoctor doctor :
                     list) {
                 System.out.println(index + " " + doctor.toString());
@@ -156,13 +158,13 @@ public class Main {
 
             System.out.println("Input your action");
             System.out.println("numbers for index deletion");
-            System.out.println("-1 for quit");
+            System.out.println("0 for quit");
             String inputStr= scanner.nextLine();
-            if(inputStr.equals("-1"))break;
+            if(inputStr.equals("0"))break;
             if(inputStr.matches("[0-9]+"))input= Integer.parseInt(inputStr);
 
             if(input<list.size()&&input>-1){
-                healingDoctorManager.remove(input);
+                healingDoctorManager.remove(input-1);
             }
         }
     }
@@ -175,9 +177,10 @@ public class Main {
             System.out.println("3 for Urologist");
             System.out.println("4 for Otolaryngologist");
             System.out.println("5 for Surgeon");
-            System.out.println("others for exit");
+            System.out.println("0 for exit");
             String action = scanner.nextLine();
-            if(!action.matches("[1-5]"))break;
+            if(action.equals("0"))break;
+            else if(!action.matches("[1-5]"))continue;
             System.out.println("Enter Name");
             String name = scanner.nextLine();
             String expInt;
@@ -211,9 +214,10 @@ public class Main {
         while (true){
         System.out.println("Adding Patient");
         System.out.println("Do you want to quit?");
-        System.out.println("q for quit,other for add");
+        System.out.println("0 for quit,1 for add");
         String q=scanner.nextLine();
-        if(q.equals("q")) return;
+        if(q.equals("0")) return;
+        else if(!q.equals("1"))continue;
         patientManager.addPatientQueue(inputPatient(scanner));
         }
     }
@@ -240,7 +244,7 @@ public class Main {
             System.out.println("Input");
             System.out.println("1 for add new DiagnoseDoctor");
             System.out.println("2 for view and delete Diagnose Doctor");
-            System.out.println("3 for quit");
+            System.out.println("0 for quit");
             String input = scanner.nextLine();
             switch (input){
                 case "1":
@@ -249,7 +253,7 @@ public class Main {
                 case "2":
                     viewAndDeleteDiagnoseDoctor(scanner);
                     break;
-                case "3":
+                case "0":
                     on=false;
                     break;
             }
@@ -266,22 +270,21 @@ public class Main {
                 return;
             }
             System.out.println("View and delete DiagnoseDoctor chosen");
-            int index=0;
+            int index=1;
             for (DiagnoseDoctor doctor :
                     list) {
                 System.out.println(index+" "+doctor.toString());
                 index++;
             }
             System.out.println("Input your action");
-
             System.out.println("numbers for index deletion");
-            System.out.println("-1 for quit");
+            System.out.println("0 for quit");
             String inputStr= scanner.nextLine();
-            if(inputStr.equals("-1"))break;
+            if(inputStr.equals("0"))break;
             if(inputStr.matches(num))input= Integer.parseInt(inputStr);
 
             if(input<list.size()&&input>-1){
-                diagnoseDoctorPool.removeDiagnoseDoctor(input);
+                diagnoseDoctorPool.removeDiagnoseDoctor(input-1);
             }
         }
     }
